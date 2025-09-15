@@ -1,0 +1,35 @@
+{
+  "name": "tedxkprit-website",
+  "version": "1.0.0",
+  "description": "TEDxKPRIT event website with backend support",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seedDatabase.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^6.11.2",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7",
+    "multer": "^1.4.5-lts.1",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "tedx",
+    "event",
+    "website",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "TEDxKPRIT Team",
+  "license": "MIT"
+}

@@ -1,0 +1,371 @@
+/* ===== CSS Variables ===== */
+:root {
+  --bg: #0b0b0f;
+  --ink: #e6e6e6;
+  --muted: #a3a3a3;
+  --accent: #e62b1e;
+  --card: #121218;
+  --heading-font: 'Akira Expanded', sans-serif;
+}
+
+/* ===== Font Imports ===== */
+@font-face {
+  font-family: 'Akira Expanded';
+  src: url('/fonts/AkiraExpanded-Regular.woff2') format('woff2'),
+       url('/fonts/AkiraExpanded-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===== Base Styles ===== */
+html, body {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  cursor: url('/assets/cursor.svg'), auto;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f28;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b2b36;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3, .title-hero {
+  font-family: var(--heading-font);
+  letter-spacing: 0.02em;
+}
+
+/* ===== Utility Classes ===== */
+.container-xl {
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.eyebrow {
+  font-size: .85rem;
+  letter-spacing: .2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.title-hero {
+  font-family: var(--heading-font);
+  letter-spacing: .02em;
+}
+
+/* ===== Brand Styling ===== */
+.brand .ted { color: var(--ink); font-weight: 800; letter-spacing: .03em; }
+.brand .x { color: var(--accent); font-weight: 900; }
+.brand .kprit { color: #f3f4f6; font-weight: 800; }
+
+/* ===== Glass Effect ===== */
+.glass {
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  background: rgba(10,10,16,.5);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: .9rem 1.3rem;
+  border-radius: .75rem;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg,#191921,#0f0f16);
+  color: #fff;
+  font-weight: 600;
+  transition: all .2s ease;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 8px 30px rgba(0,0,0,.35);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,#ff3b30,#c31210);
+  border-color: rgba(255,255,255,.12);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255,255,255,.22);
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,.4);
+  box-shadow: 0 15px 40px rgba(0,0,0,.45);
+}
+
+/* ===== Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Speaker Card ===== */
+.speaker-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 60px rgba(0,0,0,.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.speaker-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 25px 80px rgba(0,0,0,.6);
+}
+
+.speaker-img {
+  aspect-ratio: 5 / 6;
+  width: 100%;
+  object-fit: cover;
+  background: radial-gradient(1200px 200px at 0% 0%, rgba(230,43,30,.15), transparent), #121218;
+  display: block;
+}
+
+/* ===== Token (Reusable) ===== */
+.token {
+  border: 1px solid rgba(255,255,255,.08);
+  background: radial-gradient(1200px 200px at 0% 0%, rgba(230,43,30,.14), transparent), linear-gradient(180deg, #14141b, #0f0f16);
+  color: #f5f6f7;
+  border-radius: .9rem;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.token:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 15px 40px rgba(0,0,0,.45);
+}
+
+/* ===== Divider Line ===== */
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
+}
+
+/* ===== Spline 3D Visuals ===== */
+.spline-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.enhanced-spline {
+  filter: drop-shadow(0 0 20px rgba(230,43,30,0.8));
+}
+
+.spline-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 300px at 10% 10%, rgba(230,43,30,.20), transparent 60%),
+    radial-gradient(900px 300px at 90% 20%, rgba(230,43,30,.14), transparent 70%),
+    radial-gradient(900px 300px at 50% 100%, rgba(230,43,30,.12), transparent 70%),
+    linear-gradient(180deg, #0b0b10, #06060a 65%, #040408);
+}
+
+/* ===== Scroll Indicator ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 2rem;
+  width: 28px;
+  height: 48px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.scroll-indicator span {
+  width: 4px;
+  height: 12px;
+  background: #fff;
+  border-radius: 1rem;
+  margin-top: 6px;
+  animation: drop 1.4s infinite;
+}
+
+@keyframes drop {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(18px); opacity: 0; }
+}
+
+/* ===== Back to top ===== */
+.to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease;
+}
+
+.to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== Form Styling ===== */
+.field {
+  background: #101017;
+  border: 1px solid rgba(255,255,255,.08);
+  color: #fff;
+  border-radius: .75rem;
+  padding: .95rem 1rem;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.field:focus {
+  border-color: rgba(230,43,30,.6);
+  box-shadow: 0 0 0 4px rgba(230,43,30,.15);
+}
+
+/* ===== Mobile Nav ===== */
+@media (max-width: 1024px) {
+  #navMenu { display: none; }
+  #navMenu.open { display: flex; }
+}
+
+
+
+
+/* TEAM MEMBERS STYLING */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Section Styling */
+.team-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.team-section h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+/* Category Titles */
+.team-category {
+  margin-bottom: 60px;
+}
+
+.team-category h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  border-left: 5px solid #00bcd4;
+  padding-left: 15px;
+}
+
+/* Grid Layout */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* Team Card */
+.team-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Image Styling */
+.team-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 25%;
+  border: 3px solid #00bcd4;
+}
+
+/* Text Styling */
+.team-card h3 {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .team-section h1 {
+    font-size: 2rem;
+  }
+
+  .team-category h2 {
+    font-size: 1.5rem;
+  }
+}
