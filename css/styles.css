@@ -369,3 +369,172 @@ body {
     font-size: 1.5rem;
   }
 }
+
+/* Team styling */
+.team-card img {
+  display: block;
+  margin: 0 auto;
+}
+
+.team-card > h3{
+  margin-top: 10px;
+}
+
+
+/* TEAM MEMBERS STYLING */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #0d0d0d, #1c1c1c);
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Section Styling */
+.team-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.team-section h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.team-section h1::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background-color: red;
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Category Titles */
+.team-category {
+  margin-bottom: 60px;
+}
+
+.team-category h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  border-left: 5px solid red;
+  padding-left: 15px;
+  position: relative;
+}
+
+.team-category h2::before {
+  content: "👥";
+  position: absolute;
+  left: -35px;
+  top: 0;
+  font-size: 1.5rem;
+}
+
+/* Grid Layout */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Team Card */
+.team-card {
+  background: radial-gradient(circle at top left, #1e1e1e, #2b2b2b);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px red;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, red transparent 70%);
+  transform: rotate(25deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.team-card:hover::before {
+  top: -20%;
+  left: -20%;
+  opacity: 1;
+}
+
+/* Image Styling */
+.team-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 25%;
+  border: 3px solid #EB0028;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Text Styling */
+.team-card h3 {
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 1;
+  position: relative;
+}
+
+.team-card p {
+  font-size: 0.95rem;
+  color: #cccccc;
+  z-index: 1;
+  position: relative;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .team-section h1 {
+    font-size: 2rem;
+  }
+
+  .team-category h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
