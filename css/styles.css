@@ -499,7 +499,7 @@ body {
   height: 100px;
   object-fit: cover;
   margin-bottom: 15px;
-  border-radius: 25%;
+  border-radius: 50%;
   border: 3px solid #EB0028;
   transition: transform 0.3s ease;
 }
