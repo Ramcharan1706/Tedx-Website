@@ -84,19 +84,27 @@
 </header>
 
 <!-- HERO SECTION -->
-<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"
-  style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
+<section id="home"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-no-repeat bg-center bg-cover"
+  style="
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('break the loop.png');
+    background-attachment: scroll;
+  ">
 
-  <div class="container-xl text-center pt-28 pb-16">
+  <div class="container-xl text-center pt-28 pb-16 px-4">
+    <!-- Logo -->
     <img src="tedx.png" alt="TEDxKPRIT Logo"
-      style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
+      class="mx-auto drop-shadow"
+      style="height: 60px; width: 300px;">
 
-    <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold"
-      style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
+    <!-- Description Text -->
+    <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold leading-relaxed"
+      style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">
       Unfurling the essence of ideas — TEDxKPRIT brings together visionary speakers, artists, and innovators
       to ignite curiosity, challenge perspectives, and inspire action.
     </p>
 
+    <!-- Buttons -->
     <div class="mt-10 flex flex-wrap justify-center gap-4">
       <a href="#tickets" class="btn btn-primary shadow-lg">Book your Tickets</a>
       <a href="#speakers" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
@@ -105,6 +113,7 @@
 
   <div class="scroll-indicator" aria-hidden="true"><span></span></div>
 </section>
+
 
 <!-- Divider -->
 <div class="divider"></div>
@@ -800,6 +809,7 @@
           <div class="mt-2 text-3xl font-extrabold">₹499</div>
           <ul class="mt-4 text-white/80 space-y-2 text-sm">
             <li>• Full day access</li>
+           
             <li>• Swag kit</li>
           </ul>
           <a class="btn btn-primary mt-6" href="#contact">Book Now</a>
@@ -842,7 +852,7 @@
             </div>
             <div class="rounded-xl border border-white/10 p-5 bg-[#101018]">
               <div class="text-sm text-white/60">Venue</div>
-              <div class="font-semibold mt-1">Kommuri Pratap Reddy Institute of Technology</div>
+              <div class="font-semibold mt-1">Kommuri Prathap Reddy Institute of Technology</div>
             </div>
           </div>
         </div>
