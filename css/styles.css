@@ -495,11 +495,11 @@ body {
 
 /* Image Styling */
 .team-card img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   margin-bottom: 15px;
-  border-radius: 50%;
+  border-radius: 25%;
   border: 3px solid #EB0028;
   transition: transform 0.3s ease;
 }
