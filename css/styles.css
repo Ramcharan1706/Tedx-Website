@@ -535,3 +535,62 @@ body {
     font-size: 1.5rem;
   }
 }
+
+  /* Make the background image responsive */
+  #home {
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Adjust for smaller screens like mobile */
+  @media (max-width: 768px) {
+    #home {
+      background-position: center top;
+      padding-top: 100px; /* Adjust padding for better visibility */
+    }
+
+    .container-xl {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    /* Adjust the logo size */
+    img {
+      width: 200px; /* Reduce logo size on mobile */
+      height: auto;
+    }
+
+    /* Adjust text size */
+    p {
+      font-size: 1rem; /* Make text slightly smaller for better readability */
+    }
+
+    /* Adjust buttons */
+    .btn {
+      padding: 12px 20px; /* Slightly bigger touch targets */
+      font-size: 1rem;
+    }
+  }
+
+  /* Adjust for very small screens (phones in portrait mode) */
+  @media (max-width: 480px) {
+    #home {
+      background-size: 100% 100%; /* Adjust background size for very small screens */
+      background-position: center top;
+    }
+
+    /* Further reduce logo size */
+    img {
+      width: 160px;
+    }
+
+    p {
+      font-size: 0.9rem; /* Make text smaller for very small screens */
+    }
+
+    /* Adjust buttons */
+    .btn {
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+  }
