@@ -69,29 +69,31 @@
     </div>
   </header>
 
-  <!-- Home Section with marvel.gif background -->
-  <section id="home"  class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section id="home" 
+  class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
 
-    <div class="container-xl text-center pt-28 pb-16">
-      <img src="tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto;">
+  <div class="container-xl text-center pt-28 pb-16">
+    <img src="tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
 
+    <p class="max-w-2xl mx-auto mt-6 text-lg text-white" style="padding-top: 18px; font:bold ;text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
+      Unfurling the essence of ideas — TEDxKPRIT brings together visionary speakers, artists, and innovators
+      to ignite curiosity, challenge perspectives, and inspire action.
+    </p>
 
-       <img width="350px" style=" width: 300px; margin: auto; margin-top: 15px;" src="break the loop.jpg">
-
-
-      <p class="max-w-2xl mx-auto mt-6 text-lg text-white/80" style="padding-top: 18px;">
-        Unfurling the essence of ideas — TEDxKPRIT brings together visionary speakers, artists, and innovators
-        to ignite curiosity, challenge perspectives, and inspire action.
-      </p>
-
-      <div class="mt-10 flex items-center gap-4 justify-center">
-        <a href="#tickets" class="btn btn-primary">Book your Tickets</a>
-        <a href="#speakers" class="btn btn-outline">Explore Speakers</a>
-      </div>
+    <div class="mt-10 flex items-center gap-4 justify-center">
+      <a href="#tickets" class="btn btn-primary" style="box-shadow: 0 3px 10px rgba(0,0,0,0.25);">Book your Tickets</a>
+      <a href="#speakers" class="btn btn-outline" style="box-shadow: 0 3px 10px rgba(0,0,0,0.25); color: #fff; border-color: #fff;">Explore Speakers</a>
     </div>
+  </div>
 
-    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
-  </section>
+  <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+</section>
+
+
+
+<div class="divider"></div>
+
 
   <div class="divider"></div>
 
@@ -180,293 +182,227 @@
   </section>
 
   <div class="divider"></div>
-  <!-- Speakers Section -->
-
-
-  <section id="speakers" class="py-20 bg-black text-white">
+<!-- Speakers Section -->
+<section id="speakers" class="py-20 bg-black text-white">
     <div class="max-w-7xl mx-auto px-4">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <p class="text-red-500 uppercase tracking-widest font-semibold text-lg">Speakers</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-2">Unlooped Unbound Unstoppable</h2>
+            <p class="text-white/70 mt-4 max-w-2xl mx-auto text-xl">Talks that inspire. Voices that move.</p>
+        </header>
 
-
-      <header class="text-center mb-16">
-        <p class="text-red-500 uppercase tracking-widest font-semibold">Speakers</p>
-        <h2 class="text-4xl md:text-5xl font-bold mt-2">Unlooped Unbound Unstoppable</h2>
-        <p class="text-white/70 mt-4 max-w-2xl mx-auto text-lg">Talks that inspire. Voices that move.</p>
-      </header>
-
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <!-- Front Side -->
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+1" alt="Speaker One" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Dr. Deepak Mashru</h3>
-                <p class="text-white/60 text-sm">Professor, National Forensic Sciences University</p>
-              </div>
-            </div>
-
-            <!-- Back Side -->
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker One</h3>
-              <p class="text-sm text-white/90 mb-4">Dr. Deepak J. Mashru is a visionary educator and pioneer in forensic linguistics, serving at the National Forensic Sciences University under the Ministry of Home Affairs. With over two decades of transformative work, he has redefined how language, law, and technology converge to strengthen justice delivery. Honoured with national awards for teaching and pedagogical innovation, he is known for blending Bharatiya knowledge traditions with cutting-edge forensic applications. A director of a prestigious ICSSR project, he stands at the forefront of designing new educational and investigative frontiers, inspiring students, scholars, and citizens to see words as instruments of truth.</p>
+        <!-- Speaker Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
             
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
+            <!-- Speaker Card -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <!-- Front Side -->
+                    <img src="images/sairam.jpg" alt="Sai Ram" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <!-- No shadow overlay, just gradient at the bottom for text -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Sai Ram</h3>
+                        <p class="text-white/60 text-sm">AI Researcher • The Empathy of Machines</p>
+                    </div>
+                </div>
+
+                <!-- Back Side -->
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker-1</h3>
+                    <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempor arcu in turpis euismod, eget scelerisque libero vestibulum.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
             </div>
-          </div>
+
+            <!-- Repeat for other speakers -->
+            <!-- Speaker 2 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+2" alt="Speaker Two" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Two</h3>
+                        <p class="text-white/60 text-sm">Social Innovation • Designing Dignity</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Two</h3>
+                    <p class="text-sm mb-4">Redesigning public systems with equity and human dignity at the center.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 3 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 4 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 5 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 6 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 7-->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 8 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 9 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 10 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 11 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Speaker 12 -->
+            <div class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+                <div class="w-full h-[440px] relative bg-gray-800">
+                    <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker Three" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-xl font-bold">Speaker Three</h3>
+                        <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+                    <h3 class="text-2xl font-bold mb-2">Speaker Three</h3>
+                    <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+                    <a href="#contact" class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn More</a>
+                </div>
+            </div>
+
         </div>
 
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+2" alt="Speaker 2" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Dr. Divya Raj</h3>
-                <p class="text-white/60 text-sm">MD, Neo Institute Of Medical Sciences</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker Two</h3>
-              <p class="text-sm text-white/90 mb-4">Dr. Divya Raj is a pediatrician and the Managing Director of the Neo Institute of Medical Sciences. She has trained over 15,000 doctors with GSL and AIG Hospitals and enabled treatment for 1,000+ international patients. Bridging Swadeshi values with global opportunities, she pioneered India’s first equivalent MBBS program in Uzbekistan with an NMC-aligned curriculum. Her White Coat Mentor Initiative promotes advanced medical skilling, AI simulation, and global exam readiness. During Operation Ganga, she led student rescues from Ukraine, relocating them to continue their education. A visionary mentor, she empowers Indian doctors to thrive worldwide.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+3" alt="Speaker 3" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Hema Thakur</h3>
-                <p class="text-white/60 text-sm">Author</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 3</h3>
-              <p class="text-sm text-white/90 mb-4">Hema Thakur is an academic editor, mentor, and author with nearly a decade of experience guiding researchers through scholarly publishing. Her expertise has been featured in platforms like The Times of India, Zee Business, and Scholarly Kitchen. A published poet, her book Musings in Music has earned glowing reviews for its lyrical depth. She has spoken at premier institutions including IIT, BHU, and Ashoka University, where her sessions are valued for clarity and relatability. Her work spans borders, from leading workshops in Puerto Rico and Colombia to exploring Chile’s folklore and cultural legacies. Through writing, mentorship, and global connection, she empowers scholars and storytellers to share knowledge that inspires change.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+4" alt="Speaker 4" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Dr. A M Reddy</h3>
-                <p class="text-white/60 text-sm">Founder, Dr Care Homeopathy</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 4</h3>
-              <p class="text-sm text-white/90 mb-4">Dr. A M Reddy is a pioneering homeopathic physician, entrepreneur, and founder of the Positive Group of Clinics. With over two decades of practice, he has established 50+ branches of Dr Care Homeopathy and Dr Positive Dental across South India, offering safe and holistic healthcare. Passionate about autism care, he founded the Dr A M Reddy Autism Center in 2016, becoming the first in India to advance homeopathic immunotherapy for ASD and ADHD. His work has brought relief to hundreds of children and hope to countless families. Rooted in values of compassion and resilience, he continues to redefine alternative medicine with innovation, dedication, and a vision to make world-class holistic treatment accessible to all.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+5" alt="Speaker 5" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Dr. Sairam Atluri</h3 <p class="text-white/60 text-sm">Founder & CEO, Tulsi Therapeutics</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 5</h3>
-              <p class="text-sm text-white/90 mb-4">Dr. Sairam Atluri is an internationally recognized stem cell specialist with over 30 years of clinical and research experience in the U.S. and India. Author of 30+ peer-reviewed papers and pioneer of several world-first stem cell trials, he has advanced regenerative medicine for conditions once thought untreatable. During the COVID-19 crisis, he published one of the earliest global studies on stem cell therapy for patients unresponsive to conventional care. Returning to India, he founded Tulsi Therapeutics with a mission to produce world-class stem cells at 100-fold lower cost, making them accessible to all. In collaboration with NIMS, his team has developed breakthrough stem cell–exosome therapies showing promise against liver failure and beyond. A visionary leader, Dr. Atluri is shaping India into a global hub for regenerative medicine.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+6" alt="Speaker 6" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Ramya Parashar</h3>
-                <p class="text-white/60 text-sm">COO, MiQ's Bangalore Center Of Excellence</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 6</h3>
-              <p class="text-sm text-white/90 mb-4">Ramya Parashar is the Chief Operating Officer at MiQ’s Bangalore Center of Excellence, where she drives strategy, operations, and culture for one of the company’s fastest-growing hubs. Coming from a non-technical background, she has redefined leadership in tech-heavy domains by embracing discomfort, risk, and continuous learning. Recognized among Forbes India’s W-Power: Self-made Women and AIM’s Top 25 GCC Heads for two consecutive years, she is celebrated for blending data-driven systems with people-centric leadership. At MiQ, she champions inclusive workplaces, innovation, and empowerment, inspiring teams to transform challenges into opportunities. Her journey reflects resilience, boundary-breaking, and a belief that empathy and agility fuel lasting impact.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+7" alt="Speaker 7" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Rohit Tiwari</h3>
-                <p class="text-white/60 text-sm">Sr.Director, DEXIAN India</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 7</h3>
-              <p class="text-sm text-white/90 mb-4">Rohit Tiwari is the Senior Director of Sales & Marketing at Dexian India, bringing over 17 years of expertise in client engagement, digital transformation, and business growth. At Dexian, he drives client success, managed services, and long-term partnerships, enabling enterprises to accelerate digital initiatives with measurable impact. His career journey spans leading firms like Capco, Quess Corp, Allegis Group, and Collabera, where he has steered portfolio growth, transformation projects, and innovation-driven solutions. Passionate about building high-performing teams and nurturing client relationships, Rohit continues to champion operational excellence and future-ready business strategies.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+8" alt="Speaker 8" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Nithya Rajendran</h3>
-                <p class="text-white/60 text-sm">Indian Classical Vocalist</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 8</h3>
-              <p class="text-sm text-white/90 mb-4">Nithya Rajendran is a dual Indian Classical vocalist, trained in both Hindustani and Carnatic traditions for over two decades. She is the founder of Music Vruksh, an initiative that explores the healing and mood-elevating powers of classical music through concerts, workshops, and classes. A multiple-time TEDx speaker, including at IIT Jodhpur and CMRIT Hyderabad, Nithya bridges tradition with contemporary relevance. Her work has been featured in Outlook, The Week, CNBC TV18, India Today TV, Thrive Global, and more. She also writes on music and wellness, and has been recognized among “Women in Music” achievers by The Score Magazine. As a high-grade panel artist with All India Radio, she has many acclaimed performances to her credit, both in India and internationally.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+9" alt="Speaker 9" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Speaker 9</h3>
-                <p class="text-white/60 text-sm">Social Innovation • Designing dignity</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 9</h3>
-              <p class="text-sm text-white/90 mb-4">Redesigning public systems with equity and human dignity at the
-                center.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+10" alt="Speaker 10" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Speaker 10</h3>
-                <p class="text-white/60 text-sm">Social Innovation • Designing dignity</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 10</h3>
-              <p class="text-sm text-white/90 mb-4">Redesigning public systems with equity and human dignity at the
-                center.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+11" alt="Speaker 11" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Speaker 11</h3>
-                <p class="text-white/60 text-sm">Social Innovation • Designing dignity</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 11</h3>
-              <p class="text-sm text-white/90 mb-4">Redesigning public systems with equity and human dignity at the
-                center.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group [perspective:1000px]">
-          <div
-            class="relative w-full h-[440px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            <div class="absolute inset-0 bg-gray-900 rounded-xl overflow-hidden [backface-visibility:hidden] shadow-lg">
-              <img src="https://placehold.co/600x800?text=Speaker+12" alt="Speaker 12" class="w-full h-64 object-cover">
-              <div class="p-4 text-center">
-                <h3 class="text-xl font-bold">Speaker 12</h3>
-                <p class="text-white/60 text-sm">Social Innovation • Designing dignity</p>
-              </div>
-            </div>
-            <div
-              class="absolute inset-0 bg-red-500 rounded-xl text-center p-6 text-white [transform:rotateY(180deg)] [backface-visibility:hidden] flex flex-col justify-center shadow-lg">
-              <h3 class="text-2xl font-bold mb-2">Speaker 12</h3>
-              <p class="text-sm text-white/90 mb-4">Redesigning public systems with equity and human dignity at the
-                center.</p>
-              <a href="#contact"
-                class="inline-block mt-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Learn
-                More</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA -->
+        <!-- Call to Action -->
         <div class="text-center mt-16">
-          <a href="#contact"
-            class="inline-block text-white border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition text-center">
-            Propose a Talk
-          </a>
+            <a href="#contact" class="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white text-xl font-semibold py-4 px-10 rounded-full shadow-md hover:bg-red-700 transition-all">Propose a Talk</a>
         </div>
-      </div>
-  </section>
+    </div>
+</section>
 
-  <div class="divider"></div>
+<div class="divider"></div>
+
 
 
   <!-- TEAM MEMBERS  -->
@@ -482,28 +418,28 @@
       <div class="team-grid">
         <div class="team-card" data-aos="fade-up">
           <img src="images/member4.jpg">
-          <h3>Bhuvaneshwari Pothuraju</h3>
-          <p>Organizer</p>
+          <h3>Organizer</h3>
+          <p>Bhuvaneshwari pothuraju</p>
         </div>
         <div class="team-card" data-aos="fade-up">
           <img src="images/member5.jpg">
-          <h3> kommuri divya reddy</h3>
-          <p>Co-organiser </p>
+          <h3>Co-organiser</h3>
+          <p>Kommuri divyareddy</p>
         </div>
         <div class="team-card" data-aos="fade-up">
           <img src="images/member6.jpg">
-          <h3> Akash Roa Mallareddy</h3>
-          <p>Curator</p>
+          <h3>Curator</h3>
+          <p>Akash rao Mallareddy</p>
         </div>
         <div class="team-card" data-aos="fade-up">
           <img src="images/member7.jpg">
-          <h3>Sreenath Kashyap</h3>
-          <p>Faculty Co-ordinator</p>
+          <h3>Faculty coordinators</h3>
+          <p>Sreenath kasyap</p>
         </div>
         <div class="team-card" data-aos="fade-up">
           <img src="images/member8.jpg">
-          <h3>K.Madan Mohan</h3>
-          <p>Faculty Co-ordinator</p>
+          <h3>Faculty coordinators</h3>
+          <p>K. Madan mohan</p>
         </div>
       </div>
     </div>
