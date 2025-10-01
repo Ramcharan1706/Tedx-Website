@@ -1,26 +1,42 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-  
   const burger = document.getElementById('burger');
   const navMenu = document.getElementById('navMenu');
-
-  if (burger && navMenu) {
-    burger.addEventListener('click', () => {
-      const expanded = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!expanded));
-      navMenu.classList.toggle('open');
-      
-      navMenu.setAttribute('aria-hidden', String(expanded));
-    });
-  }
-
-
+  const mobileMenu = document.getElementById('mobileMenu'); // Optional mobile-specific menu
   const header = document.getElementById('siteHeader');
   const toTop = document.getElementById('toTop');
 
+  // Mobile menu toggle
+  if (burger) {
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+
+      // If you use a separate mobile menu container
+      if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+      } else if (navMenu) {
+        navMenu.classList.toggle('open'); // Fallback if navMenu is reused
+        navMenu.setAttribute('aria-hidden', String(expanded));
+      }
+    });
+  }
+
+  // Close mobile menu on link click (mobile UX best practice)
+  const navLinks = document.querySelectorAll('#navMenu a, #mobileMenu a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth < 1024) {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  });
+
+  // Scroll-related effects
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY > 12;
-
     if (header) {
       header.style.boxShadow = scrolled ? '0 10px 30px rgba(0,0,0,.25)' : 'none';
     }
@@ -34,52 +50,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  // Reveal animations
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Set current year in footer
+  // Footer year
   const yearElement = document.getElementById('year');
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
 
-  // Spline fallback detection (Improved)
+  // Spline loading fallback
   const spline = document.getElementById('splineCanvas');
   const splineFallback = document.getElementById('splineFallback');
   let splineReady = false;
 
-  // Assuming splineCanvas is an iframe or img; canvas doesn't fire load
   if (spline) {
-    const readyTimeout = setTimeout(() => {
+    const timeout = setTimeout(() => {
       if (!splineReady && splineFallback) {
         splineFallback.style.opacity = '1';
       }
     }, 4000);
 
-    // If iframe or img:
     spline.addEventListener('load', () => {
       splineReady = true;
-      if (splineFallback) {
-        splineFallback.style.opacity = '0';
-      }
-      clearTimeout(readyTimeout);
+      if (splineFallback) splineFallback.style.opacity = '0';
+      clearTimeout(timeout);
     });
   }
 
-  // Subtle parallax on scroll for hero 3D with throttling
+  // Subtle parallax (disable on mobile for performance)
   const splineWrap = document.querySelector('.spline-wrap');
   let ticking = false;
 
   const parallax = () => {
-    if (!splineWrap) return;
+    if (!splineWrap || window.innerWidth < 768) return;
 
     if (!ticking) {
       window.requestAnimationFrame(() => {
@@ -93,24 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', parallax, { passive: true });
 
-  // Contact form handling with basic validation
+  // Contact form submission with validation
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
 
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const data = Object.fromEntries(new FormData(form).entries());
 
-      // Basic validation
       if (!data.name || !data.email || !data.message) {
         status.textContent = 'Please fill in all required fields.';
         status.style.color = 'var(--accent)';
         return;
       }
 
-      // Simple email regex check (basic)
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(data.email)) {
         status.textContent = 'Please enter a valid email address.';
@@ -121,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
       status.textContent = 'Sending...';
       status.style.color = 'var(--ink)';
 
-      // Simulate form submission
       setTimeout(() => {
         status.textContent = `Thanks ${data.name}! Your message has been received. Our team will get back soon.`;
         status.style.color = 'var(--ink)';
@@ -130,9 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active navigation highlighting with throttling
+  // Active nav highlighting (section spy)
   const sections = Array.from(document.querySelectorAll('section[id]'));
-  const navLinks = Array.from(document.querySelectorAll('#navMenu a[href^="#"]'));
 
   let activeTicking = false;
   const spy = () => {
@@ -143,15 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(sec => {
           const top = sec.offsetTop;
           const bottom = top + sec.offsetHeight;
-          const link = navLinks.find(a => a.getAttribute('href') === '#' + sec.id);
+          const href = `#${sec.id}`;
 
-          if (!link) return;
-
-          if (pos >= top && pos < bottom) {
-            link.classList.add('text-white');
-          } else {
-            link.classList.remove('text-white');
-          }
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === href) {
+              if (pos >= top && pos < bottom) {
+                link.classList.add('text-white');
+              } else {
+                link.classList.remove('text-white');
+              }
+            }
+          });
         });
 
         activeTicking = false;
@@ -162,18 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', spy, { passive: true });
-  spy(); // Initial call
+  spy(); // Run once on load
 
-  // Smooth scrolling for anchor links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(anchor.getAttribute('href'));
       if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
