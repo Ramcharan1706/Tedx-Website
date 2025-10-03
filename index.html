@@ -403,7 +403,7 @@
         <div
           class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
           <div class="w-full h-[440px] relative bg-gray-800">
-            <img src="https://placehold.co/600x800?text=Speaker+8" alt="Speaker eight"
+            <img src="speakers-images/Nithya.jpg" alt="Speaker eight"
               class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
               <h3 class="text-xl font-bold">Nithya Rajendran</h3>
@@ -802,43 +802,44 @@
   <div class="divider"></div>
 
   <section id="contact" class="py-20 md:py-28">
-    <div class="container-xl">
-      <div class="grid lg:grid-cols-2 gap-10">
-        <div class="reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2">Talk to the team</h2>
-          <p class="text-white/80 mt-4">
-            Questions about tickets, partnerships, or volunteering? Drop a message — we typically respond within 48
-            hours.
-          </p>
+  <div class="container-xl">
+    <div class="grid lg:grid-cols-2 gap-10">
+     
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Talk to the team</h2>
+        <p class="text-white/80 mt-4">
+          Questions about tickets, partnerships, or volunteering? Drop a message — we typically respond within 48 hours.
+        </p>
 
-          <div class="mt-8 grid grid-cols-2 gap-4">
-            <div class="rounded-xl border border-white/10 p-5 bg-[#101018]">
-              <div class="text-sm text-white/60">Email</div>
-              <div class="font-semibold mt-1">tedx@kpritech.ac.in</div>
-            </div>
-            <br>
-            <div class="rounded-xl border border-white/10 p-5 bg-[#101018]">
-              <div class="text-sm text-white/60">Venue</div>
-              <div class="font-semibold mt-1">Kommuri Pratap Reddy Institute of Technology</div>
-            </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="rounded-xl border border-white/10 p-5 bg-[#101018]" role="region" aria-labelledby="contact-email">
+            <div class="text-sm text-white/60" id="contact-email">Email</div>
+            <div class="font-semibold mt-1">tedx@kpritech.ac.in</div>
+          </div>
+          <div class="rounded-xl border border-white/10 p-5 bg-[#101018]" role="region" aria-labelledby="contact-venue">
+            <div class="text-sm text-white/60" id="contact-venue">Venue</div>
+            <div class="font-semibold mt-1">Kommuri Pratap Reddy Institute of Technology</div>
           </div>
         </div>
-
-        <form id="contactForm" class="reveal space-y-4">
-          <div class="grid md:grid-cols-2 gap-4">
-            <input class="field" type="text" name="name" placeholder="Your name" required />
-            <input class="field" type="email" name="email" placeholder="Email address" required />
-          </div>
-          <input class="field w-full" type="text" name="subject" placeholder="Subject" />
-          <textarea class="field w-full min-h-[160px]" name="message" placeholder="Write your message..."
-            required></textarea>
-          <button class="btn btn-primary" type="submit">Send Message</button>
-          <p id="formStatus" class="text-sm text-white/70"></p>
-        </form>
       </div>
+
+      
+      <form id="contactForm" class="reveal space-y-4" aria-labelledby="contact-form">
+        <h3 id="contact-form" class="sr-only">Contact Us Form</h3>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          <input class="field" type="text" name="name" placeholder="Your name" required aria-label="Your name" />
+          <input class="field" type="email" name="email" placeholder="Email address" required aria-label="Email address" />
+        </div>
+        <input class="field w-full" type="text" name="subject" placeholder="Subject" aria-label="Subject" />
+        <textarea class="field w-full min-h-[160px]" name="message" placeholder="Write your message..." required aria-label="Message"></textarea>
+        <button class="btn btn-primary" type="submit" aria-label="Send Message">Send Message</button>
+        <p id="formStatus" class="text-sm text-white/70"></p>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
 
   <footer class="border-t border-white/10 py-12">
