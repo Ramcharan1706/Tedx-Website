@@ -535,3 +535,101 @@ body {
     font-size: 1.5rem;
   }
 }
+
+/* ===== Hourly Schedule (Dark TEDx Style) ===== */
+.schedule-wrapper {
+  background: #101018;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+}
+
+.schedule-header {
+  background: #14141b;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size: 1rem;
+  color: #fff;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+}
+
+.schedule-grid .time,
+.schedule-grid .slot {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  font-size: 0.95rem;
+}
+
+.schedule-grid .time {
+  font-weight: 700;
+  color: #e62b1e;
+  background: rgba(255,255,255,.02);
+  border-right: 1px solid rgba(255,255,255,.08);
+  text-transform: uppercase;
+}
+
+.schedule-grid .slot {
+  color: #f1f1f1;
+  font-weight: 500;
+}
+
+/* Special highlights */
+.schedule-grid .slot.lunch,
+.schedule-grid .time.lunch {
+  background: radial-gradient(circle at center, rgba(230,43,30,.18), transparent);
+  font-weight: 600;
+  color: #ffcc66;
+}
+
+.schedule-grid .slot.closing,
+.schedule-grid .time.closing {
+  background: linear-gradient(90deg, rgba(230,43,30,.2), transparent);
+  font-weight: 600;
+  color: #66e6ff;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+  .schedule-grid .time {
+    border-right: none;
+    background: rgba(255,255,255,.04);
+  }
+}
+
+
+/* ===== Mark Your Dates Line ===== */
+.mark-your-date {
+  display: inline-block;
+  color: #f87171; /* red-400 */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+.mark-your-date span {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+/* glowing pulse animation */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 6px rgba(230,43,30,0.6), 0 0 12px rgba(230,43,30,0.4);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(230,43,30,0.9), 0 0 20px rgba(230,43,30,0.6);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(230,43,30,0.6), 0 0 12px rgba(230,43,30,0.4);
+  }
+}
