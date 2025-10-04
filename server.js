@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -7,8 +8,27 @@ require('dotenv').config();
 
 const app = express();
 
-// Security middleware
-app.use(helmet());
+// Custom Content Security Policy to allow required external resources
+const cspDirectives = {
+
+  scriptSrc: ["'self'", "https://cdn.tailwindcss.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
+  styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+  imgSrc: ["'self'", "data:", "https://placehold.co", "https://storage.googleapis.com"],
+  connectSrc: ["'self'"],
+  fontSrc: ["'self'"],
+  objectSrc: ["'none'"],
+  frameSrc: ["'none'"],
+  baseUri: ["'self'"],
+  formAction: ["'self'"]
+};
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: cspDirectives
+    }
+  })
+);
+
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
@@ -40,7 +60,7 @@ app.use('/api/partners', require('./routes/partners'));
 app.use('/api/events', require('./routes/events'));
 
 // Serve static files
-app.use(express.static('public'));
+app.use(express.static('.'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
