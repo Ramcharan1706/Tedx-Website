@@ -553,7 +553,7 @@ body {
 
 .schedule-grid {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 180px 1fr;
 }
 
 .schedule-grid .time,
