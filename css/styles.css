@@ -667,7 +667,7 @@ html, body {
 #home {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
               url('break the loop.png') no-repeat center center;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
   background-attachment: scroll;
   min-height: 100vh;
@@ -679,7 +679,7 @@ html, body {
 @media (max-width: 768px) {
   #home {
     background-attachment: scroll;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
     min-height: 100vh;
   }
