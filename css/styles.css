@@ -679,7 +679,7 @@ html, body {
 @media (max-width: 768px) {
   #home {
     background-attachment: scroll;
-    background-size: contain;
+    background-size:  contain;
     background-position: center center;
     min-height: 100vh;
   }
