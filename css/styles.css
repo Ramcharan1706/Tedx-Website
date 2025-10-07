@@ -633,3 +633,20 @@ body {
     text-shadow: 0 0 6px rgba(230,43,30,0.6), 0 0 12px rgba(230,43,30,0.4);
   }
 }
+
+#home {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('break the loop.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll; /* Changed from fixed for mobile */
+}
+
+/* Mobile-specific fix */
+@media (max-width: 768px) {
+  #home {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
