@@ -650,3 +650,71 @@ body {
   }
 }
 
+/* ===== Full-Screen Override for Hero Section ===== */
+#home .container-xl {
+  padding-inline: 0;
+  max-width: 100%;
+}
+
+/* Remove body default margin/padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#home {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+              url('break the loop.png') no-repeat center center;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Enhanced mobile optimization */
+@media (max-width: 768px) {
+  #home {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+  }
+}
+
+/* For ultra-wide screens */
+@media (min-width: 1920px) {
+  #home {
+    background-size: 100% auto;
+  }
+}
+
+/* ===== Global Reset for Full-Screen Layout ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep container padding for content sections only */
+.container-xl:not(#home .container-xl) {
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
