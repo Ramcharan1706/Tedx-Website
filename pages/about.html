@@ -3,47 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join TEDxKPRIT 2025 at Kommuri Pratap Reddy Institute of Technology, Hyderabad. Explore inspiring talks, speakers, and ideas worth spreading.">
-  <title>TEDxKPRIT 2K25 | Unfurling the Essence of Ideas</title>
-  <meta property="og:title" content="TEDxKPRIT 2025 | TEDx Event in Hyderabad" />
-  <meta property="og:description" content="Join TEDxKPRIT 2025 for inspiring talks and innovative ideas at Kommuri Pratap Reddy Institute of Technology." />
-  <meta property="og:url" content="https://tedxkprit.in/" />
+  <meta name="description" content="Learn about TEDx and Kommuri Pratap Reddy Institute of Technology (KPRIT) behind TEDxKPRIT 2025.">
+  <title>TEDxKPRIT 2K25 | About</title>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="TEDxKPRIT 2025 | About">
+  <meta property="og:description" content="Discover TEDx's mission and KPRIT's role in hosting a transformative event with inspiring talks and ideas.">
+  <meta property="og:url" content="https://tedxkprit.in/pages/about.html" />
 
+  <!-- Styles and Scripts -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/styles.css" /> <!-- Adjust path if needed -->
-  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon"> <!-- Adjust path -->
-
-  <style>
-    #home {
-      background: url();
-      background-size: cover;
-      position: relative;
-    }
-    #home::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-    #home .container-xl {
-      position: relative;
-      z-index: 2;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header Component (Copied from header.html, adjusted paths) -->
   <header id="siteHeader" class="fixed top-0 left-0 right-0 z-40 glass w-full">
-    <!-- Copy header content from header.html here (static duplication for simplicity) -->
     <div class="container-xl py-5 flex items-center justify-between">
       <!-- Logo -->
-      <a href="index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
-        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]"> <!-- Adjust path -->
+      <a href="../index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
+        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]">
       </a>
       <!-- Desktop Navigation -->
       <nav aria-label="Primary" class="hidden lg:flex flex-1 justify-center">
@@ -81,29 +61,59 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
-    <div class="container-xl text-center pt-28 pb-16">
-      <img src="../tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
-      <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
-        Unfurling the essence of ideas - TEDxKPRIT brings together visionary speakers, artists, and innovators to ignite curiosity, challenge perspectives, and inspire action.
-      </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="../pages/tickets.html" class="btn btn-primary shadow-lg">Book your Tickets</a>
-        <a href="../pages/speakers.html" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- About TEDx -->
+        <div class="reveal">
+          <p class="eyebrow">About TEDx</p>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Ideas worth spreading, curated locally</h2>
+          <p class="text-white/80 mt-5 leading-relaxed">
+            TEDx events are locally organized gatherings where live talks and performances are shared with a community.
+            At TEDxKPRIT, we curate a day of compelling ideas across technology, entertainment, design, and beyond — spoken from the heart.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-5 text-center">
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">1</div>
+              <div class="text-sm text-white/70 mt-1">Incredible Day</div>
+            </div>
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">12+</div>
+              <div class="text-sm text-white/70 mt-1">Speakers</div>
+            </div>
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">100+</div>
+              <div class="text-sm text-white/70 mt-1">Attendees</div>
+            </div>
+          </div>
+        </div>
+        <!-- About KPRIT -->
+        <div class="reveal">
+          <p class="eyebrow">About KPRIT</p>
+          <h3 class="text-3xl md:text-4xl font-bold mt-2">A campus that breathes innovation</h3>
+          <p class="text-white/80 mt-5 leading-relaxed">
+            KPRIT fosters creativity, research, and community building. With thriving clubs, cutting-edge labs, and a passionate student body, the campus offers the perfect stage for a TEDx experience that blends cultural richness with future-facing ideas.
+          </p>
+          <ul class="mt-6 space-y-3 text-white/80">
+            <li>• Community-first experience with immersive curation</li>
+            <li>• Cross-disciplinary storytelling and live performances</li>
+            <li>• Hands-on installations and interactive demos</li>
+          </ul>
+          <div class="mt-8 flex gap-3">
+            <a href="../pages/contact.html" class="btn">Volunteer with us</a>
+            <a href="../pages/partners.html" class="btn btn-outline">Become a Partner</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
   </section>
 
   <!-- Divider -->
   <div class="divider"></div>
-  <div class="divider"></div>
 
-  <!-- Footer -->
+  <!-- Footer Component (Copied from footer.html, adjusted paths) -->
   <footer class="border-t border-white/10 py-12">
-    <!-- Copy footer content from footer.html here (static duplication) -->
     <div class="container-xl">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
         <div class="brand text-lg">
@@ -112,14 +122,15 @@
         <p class="text-white/60 text-sm" id="copyright">
           This independent TEDx event is operated under license from TED. © <span id="year"></span> TEDxKPRIT. All rights reserved.
         </p>
-        <a href="index.html" class="btn btn-outline">Back to top</a>
+        <a href="../index.html" class="btn btn-outline">Back to top</a>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <script src="../js/script.js"></script> <!-- Adjust path -->
+  <script src="../js/script.js"></script>
   <script>
     AOS.init({
       duration: 800,
