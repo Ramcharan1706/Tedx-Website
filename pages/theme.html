@@ -3,47 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join TEDxKPRIT 2025 at Kommuri Pratap Reddy Institute of Technology, Hyderabad. Explore inspiring talks, speakers, and ideas worth spreading.">
-  <title>TEDxKPRIT 2K25 | Unfurling the Essence of Ideas</title>
-  <meta property="og:title" content="TEDxKPRIT 2025 | TEDx Event in Hyderabad" />
-  <meta property="og:description" content="Join TEDxKPRIT 2025 for inspiring talks and innovative ideas at Kommuri Pratap Reddy Institute of Technology." />
-  <meta property="og:url" content="https://tedxkprit.in/" />
+  <meta name="description" content="Discover the theme of TEDxKPRIT 2025: 'Break The Loop' and its core concepts of disruption, awareness, and breakthrough.">
+  <title>TEDxKPRIT 2K25 | Theme</title>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="TEDxKPRIT 2025 | Theme">
+  <meta property="og:description" content="Explore the theme 'Break The Loop' for TEDxKPRIT 2025, which challenges cycles of habit, thought, and stories to inspire bold new ideas.">
+  <meta property="og:url" content="https://tedxkprit.in/pages/theme.html" />
 
+  <!-- Styles and Scripts -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/styles.css" /> <!-- Adjust path if needed -->
-  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon"> <!-- Adjust path -->
-
-  <style>
-    #home {
-      background: url();
-      background-size: cover;
-      position: relative;
-    }
-    #home::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-    #home .container-xl {
-      position: relative;
-      z-index: 2;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon">
 </head>
 <body>
-  <!-- Header -->
+  <!-- Header Component (Copied from header.html, adjusted paths) -->
   <header id="siteHeader" class="fixed top-0 left-0 right-0 z-40 glass w-full">
-    <!-- Copy header content from header.html here (static duplication for simplicity) -->
     <div class="container-xl py-5 flex items-center justify-between">
       <!-- Logo -->
-      <a href="index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
-        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]"> <!-- Adjust path -->
+      <a href="../index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
+        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]">
       </a>
       <!-- Desktop Navigation -->
       <nav aria-label="Primary" class="hidden lg:flex flex-1 justify-center">
@@ -81,29 +61,38 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
-    <div class="container-xl text-center pt-28 pb-16">
-      <img src="../tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
-      <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
-        Unfurling the essence of ideas - TEDxKPRIT brings together visionary speakers, artists, and innovators to ignite curiosity, challenge perspectives, and inspire action.
-      </p>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="../pages/tickets.html" class="btn btn-primary shadow-lg">Book your Tickets</a>
-        <a href="../pages/speakers.html" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
+  <!-- THEME SECTION -->
+  <section id="theme" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <p class="eyebrow" style="color: red;">Theme</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold title-hero">Break The Loop</h2>
+        <p class="text-white/80 mt-5">
+          "Break The Loop" is a call to disrupt the expected, to challenge cycles of habit, systems of thought, and stories we've outgrown. Whether in technology, culture, or personal growth — this theme invites bold thinking that breaks away from inertia and builds anew.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Disruption</div>
+          <p class="text-white/80 mt-2">Question the status quo. Reimagine what's possible when routines are interrupted with intent.</p>
+        </div>
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Awareness</div>
+          <p class="text-white/80 mt-2">Recognize the loops — social, emotional, systemic — that shape our lives and limit our thinking.</p>
+        </div>
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Breakthrough</div>
+          <p class="text-white/80 mt-2">Step into the unknown. Growth often begins the moment you exit the cycle.</p>
+        </div>
       </div>
     </div>
-    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
   </section>
 
   <!-- Divider -->
   <div class="divider"></div>
-  <div class="divider"></div>
 
-  <!-- Footer -->
+  <!-- Footer Component (Copied from footer.html, adjusted paths) -->
   <footer class="border-t border-white/10 py-12">
-    <!-- Copy footer content from footer.html here (static duplication) -->
     <div class="container-xl">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
         <div class="brand text-lg">
@@ -112,14 +101,15 @@
         <p class="text-white/60 text-sm" id="copyright">
           This independent TEDx event is operated under license from TED. © <span id="year"></span> TEDxKPRIT. All rights reserved.
         </p>
-        <a href="index.html" class="btn btn-outline">Back to top</a>
+        <a href="../index.html" class="btn btn-outline">Back to top</a>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <script src="../js/script.js"></script> <!-- Adjust path -->
+  <script src="../js/script.js"></script>
   <script>
     AOS.init({
       duration: 800,
