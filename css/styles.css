@@ -718,3 +718,54 @@ body {
   padding-inline: 1.25rem;
 }
 
+
+
+/* About Tabs Styling */
+.tab-btn {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  color: white;
+}
+
+.tab-btn.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-content-container {
+  padding: 2rem 0;
+}
+
+.tab-pane {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  background: var(--card);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tab-pane.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  position: relative;
+}
