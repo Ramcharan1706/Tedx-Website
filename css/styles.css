@@ -519,8 +519,8 @@ body {
 }
 
 .team-card p {
-  font-size: 0.95rem;
-  color: #cccccc;
+  font-weight: bold;
+  color: red;
   z-index: 1;
   position: relative;
 }
