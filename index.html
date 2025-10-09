@@ -11,12 +11,12 @@
 
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/styles.css" /> <!-- Adjust path if needed -->
-  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon"> <!-- Adjust path -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
 
   <style>
     #home {
-      background: url();
+      background: url('break the loop.png');
       background-size: cover;
       position: relative;
     }
@@ -39,24 +39,23 @@
 <body>
   <!-- Header -->
   <header id="siteHeader" class="fixed top-0 left-0 right-0 z-40 glass w-full">
-    <!-- Copy header content from header.html here (static duplication for simplicity) -->
     <div class="container-xl py-5 flex items-center justify-between">
       <!-- Logo -->
       <a href="index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
-        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]"> <!-- Adjust path -->
+        <img src="tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]">
       </a>
       <!-- Desktop Navigation -->
       <nav aria-label="Primary" class="hidden lg:flex flex-1 justify-center">
         <ul id="navMenu" class="flex items-center gap-5 text-sm font-medium">
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/home.html">Home</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/about.html">About</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/theme.html">Theme</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/speakers.html">Speakers</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/team.html">Team</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/schedule.html">Schedule</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/partners.html">Partners</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/contact.html">Contact</a></li>
-          <li><a class="btn btn-primary mt-2 w-full text-center" href="../pages/tickets.html">Book Tickets</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/home.html">Home</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/about.html">About</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/theme.html">Theme</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/speakers.html">Speakers</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/team.html">Team</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/schedule.html">Schedule</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/partners.html">Partners</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="pages/contact.html">Contact</a></li>
+          <li><a class="btn btn-primary mt-2 w-full text-center" href="pages/tickets.html">Book Tickets</a></li>
         </ul>
       </nav>
       <!-- Mobile Menu Button -->
@@ -68,30 +67,30 @@
     <!-- Mobile Menu Dropdown -->
     <div id="mobileMenu" class="lg:hidden hidden bg-black bg-opacity-90 text-white px-6 pt-4 pb-6">
       <ul class="flex flex-col gap-4 text-sm font-medium">
-        <li><a href="../pages/home.html" class="hover:text-white/90">Home</a></li>
-        <li><a href="../pages/about.html" class="hover:text-white/90">About</a></li>
-        <li><a href="../pages/theme.html" class="hover:text-white/90">Theme</a></li>
-        <li><a href="../pages/speakers.html" class="hover:text-white/90">Speakers</a></li>
-        <li><a href="../pages/team.html" class="hover:text-white/90">Team</a></li>
-        <li><a href="../pages/schedule.html" class="hover:text-white/90">Schedule</a></li>
-        <li><a href="../pages/partners.html" class="hover:text-white/90">Partners</a></li>
-        <li><a href="../pages/contact.html" class="hover:text-white/90">Contact</a></li>
-        <li><a class="btn btn-primary mt-2 w-full text-center" href="../pages/tickets.html">Book Tickets</a></li>
+        <li><a href="pages/home.html" class="hover:text-white/90">Home</a></li>
+        <li><a href="pages/about.html" class="hover:text-white/90">About</a></li>
+        <li><a href="pages/theme.html" class="hover:text-white/90">Theme</a></li>
+        <li><a href="pages/speakers.html" class="hover:text-white/90">Speakers</a></li>
+        <li><a href="pages/team.html" class="hover:text-white/90">Team</a></li>
+        <li><a href="pages/schedule.html" class="hover:text-white/90">Schedule</a></li>
+        <li><a href="pages/partners.html" class="hover:text-white/90">Partners</a></li>
+        <li><a href="pages/contact.html" class="hover:text-white/90">Contact</a></li>
+        <li><a class="btn btn-primary mt-2 w-full text-center" href="pages/tickets.html">Book Tickets</a></li>
       </ul>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
+    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
     <div class="container-xl text-center pt-28 pb-16">
-      <img src="../tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
+      <img src="tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
       <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
         Unfurling the essence of ideas - TEDxKPRIT brings together visionary speakers, artists, and innovators to ignite curiosity, challenge perspectives, and inspire action.
       </p>
       <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="../pages/tickets.html" class="btn btn-primary shadow-lg">Book your Tickets</a>
-        <a href="../pages/speakers.html" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
+        <a href="pages/tickets.html" class="btn btn-primary shadow-lg">Book your Tickets</a>
+        <a href="pages/speakers.html" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
       </div>
     </div>
     <div class="scroll-indicator" aria-hidden="true"><span></span></div>
@@ -103,11 +102,10 @@
 
   <!-- Footer -->
   <footer class="border-t border-white/10 py-12">
-    <!-- Copy footer content from footer.html here (static duplication) -->
     <div class="container-xl">
       <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
         <div class="brand text-lg">
-          <img src="../tedx.png" alt="TEDxKPRIT Logo" style="width: 200px; margin: auto;">
+          <img src="tedx.png" alt="TEDxKPRIT Logo" style="width: 200px; margin: auto;">
         </div>
         <p class="text-white/60 text-sm" id="copyright">
           This independent TEDx event is operated under license from TED. © <span id="year"></span> TEDxKPRIT. All rights reserved.
@@ -119,7 +117,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <script src="../js/script.js"></script> <!-- Adjust path -->
+  <script src="js/script.js"></script>
   <script>
     AOS.init({
       duration: 800,
