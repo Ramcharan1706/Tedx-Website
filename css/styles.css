@@ -520,7 +520,7 @@ body {
 
 .team-card p {
   font-weight: bold;
-  color: red;
+  color: white;
   z-index: 1;
   position: relative;
 }
