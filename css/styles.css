@@ -441,7 +441,7 @@ body {
 }
 
 .team-category h2::before {
-  content: "👥";
+  
   position: absolute;
   left: -35px;
   top: 0;
