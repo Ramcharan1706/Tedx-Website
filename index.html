@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join TEDxKPRIT 2025 at Kommuri Pratap Reddy Institute of Technology, Hyderabad. Explore inspiring talks, speakers, and ideas worth spreading.">
+  <meta name="description"
+    content="Join TEDxKPRIT 2025 at Kommuri Pratap Reddy Institute of Technology, Hyderabad. Explore inspiring talks, speakers, and ideas worth spreading.">
   <title>TEDxKPRIT 2K25 | Unfurling the Essence of Ideas</title>
+
   <meta property="og:title" content="TEDxKPRIT 2025 | TEDx Event in Hyderabad" />
-  <meta property="og:description" content="Join TEDxKPRIT 2025 for inspiring talks and innovative ideas at Kommuri Pratap Reddy Institute of Technology." />
+  <meta property="og:description"
+    content="Join TEDxKPRIT 2025 for inspiring talks and innovative ideas at Kommuri Pratap Reddy Institute of Technology." />
+  <!--<meta property="og:image" content="https://tedxkprit.in/assets/og-image.jpg" />-->
   <meta property="og:url" content="https://tedxkprit.in/" />
+
 
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../css/styles.css" /> <!-- Adjust path if needed -->
-  <link rel="shortcut icon" href="../favicon.jpg" type="image/x-icon"> <!-- Adjust path -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
 
   <style>
     #home {
@@ -20,6 +26,7 @@
       background-size: cover;
       position: relative;
     }
+
     #home::before {
       content: '';
       position: absolute;
@@ -27,106 +34,925 @@
       background: rgba(0, 0, 0, 0.5);
       z-index: 1;
     }
+
     #home .container-xl {
       position: relative;
       z-index: 2;
     }
+
+
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
+
 <body>
-  <!-- Header -->
+
   <header id="siteHeader" class="fixed top-0 left-0 right-0 z-40 glass w-full">
-    <!-- Copy header content from header.html here (static duplication for simplicity) -->
     <div class="container-xl py-5 flex items-center justify-between">
       <!-- Logo -->
-      <a href="index.html" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
-        <img src="../tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]"> <!-- Adjust path -->
+      <a href="#home" class="brand text-xl md:text-2xl tracking-tight flex items-center gap-2">
+        <img src="tedx.png" alt="TEDxKPRIT Logo" class="w-[150px]">
       </a>
+
       <!-- Desktop Navigation -->
       <nav aria-label="Primary" class="hidden lg:flex flex-1 justify-center">
         <ul id="navMenu" class="flex items-center gap-5 text-sm font-medium">
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/home.html">Home</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/about.html">About</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/theme.html">Theme</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/speakers.html">Speakers</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/team.html">Team</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/schedule.html">Schedule</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/partners.html">Partners</a></li>
-          <li><a class="hover:text-white/90 text-white/70" href="../pages/contact.html">Contact</a></li>
-          <li><a class="btn btn-primary mt-2 w-full text-center" href="../pages/tickets.html">Book Tickets</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#home">Home</a></li1>
+          <li><a class="hover:text-white/90 text-white/70" href="#about">About</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#theme">Theme</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#speakers">Speakers</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#Tedxteam">Team</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#Schedule">Schedule</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#partners">Partners</a></li>
+          <li><a class="hover:text-white/90 text-white/70" href="#contact">Contact</a></li>
+          <li><a class="btn btn-primary" href="#tickets">Book Tickets</a></li>
         </ul>
       </nav>
+
       <!-- Mobile Menu Button -->
       <button id="burger" class="lg:hidden btn btn-outline px-3 py-2" aria-expanded="false" aria-controls="mobileMenu"
         aria-label="Open menu">
         Menu
       </button>
     </div>
+
     <!-- Mobile Menu Dropdown -->
     <div id="mobileMenu" class="lg:hidden hidden bg-black bg-opacity-90 text-white px-6 pt-4 pb-6">
       <ul class="flex flex-col gap-4 text-sm font-medium">
-        <li><a href="../pages/home.html" class="hover:text-white/90">Home</a></li>
-        <li><a href="../pages/about.html" class="hover:text-white/90">About</a></li>
-        <li><a href="../pages/theme.html" class="hover:text-white/90">Theme</a></li>
-        <li><a href="../pages/speakers.html" class="hover:text-white/90">Speakers</a></li>
-        <li><a href="../pages/team.html" class="hover:text-white/90">Team</a></li>
-        <li><a href="../pages/schedule.html" class="hover:text-white/90">Schedule</a></li>
-        <li><a href="../pages/partners.html" class="hover:text-white/90">Partners</a></li>
-        <li><a href="../pages/contact.html" class="hover:text-white/90">Contact</a></li>
-        <li><a class="btn btn-primary mt-2 w-full text-center" href="../pages/tickets.html">Book Tickets</a></li>
+        <li><a href="#home" class="hover:text-white/90">Home</a></li>
+        <li><a href="#about" class="hover:text-white/90">About</a></li>
+        <li><a href="#theme" class="hover:text-white/90">Theme</a></li>
+        <li><a href="#speakers" class="hover:text-white/90">Speakers</a></li>
+        <li><a href="#Tedxteam" class="hover:text-white/90">Team</a></li>
+        <li><a href="#Schedule" class="hover:text-white/90">Schedule</a></li>
+        <li><a href="#partners" class="hover:text-white/90">Partners</a></li>
+        <li><a href="#contact" class="hover:text-white/90">Contact</a></li>
+        <li><a class="btn btn-primary mt-2 w-full text-center" href="#tickets">Book Tickets</a></li>
       </ul>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
+    style="background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('break the loop.png') no-repeat center center/cover; background-attachment: fixed;">
+
     <div class="container-xl text-center pt-28 pb-16">
-      <img src="../tedx.png" alt="TEDxKPRIT Logo" style="height: 60px; width: 300px; margin: auto; filter: drop-shadow(0 0 4px white);">
-      <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
-        Unfurling the essence of ideas - TEDxKPRIT brings together visionary speakers, artists, and innovators to ignite curiosity, challenge perspectives, and inspire action.
+      <img src="tedx.png" alt="TEDxKPRIT Logo"
+        style="height: 100px; width: 500px; margin: auto;">
+
+      <p class="max-w-2xl mx-auto mt-6 text-lg text-white font-semibold"
+        style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7); filter: drop-shadow(0 0 4px white);">
+        Unfurling the essence of ideas - TEDxKPRIT brings together visionary speakers, artists, and innovators
+        to ignite curiosity, challenge perspectives, and inspire action.
       </p>
+
       <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="../pages/tickets.html" class="btn btn-primary shadow-lg">Book your Tickets</a>
-        <a href="../pages/speakers.html" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
+        <a href="#tickets" class="btn btn-primary shadow-lg">Book your Tickets</a>
+        <a href="#speakers" class="btn btn-outline text-white border-white shadow-lg">Explore Speakers</a>
       </div>
     </div>
+
     <div class="scroll-indicator" aria-hidden="true"><span></span></div>
   </section>
 
   <!-- Divider -->
   <div class="divider"></div>
+
+
   <div class="divider"></div>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-12">
-    <!-- Copy footer content from footer.html here (static duplication) -->
+  <!-- About -->
+  <section id="about" class="py-20 md:py-28">
     <div class="container-xl">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
-        <div class="brand text-lg">
-          <img src="../tedx.png" alt="TEDxKPRIT Logo" style="width: 200px; margin: auto;">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="reveal">
+          <p class="eyebrow">About TEDx</p>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Ideas worth spreading, curated locally</h2>
+          <p class="text-white/80 mt-5 leading-relaxed">
+            TEDx events are locally organized gatherings where live talks and performances are shared with a community.
+            At TEDxKPRIT, we curate a day of compelling ideas across technology, entertainment, design, and beyond —
+            spoken from the heart.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-5 text-center">
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">1</div>
+              <div class="text-sm text-white/70 mt-1">Incredible Day</div>
+            </div>
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">12+</div>
+              <div class="text-sm text-white/70 mt-1">Speakers</div>
+            </div>
+            <div class="rounded-xl bg-[#101018] border border-white/10 p-6">
+              <div class="text-3xl font-extrabold">100+</div>
+              <div class="text-sm text-white/70 mt-1">Attendees</div>
+            </div>
+          </div>
         </div>
-        <p class="text-white/60 text-sm" id="copyright">
-          This independent TEDx event is operated under license from TED. © <span id="year"></span> TEDxKPRIT. All rights reserved.
-        </p>
-        <a href="index.html" class="btn btn-outline">Back to top</a>
+
+        <div class="reveal">
+          <p class="eyebrow">About KPRIT</p>
+          <h3 class="text-3xl md:text-4xl font-bold mt-2">A campus that breathes innovation</h3>
+          <p class="text-white/80 mt-5 leading-relaxed">
+            KPRIT fosters creativity, research, and community building. With thriving clubs,
+            cutting-edge labs, and a passionate student body, the campus offers the perfect stage for a TEDx experience
+            that blends cultural richness with future-facing ideas.
+          </p>
+          <ul class="mt-6 space-y-3 text-white/80">
+            <li>• Community-first experience with immersive curation</li>
+            <li>• Cross-disciplinary storytelling and live performances</li>
+            <li>• Hands-on installations and interactive demos</li>
+          </ul>
+          <div class="mt-8 flex gap-3">
+            <a href="#contact" class="btn">Volunteer with us</a>
+            <a href="#partners" class="btn btn-outline">Become a Partner</a>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Theme -->
+  <section id="theme" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <p class="eyebrow" style="color: red;">Theme</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold title-hero">Break The Loop</h2>
+        <p class="text-white/80 mt-5">
+          "Break The Loop" is a call to disrupt the expected, to challenge cycles of habit, systems of thought,
+          and stories we've outgrown. Whether in technology, culture, or personal growth — this theme invites
+          bold thinking that breaks away from inertia and builds anew.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Disruption</div>
+          <p class="text-white/80 mt-2">Question the status quo. Reimagine what's possible when routines are interrupted
+            with intent.</p>
+        </div>
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Awareness</div>
+          <p class="text-white/80 mt-2">Recognize the loops — social, emotional, systemic — that shape our lives and
+            limit our thinking.</p>
+        </div>
+        <div class="reveal rounded-xl border border-white/10 p-7 bg-[#101018]">
+          <div class="text-xl font-semibold">Breakthrough</div>
+          <p class="text-white/80 mt-2">Step into the unknown. Growth often begins the moment you exit the cycle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  <!-- Speakers Section -->
+  <section id="speakers" class="py-20 bg-black text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Header -->
+      <header class="text-center mb-16">
+        <p class="text-red-500 uppercase tracking-widest font-semibold text-lg">Speakers</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold mt-2">Unlooped Unbound Unstoppable</h2>
+        <p class="text-white/70 mt-4 max-w-2xl mx-auto text-xl">Talks that inspire. Voices that move.</p>
+      </header>
+
+      <!-- Speaker Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+
+        <!-- Speaker Card -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <!-- Front Side -->
+            <img src="speakers-images/hemathakur.jpg" alt="Speaker One"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <!-- No shadow overlay, just gradient at the bottom for text -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Hema Thakur</h3>
+              <p class="text-white/60 text-sm">Academic Editing | Research Mentorship | Author | Speaker</p>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker</h3>
+            <p class="text-sm mb-4">I am an academic editor, mentor, and author with nearly a decade of experience
+              helping researchers worldwide navigate the complexities of scholarly publishing. My work has been featured
+              in leading news platforms like The Times of India, Zee Business, Ahmedabad Mirror, and Mid-Day, as well as
+              scholarly forums such as Editage Insights, Scholarly Kitchen, and Rising Scholars.</p>
+            <a href="https://www.socialsciencespace.com/author/hemathakur/" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 2 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/deepakmishra.jpg" alt="Speaker Two"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Dr. Deepak J. Mashru</h3>
+              <p class="text-white/60 text-sm">Visionary educator and pioneer in forensic linguistics, serving at the
+                National Forensic Sciences University under the Ministry of Home Affairs.</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">With over two decades of transformative work, he has redefined how language, law,
+              and technology converge to strengthen justice delivery. Honoured with national awards for teaching and
+              pedagogical innovation, he is known for blending Bharatiya knowledge traditions with cutting-edge forensic
+              applications. A director of a prestigious ICSSR project, he stands at the forefront of designing new
+              educational and investigative frontiers.</p>
+            <a href="https://www.linkedin.com/in/drdeepakmashru/?originalSubdomain=in" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 3 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/sairamatluri.jpg" alt="Speaker Three"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Dr.SaiRam Atluri</h3>
+              <p class="text-white/60 text-sm">Internationally recognized stem cell specialist with over 30 years of
+                clinical and research experience in the United States</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">During the COVID-19 pandemic, Dr. Sairam published the first U.S. article (second in
+              the World) on the use of stem cells in patients unresponsive to conventional therapies. His contributions
+              to regenerative medicine have been recognized with multiple prestigious awards, including the Manchikanti
+              Award and the Raj Excellence Award from the American Society of Interventional Pain Physicians. He is also
+              a regular invited speaker at leading international stem cell conferences.</p>
+            <a href="https://www.linkedin.com/in/sairam-atluri-md-24369849/" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 4 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/Rohit tiwari (2).jpeg" alt="Speaker four"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Rohit Tiwari</h3>
+              <p class="text-white/60 text-sm">Sr. Director, DEXIAN India</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Rohit Tiwari is the Senior Director of Sales & Marketing at Dexian India, bringing
+              over 17 years of expertise in client engagement, digital transformation, and business growth. At Dexian,
+              he drives client success, managed services, and long-term partnerships, enabling enterprises to accelerate
+              digital initiatives with measurable impact. His career journey spans leading firms like Capco, Quess Corp,
+              Allegis Group, and Collabera, where he has steered portfolio growth.</p>
+            <a href="https://www.linkedin.com/in/rohit-tiwari-a468551a/?originalSubdomain=in" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 5 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/divyaraj.jpg" alt="Speaker five"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Dr.Divya Raj</h3>
+              <p class="text-white/60 text-sm">MD Pediatrics and Managing Director of the Neo Institute of Medical
+                Sciences</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Responding to the NMC Alert Note, she launched the first Indian-equivalent MBBS
+              program in Uzbekistan’s Tashkent region with GSL and Impuls Medical Institute. This program offers an
+              NMC-aligned CBME curriculum, Indian faculty-led teaching, dual clinical exposure, a paid internship,
+              FMGE/NeXT preparation from Year 1, and free PG pathways to the USA, UK, Australia, and Germany.</p>
+            <a href="https://www.instagram.com/dr.divya_raj?igsh=a2wzdmY4aGM3bGUy"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+
+        <!-- Speaker 6 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/amreddy.jpeg" alt="Speaker six"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Dr.A M Reddy</h3>
+              <p class="text-white/60 text-sm">Pioneering homeopathic physician, entrepreneur, and founder of the
+                Positive Group of Clinics.</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">With over two decades of practice, he has established 50+ branches of Dr Care
+              Homeopathy and Dr Positive Dental across South India, offering safe and holistic healthcare. Passionate
+              about autism care, he founded the Dr A M Reddy Autism Center in 2016, becoming the first in India to
+              advance homeopathic immunotherapy for ASD and ADHD. His work has brought relief to hundreds of children
+              and hope to countless families.</p>
+            <a href="https://www.linkedin.com/in/dr-a-m-reddy-9b6b6035/?originalSubdomain=in"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300" target="_blank">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 7-->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/ramya.jpeg" alt="Speaker seven"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Ramya Parashar</h3>
+              <p class="text-white/60 text-sm">Chief Operating Officer at MiQ’s Bangalore Center of Excellence.</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Coming from a non-technical background, she has redefined leadership in tech-heavy
+              domains by embracing discomfort, risk, and continuous learning. Recognized among Forbes India’s W-Power:
+              Self-made Women and AIM’s Top 25 GCC Heads for two consecutive years, she is celebrated for blending
+              data-driven systems with people-centric leadership. At MiQ, she champions inclusive workplaces,
+              innovation, and empowerment, inspiring teams to transform challenges into opportunities.</p>
+            <a href="https://www.linkedin.com/in/ramyaparashar/?originalSubdomain=in" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 8 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/Nithya.jpg" alt="Speaker eight"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Nithya Rajendran</h3>
+              <p class="text-white/60 text-sm">Indian Classical vocalist, trained in both Hindustani and Carnatic
+                traditions for over two decades.</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">She is the founder of Music Vruksh, an initiative that explores the healing and
+              mood-elevating powers of classical music through concerts, workshops, and classes. A multiple-time TEDx
+              speaker, including at IIT Jodhpur. Nithya bridges tradition with contemporary relevance. Her work has been
+              featured in Outlook, The Week, CNBC TV18, India Today TV, Thrive Global, and more. She also writes on
+              music and wellness, and has been recognized among “Women in Music” achievers by The Score Magazine.</p>
+            <a href="https://www.facebook.com/nithya.rajendran.180/" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 9 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/ravidasari.jpeg" alt="Speaker nine"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Ravi Dasari</h3>
+              <p class="text-white/60 text-sm">President and Group Head-HR of Jasper Industries Pvt Limited.</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Dr. Ravi Dasari, President and Group Head – HR at Jasper Industries, has over 25 years of leadership experience with firms like NCC, IDBI, and Lanco. A PhD holder in HRM and university topper, he serves as Secretary of NHRD Hyderabad and is a certified executive coach. He has authored 30+ research papers, led programs at IIMs and ASCI, and specializes in organizational culture, leadership, and knowledge worker management.</p>
+            <a href="https://www.linkedin.com/in/dr-ravi-dasari-7495b213/?originalSubdomain=in" target="_blank"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 10 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="speakers-images/sreekanth.jpg" alt="Speaker ten"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Sreekanth Erepalli</h3>
+              <p class="text-white/60 text-sm">Founder and Managing Director</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker</h3>
+            <p class="text-sm mb-4">Sreekanth Erepalli, Founder of Giosun Healthcare Pvt. Ltd., is a global advocate for modern Ayurveda. With 30+ years in Ayurveda and herbal wellness, he blends traditional wisdom with science to develop certified formulations for conditions like migraines, arthritis, and thyroid issues. Since 2014, his mission has been to make Ayurveda accessible, evidence-based, and globally respected.</p>
+            <a href="#contact"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 11 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="https://placehold.co/600x800?text=Speaker+11" alt="Speaker eleven"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Speaker eleven</h3>
+              <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+            <a href="#contact"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+        <!-- Speaker 12 -->
+        <div
+          class="relative group overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
+          <div class="w-full h-[440px] relative bg-gray-800">
+            <img src="https://placehold.co/600x800?text=Speaker+12" alt="Speaker Twelve"
+              class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-xl font-bold">Speaker Twelve</h3>
+              <p class="text-white/60 text-sm">Tech Innovator • The Future of AI</p>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 bg-red-600 rounded-lg p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex flex-col justify-center text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">Speaker </h3>
+            <p class="text-sm mb-4">Exploring the future of Artificial Intelligence and its societal impact.</p>
+            <a href="#contact"
+              class="inline-block mt-2 px-6 py-3 bg-white text-red-600 rounded-full hover:bg-red-600 hover:text-white transition duration-300">Learn
+              More</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action 
+      <div class="text-center mt-16">
+        <a href="#contact"
+          class="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white text-xl font-semibold py-4 px-10 rounded-full shadow-md hover:bg-red-700 transition-all">Propose
+          a Talk</a>
+      </div>
+      -->
+    </div>
+
+  </section>
+
+
+
+  <!-- Schedule Section -->
+  <!-- Schedule Section -->
+  <section id="Schedule" class="py-20 md:py-28 bg-[#0b0b10] text-white">
+    <div class="container-xl">
+      <div class="text-center mb-12 reveal">
+        <h3 class="eyebrow text-red-500 mb-4 text-lg">Schedule</h3>
+        <h2 class="text-4xl md:text-5xl font-extrabold uppercase">Flow of the Day</h2>
+        <p class="text-white/60 mt-3 text-lg">Hourly timeline of TEDxKPRIT 2025</p>
+
+         <p class="mark-your-date mt-6 text-center">
+        Break the loop on - <span>October 17, 2025</span>
+      </p>
+
+      </div>
+
+     
+
+      <!-- Schedule Table -->
+      <div
+  class="schedule-wrapper max-w-4xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-[#101018] shadow-lg">
+
+  <div class="schedule-grid">
+    <div class="time">10:00 – 10:20 AM</div>
+    <div class="slot">Speaker 1</div>
+
+    <div class="time">10:20 – 10:40 AM</div>
+    <div class="slot">Speaker 2</div>
+
+    <div class="time">10:40 – 11:00 AM</div>
+    <div class="slot">Speaker 3</div>
+
+    <div class="time lunch">11:00 – 11:15 AM</div>
+    <div class="slot lunch">Break (15 min)</div>
+
+    <div class="time">11:15 – 11:35 AM</div>
+    <div class="slot">Speaker 4</div>
+
+    <div class="time">11:35 – 11:55 AM</div>
+    <div class="slot">Speaker 5</div>
+
+    <div class="time">11:55 – 12:15 PM</div>
+    <div class="slot">Speaker 6</div>
+
+    <div class="time lunch">12:15 – 1:15 PM</div>
+    <div class="slot lunch">Lunch Break (1 hr)</div>
+
+    <div class="time">1:15 – 1:35 PM</div>
+    <div class="slot">Speaker 7</div>
+
+    <div class="time">1:35 – 1:55 PM</div>
+    <div class="slot">Speaker 8</div>
+
+    <div class="time">1:55 – 2:15 PM</div>
+    <div class="slot">Speaker 9</div>
+
+    <div class="time lunch">2:15 – 2:30 PM</div>
+    <div class="slot lunch">Break (15 min)</div>
+
+    <div class="time">2:30 – 2:50 PM</div>
+    <div class="slot">Speaker 10</div>
+
+    <div class="time">2:50 – 3:10 PM</div>
+    <div class="slot">Speaker 11</div>
+
+    <div class="time">3:10 – 3:30 PM</div>
+    <div class="slot">Speaker 12</div>
+
+    <div class="time closing">3:30 – 3:45 PM</div>
+    <div class="slot closing">Wrap-up / Closing</div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+
+
+  <div class="divider"></div>
+
+
+
+  <!-- TEAM MEMBERS  -->
+
+
+  <section id="Tedxteam" class="team-section">
+    <h1>Meet Our Team</h1>
+
+
+    <!-- CORE TEAM -->
+    <div class="team-category">
+      <h2>Core Team</h2>
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/bhuvi.jpg">
+          <h3>Bhuvaneshwari Pothuraju</h3>
+          <p>Organizer</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/divya.jpg">
+          <h3>Kommuri Divyareddy</h3>
+          <p>Co-organiser</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/akash.jpg">
+          <h3>Akash Rao Mallareddy</h3>
+          <p>Curator</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/kasyap.jpg">
+          <h3>S. Sreenath Kashyap</h3>
+          <p>Faculty coordinator</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/madanmohan.jpg">
+          <h3>K. Madan Mohan</h3>
+          <p>Faculty coordinator</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEB DEV TEAM -->
+    <div class="team-category">
+      <h2>Web Dev Team</h2>
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/ramcharan.jpg">
+          <h3>Ch. Ram Charan Teja</h3>
+          <p>Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/sairam.jpg">
+          <h3>SaiRam</h3>
+          <p>Co-Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/deepesh2.jpg">
+          <h3>G.Deepesh</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/kishan.jpg">
+          <h3>Kishan Sai Vutukuri</h3>
+          <p>Member</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- PRODUCTION TEAM -->
+    <div class="team-category">
+      <h2>Production Team</h2>
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/peddadahemanth.jpg">
+          <h3>Peddada Hemanth</h3>
+          <p>Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/purnesh.jpg">
+          <h3>Purnesh Gangula</h3>
+          <p>Co-Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/anil.jpg">
+          <h3>Jinka Anil</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/mohanraj.jpg">
+          <h3>G.Mohan Raj</h3>
+          <p>Member</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARKETING TEAM -->
+    <div class="team-category">
+      <h2>Marketing Team</h2>
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/premKumar.jpg">
+          <h3>Prem Kumar Kuppili</h3>
+          <p>Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/pranathi.jpg">
+          <h3>Gopavarapu Sri Lakshmi Pranathi</h3>
+          <p>Co-Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/vishnuVardhan.jpg">
+          <h3>Vishnu Vardhan</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/likhitha.jpg">
+          <h3> Alankara Likhita </h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/sahithi.jpg">
+          <h3>K.Sahithi</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/ashrayguntaka.jpg">
+          <h3>Ashray Guntaka</h3>
+          <p>Member</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOSPITALITY TEAM -->
+    <div class="team-category">
+      <h2>Hospitality & Logistics Team</h2>
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/charmi.jpg">
+          <h3>P Charmi Reddy</h3>
+          <p>Lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/umar.jpg">
+          <h3>Syed Umar Farooq</h3>
+          <p>Co-lead</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/durgaPrasad.jpg">
+          <h3>Durga Prasad Kemidi</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/Hitesh.jpg">
+          <h3>Bandaru Hitesh</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/Manvitha.jpg">
+          <h3>Manvitha</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/rohithSai.jpg">
+          <h3>U Rohith Sai</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/shivaganesh.jpg">
+          <h3>Shiva Ganesh Talikota</h3>
+          <p>Member</p>
+        </div>
+        <div class="team-card" data-aos="fade-up">
+          <img src="images/ramyasri.jpg">
+          <h3>G.Ramya Sri</h3>
+          <p>Member</p>
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>AOS.init();</script>
-  <script src="../js/script.js"></script> <!-- Adjust path -->
+
+
+
+
+
+  <div class="divider"></div>
+
+
+  <section id="partners" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <p class="eyebrow">Partners</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Powered by our community</h2>
+        <p class="text-white/80 mt-3">We collaborate with organizations that believe in the transformative power of
+          ideas.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-10">
+
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="#contact" class="btn">Partner with us</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <section id="mun" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <p class="eyebrow">TEDxKPRIT</p>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Debate. Diplomacy. Discourse.</h2>
+          <p class="text-white/80 mt-4">
+            A special Model United Nations experience curated alongside TEDxKPRIT. Build policy, exchange perspectives,
+            and practice consensus-building with delegates from across the region.
+          </p>
+          <ul class="mt-6 space-y-3 text-white/80">
+            <li>• Beginner-friendly committees and training</li>
+            <li>• Expert executive board and feedback</li>
+            <li>• Awards and participation certificates</li>
+          </ul>
+          <div class="mt-7">
+            <a href="#tickets" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="rounded-2xl overflow-hidden border border-white/10">
+            <img
+              src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4dbaca67-ab5c-40c8-9c47-2ff1143676a1.png"
+              class="w-full h-auto block"
+              alt="Wide photo of a modern conference hall with rows of international delegates discussing policy; warm spotlights, flags, and minimalist black-red stage design matching TEDx aesthetic"
+              onerror="this.onerror=null; this.src='fallback-image.png';" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="tickets" class="divider"></div>
+  <section class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <p class="eyebrow">Tickets</p>
+        <h2 class="text-3xl md:text-4xl font-bold mt-2">Secure your seat</h2>
+        <p class="text-white/80 mt-4">Limited capacity. Early registrations recommended.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+
+
+        <div class="reveal rounded-xl border border-white/10 bg-[#101018] p-7 flex flex-col">
+          <div class="text-xl font-semibold">Student Pass</div>
+          <div class="mt-2 text-3xl font-extrabold">₹499</div>
+          <ul class="mt-4 text-white/80 space-y-2 text-sm">
+            <li>• Full day access</li>
+            <li>• Swag kit</li>
+          </ul>
+          <a class="btn btn-primary mt-6" href="#contact">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="contact" class="py-20 md:py-28">
+    <div class="container-xl">
+      <div class="grid lg:grid-cols-2 gap-10">
+
+        <div class="reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Talk to the team</h2>
+          <p class="text-white/80 mt-4">
+            Questions about tickets, partnerships, or volunteering? Drop a message — we typically respond within 48
+            hours.
+          </p>
+
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="rounded-xl border border-white/10 p-5 bg-[#101018]" role="region"
+              aria-labelledby="contact-email">
+              <div class="text-sm text-white/60" id="contact-email">Email</div>
+              <div class="font-semibold mt-1">tedx@kpritech.ac.in</div>
+            </div>
+            <div class="rounded-xl border border-white/10 p-5 bg-[#101018]" role="region"
+              aria-labelledby="contact-venue">
+              <div class="text-sm text-white/60" id="contact-venue">Venue</div>
+              <div class="font-semibold mt-1">Kommuri Pratap Reddy Institute of Technology</div>
+            </div>
+          </div>
+        </div>
+
+
+        <form id="contactForm" class="reveal space-y-4" aria-labelledby="contact-form">
+          <h3 id="contact-form" class="sr-only">Contact Us Form</h3>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <input class="field" type="text" name="name" placeholder="Your name" required aria-label="Your name" />
+            <input class="field" type="email" name="email" placeholder="Email address" required
+              aria-label="Email address" />
+          </div>
+          <input class="field w-full" type="text" name="subject" placeholder="Subject" aria-label="Subject" />
+          <textarea class="field w-full min-h-[160px]" name="message" placeholder="Write your message..." required
+            aria-label="Message"></textarea>
+          <button class="btn btn-primary" type="submit" aria-label="Send Message">Send Message</button>
+          <p id="formStatus" class="text-sm text-white/70"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="border-t border-white/10 py-12">
+    <div class="container-xl">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="brand text-lg">
+          <img src="tedx.png" alt="TEDxKPRIT Logo" style=" width: 200px; margin: auto;">
+        </div>
+        <p class="text-white/60 text-sm text-center">
+          This independent TEDx event is operated under license from TED. © <span id="year"></span> TEDxKPRIT. All
+          rights reserved.
+        </p>
+        <a href="#home" class="btn btn-outline">Back to top</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
       duration: 800,
       once: true,
     });
-    // Update year dynamically
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
 </body>
+
 </html>
