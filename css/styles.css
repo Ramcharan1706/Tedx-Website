@@ -769,3 +769,11 @@ body {
   visibility: visible;
   position: relative;
 }
+
+.knife-line {
+    width: 70px;       /* Same as w-16 in Tailwind */
+    height: 1px;       /* Thin line, adjust if needed */
+    background-color: #f00; /* Red color */
+    border-radius: 50%;  /* Sharp ends */
+    box-shadow: 0 0 2px #f00; /* Optional: subtle glow */
+}
