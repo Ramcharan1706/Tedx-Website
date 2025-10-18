@@ -285,6 +285,78 @@
   </section>
 
   <div class="divider"></div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <section id="announcement-slider" class="w-full bg-black py-8 sm:py-12">
+    <div class="swiper mySwiper max-w-full sm:max-w-6xl mx-auto relative px-4 sm:px-0">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide flex justify-center">
+          <img src="slider/group.jpg" alt="Announcement 1" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide flex justify-center">
+          <img src="break the loop.png" alt="Announcement 2" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide flex justify-center">
+          <img src="slider/web.jpg" alt="Announcement 3" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+        
+        <div class="swiper-slide flex justify-center">
+          <img src="slider/hosp.jpg" alt="Announcement 3" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+        
+        <div class="swiper-slide flex justify-center">
+          <img src="slider/marketing.jpg" alt="Announcement 3" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+        
+        <div class="swiper-slide flex justify-center">
+          <img src="slider/production.jpg" alt="Announcement 3" class="w-full max-h-64 sm:max-h-[500px] object-contain">
+        </div>
+
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-next text-white !top-1/2 !-translate-y-1/2 !right-2 sm:!right-4 z-10"></div>
+      <div class="swiper-button-prev text-white !top-1/2 !-translate-y-1/2 !left-2 sm:!left-4 z-10"></div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination mt-4 sm:mt-6"></div>
+    </div>
+  </section>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Swiper Initialization -->
+  <script>
+    const swiper = new Swiper('.mySwiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+
+  <div class="divider"></div>
+
+  
   <!-- Speakers Section -->
   <section id="speakers" class="py-20 bg-black text-white">
     <div class="max-w-7xl mx-auto px-4">
