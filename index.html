@@ -152,6 +152,24 @@
 }
 </style>
 
+<style id="hero-single-background-fix">
+/* SINGLE HERO VISUAL — the generated background already contains the portal */
+.hero .hero-bg {
+    z-index: -3;
+    opacity: 1;
+}
+
+.hero .hero-layout {
+    position: relative;
+    z-index: 2;
+}
+
+/* Prevent the removed duplicate portal from being reintroduced by old CSS/markup */
+.hero > .portal {
+    display: none !important;
+}
+</style>
+
     </head>
     <body>
         <a class="skip" href="#main">
@@ -366,19 +384,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="portal">
-                        <img src="assets/2026/portal-primary.png" alt="Silhouette approaching a luminous dimensional doorway">
-                        <div class="portal-scan">
-                        </div>
-                        <div class="portal-caption">
-                            <span>
-                                PORTAL / 01
-                            </span>
-                            <b>
-                                THE FRAME IS OPEN
-                            </b>
-                        </div>
-                    </div>
+                    <!-- HERO PORTAL IMAGE REMOVED: the portal is already built into hero-bg-motion.png -->
                     <aside class="hero-index">
                         <span>
                             01
