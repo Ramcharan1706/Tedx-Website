@@ -30,26 +30,38 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
-        <link rel="preload" as="image" href="assets/2026/hero-bg-motion.png">
-    
-<style id="fifth-dimension-motion-bg">
-/* NEW HERO BACKGROUND + MOTION */
+        <link rel="preload" as="image" href="assets/2026/hero-bg-textfree.png">
+
+<style id="tedxkprit-home-motion">
+/* =========================================================
+   TEDxKPRIT 2026 — HOME EXPERIENCE MOTION
+   Subtle transforms only: cinematic, responsive, non-distracting.
+   ========================================================= */
+
 .hero {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: #050505;
+    background: #030303;
+    perspective: 1200px;
 }
 
 .hero-bg {
     position: absolute;
-    inset: -3%;
+    inset: -5%;
     z-index: -3;
     background:
-        linear-gradient(90deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.10) 52%, rgba(0,0,0,.28) 100%),
-        url("assets/2026/hero-bg-motion.png") center center / cover no-repeat;
-    transform: scale(1.04);
-    animation: heroBackgroundDrift 18s ease-in-out infinite alternate;
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .58) 0%,
+            rgba(0, 0, 0, .20) 50%,
+            rgba(0, 0, 0, .12) 100%
+        ),
+        url("assets/2026/hero-bg-textfree.png")
+        center center / cover no-repeat;
+    transform: scale(1.045) translate3d(0, 0, 0);
+    transform-origin: center center;
+    animation: heroBgFloat 20s ease-in-out infinite alternate;
     will-change: transform;
 }
 
@@ -58,119 +70,265 @@
     position: absolute;
     inset: -15%;
     background:
-        radial-gradient(circle at 72% 42%, rgba(255, 35, 55, .16), transparent 19%),
-        radial-gradient(circle at 56% 46%, rgba(255,255,255,.09), transparent 22%);
+        radial-gradient(
+            circle at 76% 46%,
+            rgba(255, 25, 45, .18),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 30% 52%,
+            rgba(255, 255, 255, .035),
+            transparent 24%
+        );
     mix-blend-mode: screen;
-    animation: heroGlowPulse 7s ease-in-out infinite;
+    animation: heroGlow 7s ease-in-out infinite alternate;
+    will-change: transform, opacity;
 }
 
 .hero-bg::after {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -25%;
     background:
         repeating-radial-gradient(
-            ellipse at 70% 48%,
-            transparent 0 12%,
-            rgba(255,255,255,.035) 12.15% 12.3%,
-            transparent 12.45% 20%
+            ellipse at 72% 48%,
+            transparent 0 13%,
+            rgba(255, 45, 65, .035) 13.15% 13.3%,
+            transparent 13.5% 21%
         );
     opacity: .55;
     transform: rotate(-8deg);
-    animation: heroOrbitSweep 26s linear infinite;
+    animation: heroOrbit 32s linear infinite;
+    pointer-events: none;
 }
 
+/* Existing decorative elements get very small transforms. */
 .hero-lines {
     z-index: -2;
-    opacity: .35;
-    animation: heroLinesFloat 12s ease-in-out infinite alternate;
+    opacity: .30;
+    transform: translate3d(0, 0, 0);
+    animation: linesFloat 10s ease-in-out infinite alternate;
+    will-change: transform;
 }
 
 .hero-orbit {
     z-index: -1;
+    transform: translate3d(0, 0, 0);
     animation: orbitFloat 9s ease-in-out infinite alternate;
+    will-change: transform;
 }
 
-.orbit-2 {
+.hero-orbit.orbit-2 {
     animation-delay: -3s;
 }
 
-.portal {
-    animation: portalFloat 8s ease-in-out infinite alternate;
+/* Content has a tiny entrance transform instead of a heavy animation. */
+.hero-copy,
+.hero-meta,
+.hero-index,
+.hero-footer {
+    will-change: transform, opacity;
 }
 
-.portal-scan {
-    animation: portalScan 4.5s ease-in-out infinite;
+.hero-copy {
+    animation: heroCopyIn 1.1s cubic-bezier(.2, .8, .2, 1) both;
 }
 
-@keyframes heroBackgroundDrift {
-    0%   { transform: scale(1.04) translate3d(-1%, -0.5%, 0); }
-    50%  { transform: scale(1.075) translate3d(0.5%, 0.7%, 0); }
-    100% { transform: scale(1.04) translate3d(1%, -0.3%, 0); }
+.hero-meta {
+    animation: heroMetaIn 1s .15s cubic-bezier(.2, .8, .2, 1) both;
 }
 
-@keyframes heroGlowPulse {
-    0%, 100% { opacity: .55; transform: scale(1); }
-    50%      { opacity: 1; transform: scale(1.08); }
+.hero-index {
+    animation: heroIndexIn 1s .25s cubic-bezier(.2, .8, .2, 1) both;
 }
 
-@keyframes heroOrbitSweep {
-    from { transform: rotate(-8deg) translateX(-1%); }
-    to   { transform: rotate(352deg) translateX(1%); }
+.hero-footer {
+    animation: heroFooterIn 1s .35s cubic-bezier(.2, .8, .2, 1) both;
 }
 
-@keyframes heroLinesFloat {
-    from { transform: translate3d(0, 0, 0); }
-    to   { transform: translate3d(0, -12px, 0); }
+/* CTA transforms on hover. */
+.hero .button,
+.hero .under-link {
+    transition:
+        transform .35s cubic-bezier(.2, .8, .2, 1),
+        box-shadow .35s ease,
+        letter-spacing .35s ease;
+}
+
+.hero .button:hover {
+    transform: translateY(-4px) scale(1.025);
+}
+
+.hero .under-link:hover {
+    transform: translateX(6px);
+}
+
+/* Scroll indicator breathes very gently. */
+.hero .scroll {
+    animation: scrollPulse 2.8s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes heroBgFloat {
+    0% {
+        transform: scale(1.045) translate3d(-.7%, -.35%, 0);
+    }
+    50% {
+        transform: scale(1.065) translate3d(.35%, .45%, 0);
+    }
+    100% {
+        transform: scale(1.045) translate3d(.75%, -.2%, 0);
+    }
+}
+
+@keyframes heroGlow {
+    0% {
+        opacity: .42;
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+    100% {
+        opacity: .88;
+        transform: scale(1.07) translate3d(-1%, .5%, 0);
+    }
+}
+
+@keyframes heroOrbit {
+    from {
+        transform: rotate(-8deg) translateX(-1%);
+    }
+    to {
+        transform: rotate(352deg) translateX(1%);
+    }
+}
+
+@keyframes linesFloat {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(0, -10px, 0);
+    }
 }
 
 @keyframes orbitFloat {
-    from { transform: translate3d(0, 0, 0) rotate(0deg); }
-    to   { transform: translate3d(10px, -8px, 0) rotate(4deg); }
+    from {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    to {
+        transform: translate3d(9px, -7px, 0) rotate(3deg);
+    }
 }
 
-@keyframes portalFloat {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to   { transform: translate3d(0, -8px, 0) scale(1.015); }
+@keyframes heroCopyIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-22px, 14px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
-@keyframes portalScan {
-    0%, 100% { opacity: .25; transform: translateY(-10%); }
-    50%      { opacity: .75; transform: translateY(10%); }
+@keyframes heroMetaIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -12px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
+@keyframes heroIndexIn {
+    from {
+        opacity: 0;
+        transform: translate3d(16px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes heroFooterIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes scrollPulse {
+    0%, 100% {
+        opacity: .55;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-4px);
+    }
+}
+
+/* Mouse/touch parallax target. */
+.hero.motion-active .hero-copy,
+.hero.motion-active .hero-meta,
+.hero.motion-active .hero-index,
+.hero.motion-active .hero-footer {
+    transform:
+        translate3d(
+            var(--mx, 0px),
+            var(--my, 0px),
+            0
+        );
+}
+
+/* Keep transforms disabled on small screens for performance/readability. */
+@media (max-width: 768px) {
+    .hero-bg {
+        inset: -3%;
+        animation-duration: 24s;
+    }
+
+    .hero-copy,
+    .hero-meta,
+    .hero-index,
+    .hero-footer {
+        animation-duration: .8s;
+    }
+
+    .hero.motion-active .hero-copy,
+    .hero.motion-active .hero-meta,
+    .hero.motion-active .hero-index,
+    .hero.motion-active .hero-footer {
+        transform: none;
+    }
+}
+
+/* Respect accessibility preferences. */
 @media (prefers-reduced-motion: reduce) {
     .hero-bg,
     .hero-bg::before,
     .hero-bg::after,
     .hero-lines,
     .hero-orbit,
-    .portal,
-    .portal-scan {
+    .hero-copy,
+    .hero-meta,
+    .hero-index,
+    .hero-footer,
+    .hero .scroll {
         animation: none !important;
+        transition: none !important;
+        transform: none !important;
     }
 }
 </style>
 
-<style id="hero-single-background-fix">
-/* SINGLE HERO VISUAL — the generated background already contains the portal */
-.hero .hero-bg {
-    z-index: -3;
-    opacity: 1;
-}
-
-.hero .hero-layout {
-    position: relative;
-    z-index: 2;
-}
-
-/* Prevent the removed duplicate portal from being reintroduced by old CSS/markup */
-.hero > .portal {
-    display: none !important;
-}
-</style>
-
-    </head>
+</head>
     <body>
         <a class="skip" href="#main">
             Skip to content
@@ -2345,6 +2503,95 @@
                     </span>
                 </div>
             </footer>
+            
+<script id="tedxkprit-home-motion">
+(function () {
+    "use strict";
+
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    );
+
+    if (reduceMotion.matches || window.innerWidth <= 768) {
+        return;
+    }
+
+    let raf = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    function update() {
+        currentX += (targetX - currentX) * 0.075;
+        currentY += (targetY - currentY) * 0.075;
+
+        hero.style.setProperty("--mx", currentX.toFixed(2) + "px");
+        hero.style.setProperty("--my", currentY.toFixed(2) + "px");
+
+        if (
+            Math.abs(targetX - currentX) > 0.05 ||
+            Math.abs(targetY - currentY) > 0.05
+        ) {
+            raf = requestAnimationFrame(update);
+        } else {
+            raf = 0;
+        }
+    }
+
+    function move(e) {
+        const rect = hero.getBoundingClientRect();
+
+        if (
+            e.clientX < rect.left ||
+            e.clientX > rect.right ||
+            e.clientY < rect.top ||
+            e.clientY > rect.bottom
+        ) {
+            targetX = 0;
+            targetY = 0;
+        } else {
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            targetX = x * 8;
+            targetY = y * 5;
+        }
+
+        hero.classList.add("motion-active");
+
+        if (!raf) {
+            raf = requestAnimationFrame(update);
+        }
+    }
+
+    function reset() {
+        targetX = 0;
+        targetY = 0;
+
+        if (!raf) {
+            raf = requestAnimationFrame(update);
+        }
+    }
+
+    hero.addEventListener("pointermove", move, { passive: true });
+    hero.addEventListener("pointerleave", reset, { passive: true });
+
+    reduceMotion.addEventListener("change", function (event) {
+        if (event.matches) {
+            hero.classList.remove("motion-active");
+            targetX = 0;
+            targetY = 0;
+            hero.style.removeProperty("--mx");
+            hero.style.removeProperty("--my");
+        }
+    });
+})();
+</script>
+
             <script src="js/app.js" defer>
             </script>
         </body>
