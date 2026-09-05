@@ -328,6 +328,114 @@
 }
 </style>
 
+
+<style id="speaker-photo-dimensional-bg">
+/* =========================================================
+   SPEAKER PHOTOS — FIFTH DIMENSION BACKDROP
+   Uses the same hero visual at low opacity for visual continuity.
+   ========================================================= */
+
+.speaker-image {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        #090909 url("assets/2026/hero-bg-textfree.png")
+        center / cover no-repeat;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 24px 70px rgba(0,0,0,.35);
+    transform: translateZ(0);
+}
+
+.speaker-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(
+            circle at 72% 42%,
+            rgba(255, 30, 48, .20),
+            transparent 34%
+        );
+    opacity: .55;
+    pointer-events: none;
+}
+
+.speaker-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+        url("assets/2026/hero-bg-textfree.png")
+        center / cover no-repeat;
+    opacity: .11;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transform: scale(1.04);
+    animation: speakerDimensionalDrift 18s ease-in-out infinite alternate;
+}
+
+.speaker-image img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    transition:
+        transform .65s cubic-bezier(.2,.8,.2,1),
+        filter .65s ease;
+}
+
+/* Tiny zoom + lift on hover, without changing the speaker's face. */
+.speaker-slide:hover .speaker-image img {
+    transform: scale(1.018);
+    filter: saturate(1.04) contrast(1.015);
+}
+
+.speaker-slide:hover .speaker-image::after {
+    opacity: .15;
+}
+
+.speaker-hud,
+.speaker-image > span {
+    position: relative;
+    z-index: 3;
+}
+
+@keyframes speakerDimensionalDrift {
+    0% {
+        transform: scale(1.04) translate3d(-.5%, -.25%, 0);
+    }
+    100% {
+        transform: scale(1.07) translate3d(.5%, .3%, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .speaker-image::after {
+        opacity: .08;
+        animation-duration: 24s;
+    }
+
+    .speaker-slide:hover .speaker-image img {
+        transform: none;
+        filter: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .speaker-image::after {
+        animation: none !important;
+    }
+
+    .speaker-slide:hover .speaker-image img {
+        transform: none;
+        filter: none;
+    }
+}
+</style>
+
 </head>
     <body>
         <a class="skip" href="#main">
