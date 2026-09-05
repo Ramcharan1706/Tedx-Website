@@ -7,7 +7,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .DS_Store
-.claude/
 
 # Verbatim on-disk copy of the 2025 site. Redundant: the served archive is `2025/`
 # and the original repository layout is preserved in this repo's git history.
