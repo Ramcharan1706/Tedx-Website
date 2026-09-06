@@ -435,44 +435,115 @@
 
 
 <style id="tedxkprit-navigation-fix">
-/* Reliable mobile navigation fallback.
-   The existing desktop navigation remains untouched. */
+/* =========================================================
+   TEDxKPRIT — RELIABLE MOBILE NAVIGATION
+   - Keeps the header/menu above the drawer
+   - Uses fixed viewport positioning
+   - Prevents background scrolling while open
+   - Supports iOS Safari / Android touch input
+   - Preserves desktop navigation
+   ========================================================= */
+
 @media (max-width: 900px) {
-    html.drawer-lock,
-    html.drawer-lock body {
+    :root {
+        --mobile-nav-z: 9999;
+        --mobile-drawer-z: 9998;
+    }
+
+    html.menu-lock,
+    html.menu-lock body {
         overflow: hidden !important;
+        overscroll-behavior: none !important;
+    }
+
+    body.menu-open {
+        overflow: hidden !important;
+        touch-action: none;
+    }
+
+    .header {
+        position: relative !important;
+        z-index: var(--mobile-nav-z) !important;
     }
 
     .menu {
-        position: relative;
-        z-index: 1002;
-        display: inline-flex;
+        position: relative !important;
+        z-index: calc(var(--mobile-nav-z) + 2) !important;
+        display: inline-flex !important;
         align-items: center;
         justify-content: center;
+        width: 48px;
+        height: 48px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
         cursor: pointer;
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none;
+        appearance: none;
+        user-select: none;
+        flex: 0 0 auto;
+    }
+
+    .menu span {
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        border-radius: 999px;
+        transform-origin: center;
+        transition:
+            transform .22s ease,
+            opacity .18s ease,
+            background-color .18s ease;
+        pointer-events: none;
+    }
+
+    .menu span:first-child {
+        transform: translateY(-4px);
+    }
+
+    .menu span:last-child {
+        transform: translateY(4px);
+    }
+
+    .menu.is-open span:first-child {
+        transform: rotate(45deg);
+    }
+
+    .menu.is-open span:last-child {
+        transform: rotate(-45deg);
     }
 
     .drawer {
         position: fixed !important;
-        inset: 0 !important;
-        width: 100% !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
         height: 100dvh !important;
-        max-height: 100dvh !important;
-        z-index: 1000 !important;
+        min-height: 100dvh !important;
+        max-height: none !important;
+        z-index: var(--mobile-drawer-z) !important;
+
+        display: block !important;
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
-        transform: translate3d(0, -16px, 0);
-        transition:
-            opacity .28s ease,
-            transform .32s cubic-bezier(.2,.8,.2,1),
-            visibility 0s linear .32s;
-        overflow-y: auto;
-        overflow-x: hidden;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
         overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
+
+        transform: translate3d(0, -10px, 0);
+        transition:
+            opacity .22s ease,
+            transform .28s cubic-bezier(.2,.8,.2,1),
+            visibility 0s linear .28s;
     }
 
     .drawer.is-open,
@@ -481,9 +552,10 @@
         opacity: 1;
         pointer-events: auto;
         transform: translate3d(0, 0, 0);
+
         transition:
-            opacity .28s ease,
-            transform .32s cubic-bezier(.2,.8,.2,1),
+            opacity .22s ease,
+            transform .28s cubic-bezier(.2,.8,.2,1),
             visibility 0s linear 0s;
     }
 
@@ -491,27 +563,310 @@
         position: relative;
         z-index: 1;
         min-height: 100%;
+        min-height: 100dvh;
+        padding-bottom: max(32px, env(safe-area-inset-bottom));
     }
 
-    .drawer a {
+    .drawer a,
+    .drawer button {
         position: relative;
         z-index: 2;
         touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
     }
 
-    .menu.is-open span:first-child {
-        transform: translateY(4px) rotate(45deg);
-    }
-
-    .menu.is-open span:last-child {
-        transform: translateY(-4px) rotate(-45deg);
+    .drawer a:focus-visible,
+    .menu:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
     }
 }
 
 @media (min-width: 901px) {
+    .menu {
+        display: none !important;
+    }
+
     .drawer {
-        visibility: hidden;
-        pointer-events: none;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu span,
+    .drawer {
+        transition: none !important;
+    }
+}
+</style>
+
+<style id="tedxkprit-mobile-enhancement">
+/* =========================================================
+   TEDxKPRIT 2026 — ENHANCED MOBILE EXPERIENCE
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 82px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Safer mobile header sizing */
+@media (max-width: 900px) {
+    .header {
+        min-height: 64px;
+        padding-top: max(8px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+        transition:
+            background-color .25s ease,
+            backdrop-filter .25s ease,
+            transform .25s ease,
+            box-shadow .25s ease;
+    }
+
+    .header.menu-active {
+        background: rgba(5, 5, 5, .96);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .brand {
+        min-width: 0;
+        max-width: calc(100% - 72px);
+    }
+
+    .brand img {
+        max-width: 118px;
+        height: auto;
+    }
+
+    .menu {
+        border-radius: 50%;
+        transition:
+            background-color .2s ease,
+            transform .2s ease;
+    }
+
+    .menu:active {
+        transform: scale(.92);
+    }
+
+    .menu.is-open {
+        background: rgba(255,255,255,.07);
+    }
+
+    /* Drawer becomes a proper mobile navigation surface. */
+    .drawer {
+        padding-top: 64px !important;
+        background:
+            radial-gradient(
+                circle at 85% 12%,
+                rgba(255, 25, 45, .12),
+                transparent 28%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(7,7,7,.99) 0%,
+                rgba(12,12,12,.99) 100%
+            ) !important;
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+    }
+
+    .drawer-inner {
+        width: 100%;
+        box-sizing: border-box;
+        padding:
+            26px
+            max(20px, env(safe-area-inset-right))
+            max(34px, env(safe-area-inset-bottom))
+            max(20px, env(safe-area-inset-left));
+    }
+
+    .drawer-inner > span {
+        display: block;
+        margin-bottom: 20px;
+        opacity: .6;
+        font-size: 10px;
+        letter-spacing: .16em;
+    }
+
+    .drawer-inner > strong {
+        display: block;
+        font-size: clamp(38px, 11vw, 64px);
+        line-height: .9;
+        letter-spacing: -.055em;
+        margin-bottom: 34px;
+    }
+
+    .drawer nav {
+        display: grid;
+        gap: 0;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .drawer nav a {
+        min-height: 58px;
+        display: grid;
+        grid-template-columns: 38px 1fr 24px;
+        align-items: center;
+        gap: 10px;
+        padding: 0 4px;
+        border-bottom: 1px solid rgba(255,255,255,.10);
+        text-decoration: none;
+        transition:
+            background-color .18s ease,
+            padding-left .18s ease;
+    }
+
+    .drawer nav a:active {
+        background: rgba(255,255,255,.06);
+        padding-left: 10px;
+    }
+
+    .drawer nav a b {
+        font-size: clamp(17px, 5vw, 23px);
+        line-height: 1;
+    }
+
+    .drawer nav a i {
+        text-align: right;
+        opacity: .55;
+        font-style: normal;
+    }
+
+    .drawer-archive,
+    .drawer-register {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 52px;
+        margin-top: 14px;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .drawer-register {
+        margin-top: 8px;
+    }
+
+    /* Avoid accidental horizontal overflow in large typography sections. */
+    .hero,
+    .section,
+    .ticker,
+    footer {
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    /* Better touch targets for all mobile controls. */
+    .slider-buttons button,
+    .member-nav button,
+    .team-tabs button {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .actions .button,
+    .actions .under-link,
+    .button-outline {
+        min-height: 44px;
+    }
+
+    /* Speakers: prevent cards from becoming too narrow. */
+    .speaker-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Team tabs can scroll horizontally without moving the whole page. */
+    .team-tabs {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+    }
+
+    .team-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .team-tabs button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    /* Native horizontal slider gestures feel better on touch. */
+    [data-viewport],
+    [data-member-viewport] {
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+    }
+
+    /* Keep text/images from causing viewport overflow. */
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+    }
+}
+
+/* Compact phones */
+@media (max-width: 420px) {
+    .header {
+        min-height: 58px;
+    }
+
+    .brand img {
+        max-width: 100px;
+    }
+
+    .brand span {
+        font-size: 9px;
+    }
+
+    .menu {
+        width: 44px;
+        height: 44px;
+    }
+
+    .drawer {
+        padding-top: 58px !important;
+    }
+
+    .drawer-inner {
+        padding-top: 20px;
+    }
+
+    .drawer-inner > strong {
+        margin-bottom: 26px;
+    }
+
+    .drawer nav a {
+        min-height: 54px;
+    }
+}
+
+/* Reduced-motion users get an instant, stable menu. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .header,
+    .menu,
+    .drawer nav a {
+        transition: none !important;
     }
 }
 </style>
@@ -584,14 +939,14 @@
                     ↗
                 </b>
             </a>
-            <button class="menu" id="menu" aria-expanded="false" aria-controls="drawer">
+            <button class="menu" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
                 <span>
                 </span>
                 <span>
                 </span>
             </button>
         </header>
-        <div class="drawer" id="drawer">
+        <div class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer-inner">
                 <span>
                     TEDxKPRIT / 2026
@@ -2780,100 +3135,183 @@
             <script src="js/app.js" defer></script>
 
             <!-- TEDxKPRIT navigation reliability patch -->
-            <script>
-            (function () {
-                "use strict";
+<script>
+(function () {
+    "use strict";
 
-                function initNavigation() {
-                    const menu = document.getElementById("menu");
-                    const drawer = document.getElementById("drawer");
-                    const header = document.getElementById("header");
+    function initNavigation() {
+        const menu = document.getElementById("menu");
+        const drawer = document.getElementById("drawer");
+        const header = document.getElementById("header");
 
-                    if (!menu || !drawer) return;
+        if (!menu || !drawer) return;
+        if (menu.dataset.navReady === "true") return;
 
-                    const drawerLinks = drawer.querySelectorAll("a[href]");
-                    let lastFocused = null;
+        menu.dataset.navReady = "true";
 
-                    function isOpen() {
-                        return document.body.classList.contains("menu-open");
+        let isOpen = false;
+        let lastFocused = null;
+
+        const drawerLinks = Array.from(
+            drawer.querySelectorAll("a[href]")
+        );
+
+        function lockScroll(lock) {
+            document.documentElement.classList.toggle("menu-lock", lock);
+            document.body.classList.toggle("menu-open", lock);
+        }
+
+        function syncState(open) {
+            isOpen = Boolean(open);
+
+            menu.classList.toggle("is-open", isOpen);
+            drawer.classList.toggle("is-open", isOpen);
+
+            menu.setAttribute("aria-expanded", String(isOpen));
+            menu.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
+
+            drawer.setAttribute("aria-hidden", String(!isOpen));
+
+            if (header) {
+                header.classList.toggle("menu-active", isOpen);
+            }
+
+            lockScroll(isOpen);
+        }
+
+        function openMenu() {
+            if (isOpen) return;
+
+            lastFocused = document.activeElement;
+            syncState(true);
+
+            // Focus after the drawer is painted. This avoids accidental
+            // scroll jumps on mobile browsers.
+            window.setTimeout(function () {
+                if (!isOpen) return;
+
+                const firstLink = drawer.querySelector("a[href]");
+                if (firstLink && window.innerWidth <= 900) {
+                    try {
+                        firstLink.focus({ preventScroll: true });
+                    } catch (_) {
+                        firstLink.focus();
                     }
+                }
+            }, 40);
+        }
 
-                    function setOpen(open) {
-                        document.body.classList.toggle("menu-open", open);
-                        drawer.classList.toggle("is-open", open);
-                        menu.classList.toggle("is-open", open);
-                        menu.setAttribute("aria-expanded", String(open));
-                        menu.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        function closeMenu(restoreFocus) {
+            if (!isOpen) return;
 
-                        if (header) {
-                            header.classList.toggle("menu-active", open);
-                        }
+            syncState(false);
 
-                        if (open) {
-                            lastFocused = document.activeElement;
-                            document.documentElement.classList.add("drawer-lock");
-                            drawer.setAttribute("aria-hidden", "false");
+            if (
+                restoreFocus !== false &&
+                lastFocused &&
+                typeof lastFocused.focus === "function"
+            ) {
+                try {
+                    lastFocused.focus({ preventScroll: true });
+                } catch (_) {
+                    lastFocused.focus();
+                }
+            }
 
-                            const firstLink = drawer.querySelector("a[href]");
-                            if (firstLink && window.matchMedia("(max-width: 900px)").matches) {
-                                window.setTimeout(function () {
-                                    firstLink.focus({ preventScroll: true });
-                                }, 50);
-                            }
-                        } else {
-                            document.documentElement.classList.remove("drawer-lock");
-                            drawer.setAttribute("aria-hidden", "true");
+            lastFocused = null;
+        }
 
-                            if (
-                                lastFocused &&
-                                typeof lastFocused.focus === "function"
-                            ) {
-                                lastFocused.focus({ preventScroll: true });
-                            }
-                        }
+        function toggleMenu(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (isOpen) {
+                closeMenu(true);
+            } else {
+                openMenu();
+            }
+        }
+
+        // Use pointerup as the primary mobile interaction and click as
+        // a fallback for browsers/devices that do not expose Pointer Events.
+        if (window.PointerEvent) {
+            menu.addEventListener("pointerup", function (event) {
+                if (event.pointerType === "mouse" && event.button !== 0) return;
+                toggleMenu(event);
+            });
+        } else {
+            menu.addEventListener("click", toggleMenu);
+        }
+
+        // Prevent the fallback click generated after pointerup from
+        // toggling the menu a second time.
+        menu.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        drawerLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                const href = link.getAttribute("href") || "";
+
+                // Close first, then allow the browser's normal anchor
+                // navigation/scroll behaviour to continue.
+                closeMenu(false);
+
+                if (href.charAt(0) === "#") {
+                    const target = document.querySelector(href);
+
+                    if (target) {
+                        window.setTimeout(function () {
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+                        }, 0);
                     }
-
-                    // Prevent duplicate listeners if another script initializes the menu.
-                    if (menu.dataset.navReady === "true") return;
-                    menu.dataset.navReady = "true";
-
-                    menu.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        setOpen(!isOpen());
-                    });
-
-                    drawerLinks.forEach(function (link) {
-                        link.addEventListener("click", function () {
-                            // Same-page anchors should close the drawer before scrolling.
-                            setOpen(false);
-                        });
-                    });
-
-                    document.addEventListener("keydown", function (event) {
-                        if (event.key === "Escape" && isOpen()) {
-                            setOpen(false);
-                        }
-                    });
-
-                    window.addEventListener("resize", function () {
-                        if (window.innerWidth > 900 && isOpen()) {
-                            setOpen(false);
-                        }
-                    });
-
-                    // Ensure a clean initial state.
-                    drawer.setAttribute("aria-hidden", "true");
-                    setOpen(false);
                 }
+            });
+        });
 
-                if (document.readyState === "loading") {
-                    document.addEventListener("DOMContentLoaded", initNavigation);
-                } else {
-                    initNavigation();
-                }
-            })();
-            </script>
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && isOpen) {
+                event.preventDefault();
+                closeMenu(true);
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 900 && isOpen) {
+                closeMenu(false);
+            }
+        }, { passive: true });
+
+        // If the page is restored from browser back/forward cache,
+        // never leave the mobile drawer visually stuck open.
+        window.addEventListener("pageshow", function () {
+            if (window.innerWidth > 900) {
+                closeMenu(false);
+            }
+        });
+
+        // Clean initial state.
+        syncState(false);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initNavigation, {
+            once: true
+        });
+    } else {
+        initNavigation();
+    }
+})();
+</script>
         
 <script id="tedxkprit-archive-fix">
 (function () {
@@ -2922,6 +3360,272 @@
     } else {
         initArchiveLinks();
     }
+})();
+</script>
+
+
+<script id="tedxkprit-mobile-navigation-v2">
+(function () {
+    "use strict";
+
+    function ready(fn) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn, { once: true });
+        } else {
+            fn();
+        }
+    }
+
+    ready(function () {
+        const menu = document.getElementById("menu");
+        const drawer = document.getElementById("drawer");
+        const header = document.getElementById("header");
+
+        if (!menu || !drawer) return;
+
+        let open = false;
+        let previousFocus = null;
+        let scrollY = 0;
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        const mobileQuery = window.matchMedia("(max-width: 900px)");
+        const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        function isMobile() {
+            return mobileQuery.matches;
+        }
+
+        function lockPage() {
+            scrollY = window.scrollY || window.pageYOffset || 0;
+
+            document.documentElement.classList.add("menu-lock");
+            document.body.classList.add("menu-open");
+
+            // Fixed-body locking prevents iOS Safari from scrolling the
+            // document behind the drawer.
+            document.body.style.position = "fixed";
+            document.body.style.top = "-" + scrollY + "px";
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+            document.body.style.width = "100%";
+        }
+
+        function unlockPage() {
+            document.documentElement.classList.remove("menu-lock");
+            document.body.classList.remove("menu-open");
+
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+
+            window.scrollTo(0, scrollY);
+        }
+
+        function setState(nextOpen, restoreFocus) {
+            open = Boolean(nextOpen);
+
+            menu.classList.toggle("is-open", open);
+            drawer.classList.toggle("is-open", open);
+
+            if (header) {
+                header.classList.toggle("menu-active", open);
+            }
+
+            menu.setAttribute("aria-expanded", String(open));
+            menu.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+            drawer.setAttribute("aria-hidden", String(!open));
+
+            if (open) {
+                lockPage();
+            } else {
+                unlockPage();
+
+                if (
+                    restoreFocus !== false &&
+                    previousFocus &&
+                    typeof previousFocus.focus === "function"
+                ) {
+                    try {
+                        previousFocus.focus({ preventScroll: true });
+                    } catch (_) {
+                        previousFocus.focus();
+                    }
+                }
+
+                previousFocus = null;
+            }
+        }
+
+        function openMenu(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (!isMobile() || open) return;
+
+            previousFocus = document.activeElement;
+            setState(true, false);
+
+            window.setTimeout(function () {
+                const first = drawer.querySelector("a[href]");
+                if (!open || !first) return;
+
+                try {
+                    first.focus({ preventScroll: true });
+                } catch (_) {
+                    first.focus();
+                }
+            }, 80);
+        }
+
+        function closeMenu(event, restoreFocus) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (!open) return;
+            setState(false, restoreFocus !== false);
+        }
+
+        function toggleMenu(event) {
+            if (open) {
+                closeMenu(event, true);
+            } else {
+                openMenu(event);
+            }
+        }
+
+        // Pointer interaction gives much more reliable touch behavior than
+        // relying solely on synthetic click events.
+        if (window.PointerEvent) {
+            menu.addEventListener("pointerup", function (event) {
+                if (event.pointerType === "mouse" && event.button !== 0) return;
+                toggleMenu(event);
+            });
+        } else {
+            menu.addEventListener("click", toggleMenu);
+        }
+
+        // Stop the synthetic click that some mobile browsers emit after
+        // pointerup from causing a second toggle.
+        menu.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        // Drawer navigation.
+        drawer.querySelectorAll("a[href]").forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                const href = link.getAttribute("href") || "";
+
+                if (!href) return;
+
+                // External/page links: close, then let normal navigation occur.
+                if (!href.startsWith("#")) {
+                    closeMenu(null, false);
+                    return;
+                }
+
+                const target = document.getElementById(href.slice(1));
+
+                if (!target) {
+                    closeMenu(null, false);
+                    return;
+                }
+
+                event.preventDefault();
+                closeMenu(null, false);
+
+                // Wait until the fixed body has been restored.
+                window.setTimeout(function () {
+                    target.scrollIntoView({
+                        behavior: reduceMotionQuery.matches ? "auto" : "smooth",
+                        block: "start"
+                    });
+
+                    // Update the URL without forcing a page reload.
+                    if (history.replaceState) {
+                        history.replaceState(null, "", href);
+                    }
+                }, 30);
+            });
+        });
+
+        // ESC closes the drawer.
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && open) {
+                closeMenu(event, true);
+            }
+        });
+
+        // Close when orientation/viewport changes into desktop.
+        function handleViewportChange() {
+            if (!isMobile() && open) {
+                closeMenu(null, false);
+            }
+        }
+
+        window.addEventListener("resize", handleViewportChange, {
+            passive: true
+        });
+
+        window.addEventListener("orientationchange", function () {
+            window.setTimeout(handleViewportChange, 80);
+        }, { passive: true });
+
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener("change", handleViewportChange);
+        }
+
+        // Swipe down from the top edge while the menu is open closes it.
+        drawer.addEventListener("touchstart", function (event) {
+            const touch = event.touches[0];
+            if (!touch) return;
+
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, { passive: true });
+
+        drawer.addEventListener("touchend", function (event) {
+            if (!open) return;
+
+            const touch = event.changedTouches[0];
+            if (!touch) return;
+
+            const dx = touch.clientX - touchStartX;
+            const dy = touch.clientY - touchStartY;
+
+            // Downward swipe from the upper area = dismiss.
+            if (
+                touchStartY < 120 &&
+                dy > 80 &&
+                Math.abs(dy) > Math.abs(dx) * 1.25
+            ) {
+                closeMenu(null, true);
+            }
+        }, { passive: true });
+
+        // Browser back button should never leave a locked drawer behind.
+        window.addEventListener("pageshow", function () {
+            if (!isMobile() && open) {
+                closeMenu(null, false);
+            }
+        });
+
+        // Clean startup state.
+        drawer.classList.remove("is-open");
+        menu.classList.remove("is-open");
+        menu.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-label", "Open menu");
+        drawer.setAttribute("aria-hidden", "true");
+        document.documentElement.classList.remove("menu-lock");
+        document.body.classList.remove("menu-open");
+    });
 })();
 </script>
 
