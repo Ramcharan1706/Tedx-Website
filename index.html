@@ -436,15 +436,13 @@
 
 <style id="tedxkprit-navigation-fix">
 /* =========================================================
-   TEDxKPRIT — RELIABLE MOBILE NAVIGATION
-   - Keeps the header/menu above the drawer
-   - Uses fixed viewport positioning
-   - Prevents background scrolling while open
-   - Supports iOS Safari / Android touch input
-   - Preserves desktop navigation
+   TEDxKPRIT — MOBILE NAVIGATION
+   The breakpoint here must match styles.css, which hides
+   .nav below 1000px. It used to stop at 900px, so between
+   901px and 1000px the page had no nav and no burger at all.
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     :root {
         --mobile-nav-z: 9999;
         --mobile-drawer-z: 9998;
@@ -461,8 +459,9 @@
         touch-action: none;
     }
 
+    /* Header stays fixed (as on desktop) and sits above the drawer,
+       so the burger is always reachable to close the menu. */
     .header {
-        position: relative !important;
         z-index: var(--mobile-nav-z) !important;
     }
 
@@ -474,7 +473,7 @@
         justify-content: center;
         width: 48px;
         height: 48px;
-        margin: 0;
+        margin: 0 0 0 auto;          /* push the burger to the far right */
         padding: 0;
         border: 0;
         background: transparent;
@@ -492,6 +491,8 @@
         position: absolute;
         width: 24px;
         height: 2px;
+        margin: 0;
+        background: #fff;
         border-radius: 999px;
         transform-origin: center;
         transition:
@@ -511,12 +512,15 @@
 
     .menu.is-open span:first-child {
         transform: rotate(45deg);
+        background: var(--red);
     }
 
     .menu.is-open span:last-child {
         transform: rotate(-45deg);
+        background: var(--red);
     }
 
+    /* ---- Drawer shell ---- */
     .drawer {
         position: fixed !important;
         top: 0 !important;
@@ -538,6 +542,11 @@
         overflow-y: auto !important;
         overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
+
+        background:
+            radial-gradient(circle at 78% 12%, rgba(237, 28, 36, .18), transparent 42%),
+            linear-gradient(#0a0a0a, #050505);
+        color: var(--text);
 
         transform: translate3d(0, -10px, 0);
         transition:
@@ -564,15 +573,106 @@
         z-index: 1;
         min-height: 100%;
         min-height: 100dvh;
-        padding-bottom: max(32px, env(safe-area-inset-bottom));
+        display: flex;
+        flex-direction: column;
+        padding: 96px 1.4rem max(32px, env(safe-area-inset-bottom));
     }
 
-    .drawer a,
-    .drawer button {
-        position: relative;
-        z-index: 2;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
+    /* ---- Drawer heading ---- */
+    .drawer-inner > span {
+        font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--red);
+    }
+
+    .drawer-inner > strong {
+        display: block;
+        font: 700 clamp(2.4rem, 12vw, 3.4rem) 'Space Grotesk', system-ui, sans-serif;
+        line-height: .88;
+        letter-spacing: -.05em;
+        margin: .5rem 0 1.6rem;
+        color: #fff;
+    }
+
+    /* ---- Drawer nav ---- */
+    .drawer nav {
+        display: grid;
+        border-top: 1px solid #232323;
+    }
+
+    /* The leading section number is the anchor's own text node, so the
+       anchor carries the mono/number styling and <b> carries the label. */
+    .drawer nav a {
+        display: grid;
+        grid-template-columns: 2.4rem 1fr auto;
+        align-items: center;
+        gap: .6rem;
+        padding: 1.05rem .2rem;
+        border-bottom: 1px solid #232323;
+        text-decoration: none;
+        font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+        letter-spacing: .14em;
+        color: #6d6d6d;
+        transition: color .25s, background .25s, padding-left .25s;
+    }
+
+    .drawer nav a:hover,
+    .drawer nav a:active {
+        background: rgba(237, 28, 36, .07);
+        padding-left: .6rem;
+    }
+
+    .drawer nav a > b {
+        font: 600 1.05rem 'Space Grotesk', system-ui, sans-serif;
+        letter-spacing: -.01em;
+        color: #f2f2f2;
+    }
+
+    .drawer nav a:hover > b {
+        color: #fff;
+    }
+
+    .drawer nav a > i {
+        font-style: normal;
+        color: var(--red);
+        font-size: .9rem;
+    }
+
+    /* ---- Drawer footer links ---- */
+    .drawer-archive {
+        display: block;
+        margin-top: 1.8rem;
+        color: #aaa;
+        text-decoration: none;
+        font: 500 .68rem 'DM Mono', ui-monospace, monospace;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+
+    .drawer-archive:hover {
+        color: #fff;
+    }
+
+    .drawer-register {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: .9rem;
+        padding: 1rem 1.2rem;
+        background: var(--red);
+        border: 1px solid var(--red);
+        color: #fff;
+        text-decoration: none;
+        font: 600 .68rem 'DM Mono', ui-monospace, monospace;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        transition: background .3s, transform .3s;
+    }
+
+    .drawer-register:hover {
+        background: #ff3038;
+        transform: translateY(-2px);
     }
 
     .drawer a:focus-visible,
@@ -582,7 +682,7 @@
     }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1001px) {
     .menu {
         display: none !important;
     }
@@ -590,6 +690,22 @@
     .drawer {
         visibility: hidden !important;
         pointer-events: none !important;
+    }
+}
+
+/* The TEDx attribution line is required on the hero strip, but it used to be
+   hidden below 650px, which dropped it on every phone. Wrap it instead. */
+@media (max-width: 650px) {
+    .hero-meta {
+        flex-wrap: wrap;
+        row-gap: .45rem;
+    }
+
+    .hero-meta span:nth-child(2) {
+        display: block;
+        order: 3;
+        flex: 0 0 100%;
+        color: #8d8d8d;
     }
 }
 
@@ -1667,19 +1783,19 @@
                         </h2>
                     </div>
                     <p>
-                        Thirty students across AIML, CSE, DS, ECE and Civil, organised into five working chapters under one licence. Move through the crew chapter by chapter — each chapter panel sits on the left with its full member rail on the right.
+                        Thirty-five students across AIML, CSE, DS, ECE and Civil, organized into five working chapters and a host, under one license. Move through the crew chapter by chapter — each chapter panel sits on the left with its full member rail on the right.
                     </p>
                 </div>
                 <div class="licensee reveal">
                     <div class="licensee-photo">
                         <img src="assets/team/bhuvaneshwari.png" alt="Bhuvaneshwari Pothuraju">
                         <span>
-                            LICENCE / 2026
+                            LICENSE / 2026
                         </span>
                     </div>
                     <div class="licensee-copy">
                         <small>
-                            TEDxKPRIT LICENCE HOLDER
+                            TEDxKPRIT LICENSE HOLDER
                         </small>
                         <h3>
                             Bhuvaneshwari
@@ -1689,14 +1805,14 @@
                             </em>
                         </h3>
                         <p>
-                            The licence for TEDxKPRIT 2026 is held by Bhuvaneshwari, who carries responsibility for the event, its curation and the standards it is run to.
+                            The license for TEDxKPRIT 2026 is held by Bhuvaneshwari, who carries responsibility for the event, its curation and the standards it is run to.
                         </p>
                         <div class="licensee-meta">
                             <span>
                                 AIML
                             </span>
                             <span>
-                                4rTH YEAR
+                                4TH YEAR
                             </span>
                             <span>
                                 KPRIT
@@ -1706,7 +1822,7 @@
                 </div>
                 <div class="team-slider slider" data-slider>
                     <div class="team-tabs" role="tablist" aria-label="Team chapters">
-                        <button role="tab" aria-selected="false" data-team-tab="4">
+                        <button role="tab" aria-selected="true" class="active" data-team-tab="0">
                             01 / WEB DEVELOPMENT
                         </button>
                         <button role="tab" aria-selected="false" data-team-tab="1">
@@ -1722,10 +1838,13 @@
                             &amp;
                             GOODIES
                         </button>
-                        <button role="tab" aria-selected="true" class="active" data-team-tab="0">
+                        <button role="tab" aria-selected="false" data-team-tab="4">
                             05 / HOSPITALITY
                             &amp;
                             LOGISTICS
+                        </button>
+                        <button role="tab" aria-selected="false" data-team-tab="5">
+                            06 / HOST
                         </button>
                     </div>
                     <div class="team-window slider-viewport" data-viewport tabindex="0">
@@ -1774,41 +1893,41 @@
                                         <div class="member-window" data-member-viewport>
                                             <div class="member-track" data-member-track>
                                                 <div class="member-card">
-                                                    <img src="assets/students/ramcharanteja.jpeg" alt="Ch. Ram Charan Teja">
-                                                    <b>
-                                                        Ch. Ram Charan Teja
-                                                    </b>
-                                                    <span><strong>LEAD</strong></span>
-                                                    <small>
-                                                        AIML / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/ramcharanteja.jpeg" alt="Ch. Ram Charan Teja">
+                                                <b>
+                                                    Ch. Ram Charan Teja
+                                                </b>
+                                                <span><strong>LEAD</strong></span>
+                                                <small>
+                                                    AIML / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/kushi.png" alt="kushi">
-                                                    <b>
-                                                        Kushi
-                                                    </b>
-                                                    <small>
-                                                        CSE / 2nd year / KPRIT-COE
-                                                    </small>
+                                                <img src="assets/students/deepthi.jpeg" alt="B. Deepthi">
+                                                <b>
+                                                    B. Deepthi
+                                                </b>
+                                                <small>
+                                                    CSE / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/team/deepesh.png" alt="G.V. Deepesh">
-                                                    <b>
-                                                        G.V. Deepesh
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/team/deepesh.png" alt="G.V. Deepesh">
+                                                <b>
+                                                    G.V. Deepesh
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/sairam.jpeg" alt="M. Sai Ram">
-                                                    <b>
-                                                        M. Sai Ram
-                                                    </b>
-                                                    <small>
-                                                        DS / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/sairam.jpeg" alt="M. Sai Ram">
+                                                <b>
+                                                    M. Sai Ram
+                                                </b>
+                                                <small>
+                                                    DS / 4TH YEAR
+                                                </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1834,7 +1953,7 @@
                                             <i>
                                             </i>
                                             <span>
-                                                07 MEMBERS
+                                                09 MEMBERS
                                             </span>
                                         </div>
                                         <div class="lead-copy">
@@ -1867,77 +1986,86 @@
                                         <div class="member-window" data-member-viewport>
                                             <div class="member-track" data-member-track>
                                                 <div class="member-card">
-                                                    <img src="assets/students/premkumar.jpeg" alt="K. Prem Kumar">
-                                                    <b>
-                                                        K. Prem Kumar
-                                                    </b>
-                                                    <span><strong>LEAD</strong></span>
-                                                    <small>
-                                                        AIML / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/premkumar.jpeg" alt="K. Prem Kumar">
+                                                <b>
+                                                    K. Prem Kumar
+                                                </b>
+                                                <span><strong>LEAD</strong></span>
+                                                <small>
+                                                    AIML / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/purnesh.jpeg" alt="G. Purnesh">
-                                                    <b>
-                                                        G. Purnesh
-                                                    </b>
-                                                    <small>
-                                                        AIML / 4rTH YEAR
-                                                    </small>
-                                                </div>
-                                                 <div class="member-card">
-                                                    <img src="assets/students/deepthi.jpeg" alt="B. Deepthi">
-                                                    <b>
-                                                        B . Deepthi
-                                                    </b>
-                                                    <small>
-                                                        CSE / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/purnesh.jpeg" alt="G. Purnesh">
+                                                <b>
+                                                    G. Purnesh
+                                                </b>
+                                                <small>
+                                                    AIML / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/sahithi.jpeg" alt="K. Sahithi">
-                                                    <b>
-                                                        K. Sahithi
-                                                    </b>
-                                                    <small>
-                                                        AIML / 3rd year
-                                                    </small>
+                                                <img src="assets/students/sahithi.jpeg" alt="K. Sahithi">
+                                                <b>
+                                                    K. Sahithi
+                                                </b>
+                                                <small>
+                                                    AIML / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/team/pranathi.png" alt="Pranathi">
-                                                    <b>
-                                                        Pranathi
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/team/pranathi.png" alt="G.S.L. Pranathi">
+                                                <b>
+                                                    G.S.L. Pranathi
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/jayasree.jpeg" alt="B. Jayashree">
-                                                    <b>
-                                                        B. Jayashree
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/jayasree.jpeg" alt="B. Jayashree">
+                                                <b>
+                                                    B. Jayashree
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/vishnu.jpeg" alt="B. Vishnu">
-                                                    <b>
-                                                        B. Vishnu
-                                                    </b>
-                                                    <small>
-                                                        DS / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/sravani.jpeg" alt="P. Sravani Reddy">
+                                                <b>
+                                                    P. Sravani Reddy
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/abhi.jpeg" alt="Abhishek">
-                                                    <b>
-                                                        Abhishek
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year / KPRIT-COE
-                                                    </small>
+                                                <img src="assets/students/vishnu.jpeg" alt="B. Vishnu">
+                                                <b>
+                                                    B. Vishnu
+                                                </b>
+                                                <small>
+                                                    DS / 4TH YEAR
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <img src="assets/students/sriteja.jpeg" alt="Y. Sriteja">
+                                                <b>
+                                                    Y. Sriteja
+                                                </b>
+                                                <small>
+                                                    AIML / 2ND YEAR / KPRIT-COE
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <img src="assets/students/abhi.jpeg" alt="K. Samuel Abhishek">
+                                                <b>
+                                                    K. Samuel Abhishek
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR / KPRIT-COE
+                                                </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +2074,7 @@
                                                 ←
                                             </button>
                                             <b data-member-count>
-                                                01 / 07
+                                                01 / 09
                                             </b>
                                             <button data-member-next aria-label="Next members">
                                                 →
@@ -2001,41 +2129,41 @@
                                         <div class="member-window" data-member-viewport>
                                             <div class="member-track" data-member-track>
                                                 <div class="member-card">
-                                                    <img src="assets/students/ashwith.jpeg" alt="ashwith">
-                                                    <b>
-                                                        M. Ashwith
-                                                    </b>
-                                                    <span><strong>LEAD</strong></span>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/ashwith.jpeg" alt="M. Ashwith">
+                                                <b>
+                                                    M. Ashwith
+                                                </b>
+                                                <span><strong>LEAD</strong></span>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/mohan.png" alt="mohan">
-                                                    <b>
-                                                        G. Mohan
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/mohan.png" alt="G. Mohan">
+                                                <b>
+                                                    G. Mohan
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/saicharan.jpeg" alt="B. Saicharan">
-                                                    <b>
-                                                        B. Saicharan
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/saicharan.jpeg" alt="B. Saicharan">
+                                                <b>
+                                                    B. Saicharan
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/manicharan.jpeg" alt="Manicharan">
-                                                    <b>
-                                                        Mani Charan
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/manicharan.jpeg" alt="Mani Charan">
+                                                <b>
+                                                    Mani Charan
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -2099,32 +2227,32 @@
                                         <div class="member-window" data-member-viewport>
                                             <div class="member-track" data-member-track>
                                                 <div class="member-card">
-                                                    <img src="assets/students/bhuvanesh.jpeg" alt="Bhuvanesh">
-                                                    <b>
-                                                        D. Bhuvanesh
-                                                    </b>
-                                                    <span><strong>LEAD</strong></span>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/bhuvanesh.jpeg" alt="G. Bhuvanesh">
+                                                <b>
+                                                    G. Bhuvanesh
+                                                </b>
+                                                <span><strong>LEAD</strong></span>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/sivanesh.jpeg" alt="Shivanesh">
-                                                    <b>
-                                                        P. Shivansh
-                                                    </b>
-                                                    <small>
-                                                        Civil / 3rd year
-                                                    </small>
+                                                <img src="assets/students/sivanesh.jpeg" alt="P. Shivansh">
+                                                <b>
+                                                    P. Shivansh
+                                                </b>
+                                                <small>
+                                                    CIVIL / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/manasabejugam.jpeg" alt="B. Manasa">
-                                                    <b>
-                                                        B. Manasa
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/manasabejugam.jpeg" alt="B. Manasa">
+                                                <b>
+                                                    B. Manasa
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -2150,7 +2278,7 @@
                                         <i>
                                         </i>
                                         <span>
-                                            11 MEMBERS
+                                            14 MEMBERS
                                         </span>
                                     </div>
                                     <div class="lead-copy">
@@ -2187,105 +2315,132 @@
                                     </div>
                                     <div class="member-window" data-member-viewport>
                                         <div class="member-track" data-member-track>
-                                            <div class="member-card">
+                                                <div class="member-card">
                                                 <img src="assets/team/charmi.png" alt="P. Charmi Reddy">
                                                 <b>
                                                     P. Charmi Reddy
                                                 </b>
                                                 <span><strong>LEAD</strong></span>
                                                 <small>
-                                                    AIML / 4rTH YEAR
+                                                    AIML / 4TH YEAR
                                                 </small>
-                                            </div>
-                                            <div class="member-card">
+                                                </div>
+                                                <div class="member-card">
                                                 <img src="assets/team/ramya.png" alt="G. Ramya">
                                                 <b>
                                                     G. Ramya
                                                 </b>
                                                 <small>
-                                                    AIML / 3rd year
+                                                    AIML / 3RD YEAR
                                                 </small>
-                                            </div>
-                                            <div class="member-card">
-                                                    <img src="assets/students/meenakshi.jpeg" alt="P . Meenakshi">
-                                                    <b>
-                                                        P. Meenakshi
-                                                    </b>
-                                                    <small>
-                                                        AIML / 3rd year
-                                                    </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/pavithra.jpeg" alt="P . Pavithra">
-                                                    <b>
-                                                        P. Pavitra
-                                                    </b>
-                                                    <small>
-                                                        AIML / 3rd year
-                                                    </small>
+                                                <img src="assets/students/meenakshi.jpeg" alt="P. Meenakshi">
+                                                <b>
+                                                    P. Meenakshi
+                                                </b>
+                                                <small>
+                                                    AIML / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/charanteja.jpeg" alt="Charan Teja">
-                                                    <b>
-                                                        Charan Teja
-                                                    </b>
-                                                    <small>
-                                                        AIML / 2nd year
-                                                    </small>
+                                                <img src="assets/students/pavithra.jpeg" alt="P. Pavitra">
+                                                <b>
+                                                    P. Pavitra
+                                                </b>
+                                                <small>
+                                                    AIML / 3RD YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/bhavanireddy.jpeg" alt="G. Bhavani">
-                                                    <b>
-                                                        G. Bhavani
-                                                    </b>
-                                                    <small>
-                                                        CSE / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/charanteja.jpeg" alt="A. Charan Teja">
+                                                <b>
+                                                    A. Charan Teja
+                                                </b>
+                                                <small>
+                                                    AIML / 2ND YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/lokesh.jpeg" alt="M. Lokesh">
-                                                    <b>
-                                                        M. Lokesh
-                                                    </b>
-                                                    <small>
-                                                        CSE / 4rTH YEAR
-                                                    </small>
+                                                <div class="member-avatar" aria-hidden="true">N</div>
+                                                <b>
+                                                    Naveen
+                                                </b>
+                                                <small>
+                                                    AIML / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/hitesh.jpeg" alt="B. Hitesh">
-                                                    <b>
-                                                        B. Hitesh
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <div class="member-avatar" aria-hidden="true">AM</div>
+                                                <b>
+                                                    A. Manisha
+                                                </b>
+                                                <small>
+                                                    AIML / 2ND YEAR / KPRIT-COE
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/vishwesh.jpeg" alt="Vishwesh">
-                                                    <b>
-                                                        M. Vishwesh
-                                                    </b>
-                                                    <small>
-                                                        CSE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/bhavanireddy.jpeg" alt="G. Bhavani">
+                                                <b>
+                                                    G. Bhavani
+                                                </b>
+                                                <small>
+                                                    CSE / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/students/umar.jpeg" alt="Syed Umar Farooq">
-                                                    <b>
-                                                        Syed Umar Farooq
-                                                    </b>
-                                                    <small>
-                                                        DS / 4rTH YEAR
-                                                    </small>
+                                                <img src="assets/students/lokesh.jpeg" alt="M. Lokesh">
+                                                <b>
+                                                    M. Lokesh
+                                                </b>
+                                                <small>
+                                                    CSE / 4TH YEAR
+                                                </small>
                                                 </div>
                                                 <div class="member-card">
-                                                    <img src="assets/team/bharath.jpeg" alt="A. Bharath">
-                                                    <b>
-                                                        A. Bharath
-                                                    </b>
-                                                    <small>
-                                                        ECE / 3rd year
-                                                    </small>
+                                                <img src="assets/students/hitesh.jpeg" alt="B. Hitesh">
+                                                <b>
+                                                    B. Hitesh
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <img src="assets/students/vishwesh.jpeg" alt="M. Vishwesh">
+                                                <b>
+                                                    M. Vishwesh
+                                                </b>
+                                                <small>
+                                                    CSE / 3RD YEAR
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <img src="assets/students/umar.jpeg" alt="Syed Umar Farooq">
+                                                <b>
+                                                    Syed Umar Farooq
+                                                </b>
+                                                <small>
+                                                    DS / 4TH YEAR
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <img src="assets/team/bharath.jpeg" alt="A. Bharath">
+                                                <b>
+                                                    A. Bharath
+                                                </b>
+                                                <small>
+                                                    ECE / 3RD YEAR
+                                                </small>
+                                                </div>
+                                                <div class="member-card">
+                                                <div class="member-avatar" aria-hidden="true">NG</div>
+                                                <b>
+                                                    Nagaraj
+                                                </b>
+                                                <small>
+                                                    KPRIT
+                                                </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -2294,7 +2449,73 @@
                                                 ←
                                             </button>
                                             <b data-member-count>
-                                                01 / 11
+                                                01 / 14
+                                            </b>
+                                            <button data-member-next aria-label="Next members">
+                                                →
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="team-slide">
+                                    <div class="lead chapter">
+                                        <div class="chapter-art">
+                                            <b>
+                                                06
+                                            </b>
+                                            <i>
+                                            </i>
+                                            <span>
+                                                01 MEMBER
+                                            </span>
+                                        </div>
+                                        <div class="lead-copy">
+                                            <small>
+                                                CHAPTER 06
+                                            </small>
+                                            <h3>
+                                                Host
+                                            </h3>
+                                            <p>
+                                                The voice on stage — holding the running order together and carrying the room from one idea to the next.
+                                            </p>
+                                            <b>
+                                                AIML
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <div class="members">
+                                        <div class="members-head">
+                                            <small>
+                                                THE UNIT
+                                            </small>
+                                            <b>
+                                                HOST
+                                            </b>
+                                            <span>
+                                                DRAG / SWIPE ↔
+                                            </span>
+                                        </div>
+                                        <div class="member-window" data-member-viewport>
+                                            <div class="member-track" data-member-track>
+                                                <div class="member-card">
+                                                <img src="assets/students/kushi.png" alt="Kushi Tiwari">
+                                                <b>
+                                                    Kushi Tiwari
+                                                </b>
+                                                <span><strong>HOST</strong></span>
+                                                <small>
+                                                    AIML / 2ND YEAR / KPRIT-COE
+                                                </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="member-nav">
+                                            <button data-member-prev aria-label="Previous members">
+                                                ←
+                                            </button>
+                                            <b data-member-count>
+                                                01 / 01
                                             </b>
                                             <button data-member-next aria-label="Next members">
                                                 →
@@ -2470,7 +2691,7 @@
                 <!-- MANIFESTO -->
 <section class="manifesto">
                     <div class="manifesto-art">
-                        <img src="assets/2026/portal-secondary.png" alt="Red dimensional portal">
+                        <img src="assets/2026/hero-bg-textfree.png" alt="Red dimensional portal">
                     </div>
                     <div class="manifesto-copy reveal">
                         <small>
@@ -2894,6 +3115,10 @@
             drawer.querySelectorAll("a[href]")
         );
 
+        function prefersReducedMotion() {
+            return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        }
+
         function lockScroll(lock) {
             document.documentElement.classList.toggle("menu-lock", lock);
             document.body.classList.toggle("menu-open", lock);
@@ -2932,7 +3157,7 @@
                 if (!isOpen) return;
 
                 const firstLink = drawer.querySelector("a[href]");
-                if (firstLink && window.innerWidth <= 900) {
+                if (firstLink && window.innerWidth <= 1000) {
                     try {
                         firstLink.focus({ preventScroll: true });
                     } catch (_) {
@@ -2994,25 +3219,27 @@
         });
 
         drawerLinks.forEach(function (link) {
-            link.addEventListener("click", function () {
+            link.addEventListener("click", function (event) {
                 const href = link.getAttribute("href") || "";
 
-                // Close first, then allow the browser's normal anchor
-                // navigation/scroll behaviour to continue.
+                // Close first. While the drawer is open the page is scroll
+                // locked, so scrolling before this point does nothing.
                 closeMenu(false);
 
-                if (href.charAt(0) === "#") {
-                    const target = document.querySelector(href);
+                if (href.charAt(0) !== "#") return;
 
-                    if (target) {
-                        window.setTimeout(function () {
-                            target.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
-                        }, 0);
-                    }
-                }
+                const target = document.querySelector(href);
+                if (!target) return;
+
+                event.preventDefault();
+
+                // closeMenu() already removed the lock classes synchronously,
+                // so the document can scroll by the time we get here.
+                target.scrollIntoView({
+                    behavior: prefersReducedMotion() ? "auto" : "smooth",
+                    block: "start"
+                });
+                history.replaceState(null, "", href);
             });
         });
 
@@ -3024,7 +3251,7 @@
         });
 
         window.addEventListener("resize", function () {
-            if (window.innerWidth > 900 && isOpen) {
+            if (window.innerWidth > 1000 && isOpen) {
                 closeMenu(false);
             }
         }, { passive: true });
@@ -3032,7 +3259,7 @@
         // If the page is restored from browser back/forward cache,
         // never leave the mobile drawer visually stuck open.
         window.addEventListener("pageshow", function () {
-            if (window.innerWidth > 900) {
+            if (window.innerWidth > 1000) {
                 closeMenu(false);
             }
         });
@@ -3081,7 +3308,7 @@
                     menu.setAttribute("aria-label", "Open menu");
                 }
 
-                document.documentElement.classList.remove("drawer-lock");
+                document.documentElement.classList.remove("menu-lock");
 
                 // If another click handler has called preventDefault(), restore
                 // the intended archive navigation explicitly.

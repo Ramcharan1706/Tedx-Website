@@ -8,15 +8,14 @@
   addEventListener('load', () => setTimeout(() => $('#loader')?.classList.add('done'), 500));
   $('#year') && ($('#year').textContent = new Date().getFullYear());
 
-  // Mobile drawer
-  const menu = $('#menu'), drawer = $('#drawer');
-  const setMenu = open => { menu?.setAttribute('aria-expanded', String(open)); drawer?.classList.toggle('open', open); document.body.classList.toggle('menu-open', open); };
-  menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-  $$('.drawer a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  // The mobile drawer is owned by the inline navigation controller in
+  // index.html. Two controllers on one button fought each other and left the
+  // drawer stuck open, so there is deliberately no drawer code here.
 
   // Anchor navigation
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  // Drawer links are excluded: the drawer must release its scroll lock
+  // before anything can scroll, so its own controller does that one.
+  $$('a[href^="#"]').filter(a => !a.closest('.drawer')).forEach(a => a.addEventListener('click', e => {
     const target = $(a.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
