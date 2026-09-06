@@ -50,7 +50,7 @@
     const cursor = $('.cursor'); let x = innerWidth/2, y = innerHeight/2, tx=x, ty=y;
     addEventListener('pointermove', e => { tx=e.clientX; ty=e.clientY; }, { passive:true });
     const frame=()=>{x+=(tx-x)*.18;y+=(ty-y)*.18;cursor.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;requestAnimationFrame(frame)}; frame();
-    $$('a,button,.lens-slide,.speaker-slide,.team-slide,.member-card,.journey-card,.partner-slide').forEach(el=>{el.addEventListener('pointerenter',()=>cursor.classList.add('active'));el.addEventListener('pointerleave',()=>cursor.classList.remove('active'));});
+    $$('a,button,.lens-slide,.speaker-slide,.team-slide,.member-card,.core-card,.journey-card,.partner-slide').forEach(el=>{el.addEventListener('pointerenter',()=>cursor.classList.add('active'));el.addEventListener('pointerleave',()=>cursor.classList.remove('active'));});
   }
 
   // Magnetic buttons

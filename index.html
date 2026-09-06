@@ -1076,6 +1076,224 @@
 }
 </style>
 
+<style id="tedxkprit-core-team">
+/* =========================================================
+   TEDxKPRIT 2026 — CORE TEAM & LEADERSHIP SECTION
+   Matches 2026 architectural dark theme, red accents,
+   Space Grotesk + DM Mono typography, and responsive grid.
+   ========================================================= */
+
+.core-team-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.core-intro {
+    display: grid;
+    grid-template-columns: 1fr .55fr;
+    gap: 5vw;
+    align-items: end;
+    margin: 3.5rem 0 2rem;
+}
+
+.core-intro h2 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(3.4rem, 6.5vw, 7.5rem);
+    line-height: .9;
+    letter-spacing: -.07em;
+    margin: 1rem 0;
+    color: #fff;
+}
+
+.core-intro h2 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.core-intro > p {
+    color: #aaa;
+    line-height: 1.8;
+    max-width: 480px;
+    font-size: .95rem;
+}
+
+.core-group-label {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.25rem;
+    padding-bottom: .4rem;
+}
+
+.core-group-label span {
+    font: 600 .65rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #e0e0e0;
+}
+
+.core-group-label i {
+    height: 1px;
+    background: #252525;
+}
+
+.core-group-label small {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.core-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.core-card {
+    background: linear-gradient(145deg, #0d0d0d, #070707);
+    border: 1px solid #242424;
+    padding: .65rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition:
+        border-color .35s var(--ease),
+        transform .35s var(--ease),
+        box-shadow .35s var(--ease);
+}
+
+.core-card:hover {
+    border-color: var(--red);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, .6), 0 0 24px rgba(237, 28, 36, .12);
+}
+
+.core-card-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #050505;
+    border: 1px solid #1c1c1c;
+}
+
+.core-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: none;
+    transition: transform .6s cubic-bezier(.2, .75, .2, 1);
+    display: block;
+}
+
+.core-card:hover .core-card-photo img {
+    transform: scale(1.04);
+}
+
+.core-card-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(7, 7, 7, .75) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.core-card-badge {
+    position: absolute;
+    top: .75rem;
+    left: .75rem;
+    z-index: 2;
+    border: 1px solid rgba(237, 28, 36, .7);
+    background: rgba(8, 8, 8, .85);
+    backdrop-filter: blur(6px);
+    padding: .35rem .55rem;
+    font: 500 .52rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.core-card-body {
+    padding: 1rem .35rem .4rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    flex: 1;
+}
+
+.core-card-role {
+    font: 600 .62rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 0;
+}
+
+.core-card-name {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.03em;
+    color: #f4f4f4;
+    margin: .15rem 0 .2rem;
+}
+
+.core-card-meta {
+    font: 500 .58rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: auto;
+    padding-top: .4rem;
+    border-top: 1px solid #1a1a1a;
+}
+
+.core-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #282828 20%, #282828 80%, transparent);
+    margin: 4.5rem 0 3.5rem;
+}
+
+@media (max-width: 1100px) {
+    .core-intro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .core-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .core-team-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .core-intro h2 {
+        font-size: clamp(3rem, 15vw, 5rem);
+    }
+    .core-group-label {
+        grid-template-columns: auto 1fr;
+    }
+    .core-group-label small {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .core-card,
+    .core-card-photo img {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+</style>
+
 </head>
     <body>
         <a class="skip" href="#main">
@@ -2202,9 +2420,155 @@
                     <i>
                     </i>
                     <small>
-                        TEAM CHAPTERS
+                        CORE TEAM &amp; CREW CHAPTERS
                     </small>
                 </div>
+
+                <!-- CORE TEAM -->
+                <div class="core-team-section reveal" id="core-team">
+                    <div class="core-intro">
+                        <div>
+                            <p class="kicker">
+                                PILLARS &amp; LEADERSHIP
+                            </p>
+                            <h2>
+                                CORE
+                                <br>
+                                <em>
+                                    TEAM.
+                                </em>
+                            </h2>
+                        </div>
+                        <p>
+                            The patrons, leadership, curators, and faculty coordinators guiding TEDxKPRIT 2026 into the Fifth Dimension — providing institutional vision, strategic direction, and mentorship.
+                        </p>
+                    </div>
+
+                    <!-- Leadership Category -->
+                    <div class="core-group-label">
+                        <span>INSTITUTIONAL PATRONS &amp; LEADERSHIP</span>
+                        <i></i>
+                        <small>04 MEMBERS</small>
+                    </div>
+
+                    <div class="core-team-grid">
+                        <!-- Member 1: Shri Kommuri Pratap Reddy -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">LEADERSHIP</span>
+                                <img src="assets/core-team/kommuripratap.jpg" alt="Shri Kommuri Pratap Reddy" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">CHAIRMAN</p>
+                                <h3 class="core-card-name">Shri Kommuri Pratap Reddy</h3>
+                                <span class="core-card-meta">KPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 2: Shri Kommuri Prashanth Reddy -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">LEADERSHIP</span>
+                                <img src="assets/core-team/kommuriprashanth.jpg" alt="Shri Kommuri Prashanth Reddy" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">VICE CHAIRMAN</p>
+                                <h3 class="core-card-name">Shri Kommuri Prashanth Reddy</h3>
+                                <span class="core-card-meta">KPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 3: Shri Kommuri Rakesh Reddy -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">LEADERSHIP</span>
+                                <img src="assets/core-team/kommurirakesh.jpg" alt="Shri Kommuri Rakesh Reddy" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">SECRETARY</p>
+                                <h3 class="core-card-name">Shri Kommuri Rakesh Reddy</h3>
+                                <span class="core-card-meta">KPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 4: Prof. B. Sudheer Prem Kumar -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">LEADERSHIP</span>
+                                <img src="assets/core-team/sudheerprem.jpg" alt="Prof. B. Sudheer Prem Kumar" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">DIRECTOR</p>
+                                <h3 class="core-card-name">Prof. B. Sudheer Prem Kumar</h3>
+                                <span class="core-card-meta">KPRIT</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Core Coordinators & Curation Category -->
+                    <div class="core-group-label">
+                        <span>CURATION &amp; FACULTY COORDINATORS</span>
+                        <i></i>
+                        <small>04 MEMBERS</small>
+                    </div>
+
+                    <div class="core-team-grid">
+                        <!-- Member 5: Akash Rao Mallareddy -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">CURATION</span>
+                                <img src="assets/core-team/akash.jpg" alt="Akash Rao Mallareddy" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">CURATOR</p>
+                                <h3 class="core-card-name">Akash Rao Mallareddy</h3>
+                                <span class="core-card-meta">TEDxKPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 6: Dr. S. Sreenath Kashyap -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">COORDINATOR</span>
+                                <img src="assets/core-team/kasyap.jpg" alt="Dr. S. Sreenath Kashyap" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">VICE PRINCIPAL</p>
+                                <h3 class="core-card-name">Dr. S. Sreenath Kashyap</h3>
+                                <span class="core-card-meta">FACULTY COORDINATOR / KPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 7: Mr. Anish Srivastava -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">COORDINATOR</span>
+                                <img src="assets/core-team/anish.jpg" alt="Mr. Anish Srivastava" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">DEAN OF CORPORATE RELATIONS</p>
+                                <h3 class="core-card-name">Mr. Anish Srivastava</h3>
+                                <span class="core-card-meta">FACULTY COORDINATOR / KPRIT</span>
+                            </div>
+                        </article>
+
+                        <!-- Member 8: Mr. K. Madan Mohan -->
+                        <article class="core-card">
+                            <div class="core-card-photo">
+                                <span class="core-card-badge">COORDINATOR</span>
+                                <img src="assets/core-team/madanmohan.jpg" alt="Mr. K. Madan Mohan" loading="lazy">
+                            </div>
+                            <div class="core-card-body">
+                                <p class="core-card-role">PUBLIC RELATIONS</p>
+                                <h3 class="core-card-name">Mr. K. Madan Mohan</h3>
+                                <span class="core-card-meta">FACULTY COORDINATOR / KPRIT</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="core-divider"></div>
+
                 <div class="team-intro reveal">
                     <div>
                         <p class="kicker">
