@@ -434,6 +434,365 @@
 </style>
 
 
+<style id="tedxkprit-schedule">
+/* =========================================================
+   TEDxKPRIT — RUN OF SHOW
+   Sits between Partners and Contact. Rows are a two column
+   time/session grid on a bordered panel, matching the
+   speaker-stage and member-card surfaces.
+   ========================================================= */
+
+.schedule-board {
+    margin-top: 3rem;
+    border: 1px solid #292929;
+    background: linear-gradient(180deg, #0d0d0d, #080808);
+    overflow: hidden;
+}
+
+.schedule-head {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem 1.6rem;
+    border-bottom: 1px solid #292929;
+    background: #0a0a0a;
+}
+
+.schedule-head span {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #6d6d6d;
+}
+
+.schedule-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: slot;
+}
+
+.slot {
+    position: relative;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.15rem 1.6rem;
+    border-bottom: 1px solid #1c1c1c;
+    transition: background .3s, padding-left .3s var(--ease);
+}
+
+.slot:last-child {
+    border-bottom: 0;
+}
+
+/* Red rule slides in on hover, echoing the nav underline. */
+.slot:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .3s var(--ease);
+}
+
+.slot:hover {
+    background: rgba(237, 28, 36, .05);
+    padding-left: 1.9rem;
+}
+
+.slot:hover:before {
+    transform: scaleY(1);
+}
+
+.slot > b {
+    font: 500 .68rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .08em;
+    color: #d8d8d8;
+    white-space: nowrap;
+}
+
+.slot > div {
+    display: grid;
+    gap: .3rem;
+    min-width: 0;
+}
+
+.slot strong {
+    font: 600 .95rem 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.3;
+    letter-spacing: -.01em;
+    color: #f2f2f2;
+}
+
+.slot small {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+/* Breaks read as negative space: recessed, no emphasis. */
+.slot-break {
+    background: #070707;
+}
+
+.slot-break > b,
+.slot-break strong {
+    color: #7d7d7d;
+    font-weight: 500;
+}
+
+.slot-break strong {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.slot-break small {
+    color: #5a5a5a;
+}
+
+/* Ceremony and performance slots carry the red accent instead of a name. */
+.slot-ceremony small {
+    color: var(--red);
+}
+
+.slot-tba strong {
+    color: #b8b8b8;
+}
+
+.slot-tba small {
+    color: var(--red);
+}
+
+.schedule-foot {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #282828;
+}
+
+.schedule-foot span {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.schedule-foot i {
+    height: 1px;
+    background: #333;
+}
+
+@media (max-width: 1000px) {
+    .schedule-head,
+    .slot {
+        grid-template-columns: 150px 1fr;
+        gap: 1.1rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .slot:hover {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .schedule-board {
+        margin-top: 2rem;
+    }
+
+    /* Stack: the time becomes a label above the session. */
+    .schedule-head {
+        display: none;
+    }
+
+    .slot {
+        grid-template-columns: 1fr;
+        gap: .45rem;
+        padding: 1.1rem 1rem;
+    }
+
+    .slot:hover {
+        padding-left: 1.3rem;
+    }
+
+    .slot > b {
+        font-size: .62rem;
+        color: var(--red);
+    }
+
+    .schedule-foot {
+        grid-template-columns: 1fr;
+        gap: .4rem;
+    }
+
+    .schedule-foot i {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slot,
+    .slot:before {
+        transition: none !important;
+    }
+
+    .slot:hover {
+        padding-left: 1.6rem;
+    }
+}
+</style>
+<style id="tedxkprit-talks">
+/* =========================================================
+   TEDxKPRIT — TALK EMBEDS
+   Sits under the "what is / what could be" visual in About.
+   Cards borrow the member-card treatment so the strip reads
+   as part of the same system.
+   ========================================================= */
+
+.talks {
+    margin-top: 4rem;
+}
+
+.talks-head {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid #282828;
+    padding: 1rem 0 1.6rem;
+    color: #777;
+}
+
+.talks-head small {
+    font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.talks-head b {
+    font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #ddd;
+}
+
+.talks-head i {
+    height: 1px;
+    background: #333;
+}
+
+.talks-head span {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .12em;
+    color: #777;
+}
+
+.talks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+}
+
+.talk-card {
+    background: #0d0d0d;
+    border: 1px solid #292929;
+    padding: .6rem;
+    transition: border-color .35s, transform .35s var(--ease);
+}
+
+.talk-card:hover {
+    border-color: var(--red);
+    transform: translateY(-6px);
+}
+
+.talk-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #050505;
+    overflow: hidden;
+}
+
+.talk-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.talk-body {
+    display: grid;
+    gap: .35rem;
+    padding: .9rem .3rem .4rem;
+}
+
+.talk-body span {
+    font: 500 .58rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .12em;
+    color: var(--red);
+}
+
+.talk-body h3 {
+    margin: 0;
+    font: 600 .95rem 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    color: #f2f2f2;
+}
+
+.talk-body small {
+    font: 500 .55rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+@media (max-width: 650px) {
+    .talks {
+        margin-top: 2.5rem;
+    }
+
+    .talks-head {
+        grid-template-columns: auto 1fr;
+        padding-bottom: 1.2rem;
+    }
+
+    /* The rail hint and the section name are noise on a narrow screen. */
+    .talks-head b,
+    .talks-head span {
+        display: none;
+    }
+
+    .talks-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .talk-card {
+        transition: none !important;
+    }
+
+    .talk-card:hover {
+        transform: none !important;
+    }
+}
+</style>
 <style id="tedxkprit-navigation-fix">
 /* =========================================================
    TEDxKPRIT — MOBILE NAVIGATION
@@ -769,6 +1128,9 @@
                 <a href="#partners">
                     Partners
                 </a>
+                <a href="#schedule">
+                    Schedule
+                </a>
                 <a href="#contact">
                     Contact
                 </a>
@@ -857,8 +1219,17 @@
                             ↗
                         </i>
                     </a>
-                    <a href="#contact">
+                    <a href="#schedule">
                         07
+                        <b>
+                            Schedule
+                        </b>
+                        <i>
+                            ↗
+                        </i>
+                    </a>
+                    <a href="#contact">
+                        08
                         <b>
                             Contact
                         </b>
@@ -1124,6 +1495,71 @@
                     <span>
                         DRAG YOUR PERSPECTIVE ↗
                     </span>
+                </div>
+                <div class="talks reveal">
+                    <div class="talks-head">
+                        <small>
+                            FROM THE STAGE
+                        </small>
+                        <b>
+                            TEDxKPRIT TALKS
+                        </b>
+                        <i>
+                        </i>
+                        <span>
+                            WATCH ↗
+                        </span>
+                    </div>
+                    <div class="talks-grid">
+                        <article class="talk-card">
+                            <div class="talk-frame">
+                                <iframe src="https://www.youtube-nocookie.com/embed/BjHerukvTKA" title="From Mission Impossible to I&#39;M Possible | Dr. Divya Raj | TEDxKPRIT" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="talk-body">
+                                <span>
+                                    01
+                                </span>
+                                <h3>
+                                    From Mission Impossible to I'M Possible
+                                </h3>
+                                <small>
+                                    Dr. Divya Raj
+                                </small>
+                            </div>
+                        </article>
+                        <article class="talk-card">
+                            <div class="talk-frame">
+                                <iframe src="https://www.youtube-nocookie.com/embed/QipqnBhFuQ8" title="Pilgrimage of Purpose | Sreekanth Erepalli | TEDxKPRIT" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="talk-body">
+                                <span>
+                                    02
+                                </span>
+                                <h3>
+                                    Pilgrimage of Purpose
+                                </h3>
+                                <small>
+                                    Sreekanth Erepalli
+                                </small>
+                            </div>
+                        </article>
+                        <article class="talk-card">
+                            <div class="talk-frame">
+                                <iframe src="https://www.youtube-nocookie.com/embed/tlDwflF8Itk" title="Loops to Leaps: Transforming Mindsets | Dr. Ravi Dasari | TEDxKPRIT" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="talk-body">
+                                <span>
+                                    03
+                                </span>
+                                <h3>
+                                    Loops to Leaps: Transforming Mindsets
+                                </h3>
+                                <small>
+                                    Dr. Ravi Dasari
+                                </small>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </section>
             <!-- SPEAKERS -->
@@ -2867,11 +3303,293 @@
                         </div>
                     </div>
                 </section>
+                <!-- SCHEDULE -->
+<section class="section schedule" id="schedule">
+                    <div class="section-label">
+                        <span>
+                            07
+                        </span>
+                        <b>
+                            THE RUN OF SHOW
+                        </b>
+                        <i>
+                        </i>
+                        <small>
+                            EVENT TIMELINE
+                        </small>
+                    </div>
+                    <div class="split-heading reveal">
+                        <div>
+                            <p class="kicker">
+                                ONE DAY / FIFTEEN MOMENTS
+                            </p>
+                            <h2>
+                                THE DAY
+                                <br>
+                                <em>
+                                    IN ORDER.
+                                </em>
+                            </h2>
+                        </div>
+                        <p>
+                            Doors at 10:00, last word at 4:15. Ten talks, two performances and the breaks that hold them apart — the full shape of the day, start to finish.
+                        </p>
+                    </div>
+                    <div class="schedule-board reveal">
+                        <div class="schedule-head">
+                            <span>
+                                TIME
+                            </span>
+                            <span>
+                                SESSION
+                            </span>
+                        </div>
+                        <ol class="schedule-list">
+                            <li class="slot slot-ceremony">
+                                <b>
+                                    10:00 – 10:25
+                                </b>
+                                <div>
+                                    <strong>
+                                        Lamp Lighting, Classical Performance
+                                        &amp;
+                                        Opening Address
+                                    </strong>
+                                    <small>
+                                        Ceremony
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    10:25 – 10:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 01 — Anurag Saini
+                                    </strong>
+                                    <small>
+                                        Ultra-Marathon Runner &amp; World-Record Holder
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    10:45 – 11:05
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 02 — Madhavi Adimulam
+                                    </strong>
+                                    <small>
+                                        Autism Advocate
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    11:05 – 11:25
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 03 — Umanjali Boga
+                                    </strong>
+                                    <small>
+                                        Founder, HomkaraWorld LLP
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-break">
+                                <b>
+                                    11:25 – 11:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Short Break
+                                    </strong>
+                                    <small>
+                                        20 minutes
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    11:45 – 12:05
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 04 — Subramanian Suryanarayanan
+                                    </strong>
+                                    <small>
+                                        Chairman &amp; Managing Director, Focus Prism Private Limited
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    12:05 – 12:25
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 05 — Vikshitha V
+                                    </strong>
+                                    <small>
+                                        Content Creator
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    12:25 – 12:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 06 — Pramod Paul
+                                    </strong>
+                                    <small>
+                                        Content Creator
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-break">
+                                <b>
+                                    12:45 – 1:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Lunch Break
+                                    </strong>
+                                    <small>
+                                        1 hour
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-ceremony">
+                                <b>
+                                    1:45 – 2:05
+                                </b>
+                                <div>
+                                    <strong>
+                                        Western Dance Performance
+                                    </strong>
+                                    <small>
+                                        Performance
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    2:05 – 2:25
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 07 — Prashanthi Naidu Tripurana
+                                    </strong>
+                                    <small>
+                                        Assistant Vice President, Product Owner — Technology
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot">
+                                <b>
+                                    2:25 – 2:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 08 — Vyjayanti Vasanta Mogli
+                                    </strong>
+                                    <small>
+                                        RTI and Transgender Rights Activist
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-tba">
+                                <b>
+                                    2:45 – 3:05
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 09 — To be announced
+                                    </strong>
+                                    <small>
+                                        Speaker reveal soon
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-break">
+                                <b>
+                                    3:05 – 3:25
+                                </b>
+                                <div>
+                                    <strong>
+                                        Short Break
+                                    </strong>
+                                    <small>
+                                        20 minutes
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-tba">
+                                <b>
+                                    3:25 – 3:45
+                                </b>
+                                <div>
+                                    <strong>
+                                        Talk 10 — To be announced
+                                    </strong>
+                                    <small>
+                                        Speaker reveal soon
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-ceremony">
+                                <b>
+                                    3:45 – 4:00
+                                </b>
+                                <div>
+                                    <strong>
+                                        Faculty Coordinator Address
+                                        &amp;
+                                        Valedictory Ceremony
+                                    </strong>
+                                    <small>
+                                        Ceremony
+                                    </small>
+                                </div>
+                            </li>
+                            <li class="slot slot-ceremony">
+                                <b>
+                                    4:00 – 4:15
+                                </b>
+                                <div>
+                                    <strong>
+                                        Vote of Thanks
+                                        &amp;
+                                        Close
+                                    </strong>
+                                    <small>
+                                        Ceremony
+                                    </small>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="schedule-foot">
+                        <span>
+                            10 TALKS / 2 PERFORMANCES
+                        </span>
+                        <i>
+                        </i>
+                        <span>
+                            10:00 AM – 4:15 PM
+                        </span>
+                    </div>
+                </section>
                 <!-- CONTACT -->
 <section class="section contact" id="contact">
                     <div class="section-label">
                         <span>
-                            07
+                            08
                         </span>
                         <b>
                             OPEN CHANNEL
