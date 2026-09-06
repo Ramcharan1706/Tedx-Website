@@ -433,6 +433,89 @@
 }
 </style>
 
+
+<style id="tedxkprit-navigation-fix">
+/* Reliable mobile navigation fallback.
+   The existing desktop navigation remains untouched. */
+@media (max-width: 900px) {
+    html.drawer-lock,
+    html.drawer-lock body {
+        overflow: hidden !important;
+    }
+
+    .menu {
+        position: relative;
+        z-index: 1002;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .drawer {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        z-index: 1000 !important;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate3d(0, -16px, 0);
+        transition:
+            opacity .28s ease,
+            transform .32s cubic-bezier(.2,.8,.2,1),
+            visibility 0s linear .32s;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .drawer.is-open,
+    body.menu-open .drawer {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate3d(0, 0, 0);
+        transition:
+            opacity .28s ease,
+            transform .32s cubic-bezier(.2,.8,.2,1),
+            visibility 0s linear 0s;
+    }
+
+    .drawer-inner {
+        position: relative;
+        z-index: 1;
+        min-height: 100%;
+    }
+
+    .drawer a {
+        position: relative;
+        z-index: 2;
+        touch-action: manipulation;
+    }
+
+    .menu.is-open span:first-child {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu.is-open span:last-child {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+}
+
+@media (min-width: 901px) {
+    .drawer {
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+</style>
+
 </head>
     <body>
         <a class="skip" href="#main">
@@ -489,7 +572,7 @@
                     Contact
                 </a>
             </nav>
-            <a class="header-archive" href="/2025/">
+            <a class="header-archive" href="./2025/">
                 2025 Recap
                 <b>
                     ↗
@@ -583,7 +666,7 @@
                         </i>
                     </a>
                 </nav>
-                <a class="drawer-archive" href="/2025/">
+                <a class="drawer-archive" href="./2025/">
                     TEDxKPRIT 2025 recap ↗
                 </a>
                 <a class="drawer-register" href="register.html">
@@ -2586,7 +2669,7 @@
                     <span>
                         TEDxKPRIT 2026
                     </span>
-                    <a href="/2025/">
+                    <a href="./2025/">
                         TEDxKPRIT 2025 Archive ↗
                     </a>
                     <a href="https://www.instagram.com/tedxkprit/" target="_blank" rel="noreferrer">
@@ -2694,7 +2777,153 @@
 })();
 </script>
 
-            <script src="js/app.js" defer>
+            <script src="js/app.js" defer></script>
+
+            <!-- TEDxKPRIT navigation reliability patch -->
+            <script>
+            (function () {
+                "use strict";
+
+                function initNavigation() {
+                    const menu = document.getElementById("menu");
+                    const drawer = document.getElementById("drawer");
+                    const header = document.getElementById("header");
+
+                    if (!menu || !drawer) return;
+
+                    const drawerLinks = drawer.querySelectorAll("a[href]");
+                    let lastFocused = null;
+
+                    function isOpen() {
+                        return document.body.classList.contains("menu-open");
+                    }
+
+                    function setOpen(open) {
+                        document.body.classList.toggle("menu-open", open);
+                        drawer.classList.toggle("is-open", open);
+                        menu.classList.toggle("is-open", open);
+                        menu.setAttribute("aria-expanded", String(open));
+                        menu.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+
+                        if (header) {
+                            header.classList.toggle("menu-active", open);
+                        }
+
+                        if (open) {
+                            lastFocused = document.activeElement;
+                            document.documentElement.classList.add("drawer-lock");
+                            drawer.setAttribute("aria-hidden", "false");
+
+                            const firstLink = drawer.querySelector("a[href]");
+                            if (firstLink && window.matchMedia("(max-width: 900px)").matches) {
+                                window.setTimeout(function () {
+                                    firstLink.focus({ preventScroll: true });
+                                }, 50);
+                            }
+                        } else {
+                            document.documentElement.classList.remove("drawer-lock");
+                            drawer.setAttribute("aria-hidden", "true");
+
+                            if (
+                                lastFocused &&
+                                typeof lastFocused.focus === "function"
+                            ) {
+                                lastFocused.focus({ preventScroll: true });
+                            }
+                        }
+                    }
+
+                    // Prevent duplicate listeners if another script initializes the menu.
+                    if (menu.dataset.navReady === "true") return;
+                    menu.dataset.navReady = "true";
+
+                    menu.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setOpen(!isOpen());
+                    });
+
+                    drawerLinks.forEach(function (link) {
+                        link.addEventListener("click", function () {
+                            // Same-page anchors should close the drawer before scrolling.
+                            setOpen(false);
+                        });
+                    });
+
+                    document.addEventListener("keydown", function (event) {
+                        if (event.key === "Escape" && isOpen()) {
+                            setOpen(false);
+                        }
+                    });
+
+                    window.addEventListener("resize", function () {
+                        if (window.innerWidth > 900 && isOpen()) {
+                            setOpen(false);
+                        }
+                    });
+
+                    // Ensure a clean initial state.
+                    drawer.setAttribute("aria-hidden", "true");
+                    setOpen(false);
+                }
+
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", initNavigation);
+                } else {
+                    initNavigation();
+                }
+            })();
             </script>
-        </body>
+        
+<script id="tedxkprit-archive-fix">
+(function () {
+    "use strict";
+
+    function initArchiveLinks() {
+        document.querySelectorAll(
+            'a.header-archive[href], a.drawer-archive[href], footer a[href="./2025/"]'
+        ).forEach(function (link) {
+            if (link.dataset.archiveReady === "true") return;
+            link.dataset.archiveReady = "true";
+
+            link.addEventListener("click", function (event) {
+                const href = link.getAttribute("href");
+                if (!href) return;
+
+                // Close mobile drawer without cancelling navigation.
+                document.body.classList.remove("menu-open");
+                const drawer = document.getElementById("drawer");
+                const menu = document.getElementById("menu");
+
+                if (drawer) {
+                    drawer.classList.remove("is-open");
+                    drawer.setAttribute("aria-hidden", "true");
+                }
+                if (menu) {
+                    menu.classList.remove("is-open");
+                    menu.setAttribute("aria-expanded", "false");
+                    menu.setAttribute("aria-label", "Open menu");
+                }
+
+                document.documentElement.classList.remove("drawer-lock");
+
+                // If another click handler has called preventDefault(), restore
+                // the intended archive navigation explicitly.
+                if (event.defaultPrevented) {
+                    event.preventDefault();
+                    window.location.assign(href);
+                }
+            }, true);
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initArchiveLinks);
+    } else {
+        initArchiveLinks();
+    }
+})();
+</script>
+
+</body>
     </html>
