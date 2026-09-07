@@ -60,8 +60,10 @@
   });
 
   // Reusable slider: one slide per view, with peek controlled by CSS.
+  // The speaker slider has its own dedicated implementation (percentage-based
+  // transforms, autoplay, looping clone) and must not be driven from here too.
   const sliders = [];
-  $$('.slider[data-slider]:not(.team-slider)').forEach(root => {
+  $$('.slider[data-slider]:not(.team-slider):not(.speaker-slider)').forEach(root => {
     const viewport=$('[data-viewport]',root), track=$('[data-track]',root), slides=$$('.slider-track > *',root), prev=$('[data-prev]',root), next=$('[data-next]',root), current=$('[data-current]',root), total=$('[data-total]',root), progress=$('[data-progress]',root);
     if(!viewport||!track||slides.length<2)return;
     let index=0, start=0, delta=0, dragging=false, pid=null;

@@ -11,3 +11,6 @@ yarn-error.log*
 # Verbatim on-disk copy of the 2025 site. Redundant: the served archive is `2025/`
 # and the original repository layout is preserved in this repo's git history.
 tedxKprit2025/
+
+# Local Claude Code preview config
+.claude/

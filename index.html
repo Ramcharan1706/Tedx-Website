@@ -1301,49 +1301,9 @@
    - One speaker at a time
    - Reliable arrow navigation
    - Mouse drag + touch swipe
-   - Large/high-contrast arrows
-   - Clear "SLIDE TO SEE THE SPEAKERS" instruction
+   - Large/high-contrast arrows straddling the section edges
+   - Auto-advance with a seamless loop
    ========================================================= */
-
-.speaker-slider-instruction {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .75rem;
-    margin: 0 0 1.15rem;
-    padding: .85rem 1rem;
-    border: 1px solid #292929;
-    background: linear-gradient(90deg, rgba(237,28,36,.08), rgba(255,255,255,.025), rgba(237,28,36,.08));
-    color: #fff;
-    text-align: center;
-    user-select: none;
-}
-
-.speaker-slider-instruction strong {
-    font: 700 .72rem 'DM Mono', ui-monospace, monospace;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-}
-
-.speaker-slider-instruction small {
-    color: #888;
-    font: 500 .58rem 'DM Mono', ui-monospace, monospace;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.speaker-swipe-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 2.25rem;
-    height: 2.25rem;
-    border: 1px solid rgba(237,28,36,.75);
-    color: var(--red);
-    font-size: 1.35rem;
-    line-height: 1;
-    animation: speakerHintNudge 1.8s ease-in-out infinite;
-}
 
 .speaker-slider .speaker-stage {
     position: relative;
@@ -1383,15 +1343,22 @@
 }
 
 .speaker-slider .slider-buttons.speaker-slider-buttons {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 1.35rem 0 .75rem;
+    position: absolute;
+    inset: 0;
+    z-index: 12;
+    display: block !important;
+    margin: 0;
+    padding: 0;
+    /* Let clicks fall through to the slide everywhere except the arrows. */
+    pointer-events: none;
 }
 
 .speaker-slider .speaker-slider-buttons button {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    --arrow-x: 0%;
+    transform: translate(var(--arrow-x), -50%);
+    pointer-events: auto;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
@@ -1418,15 +1385,25 @@
     pointer-events: none;
 }
 
+.speaker-slider .speaker-slider-buttons [data-prev] {
+    left: 0;
+    --arrow-x: -50%;
+}
+
+.speaker-slider .speaker-slider-buttons [data-next] {
+    right: 0;
+    --arrow-x: 50%;
+}
+
 .speaker-slider .speaker-slider-buttons button:hover {
-    transform: scale(1.09);
+    transform: translate(var(--arrow-x), -50%) scale(1.09);
     background: var(--red) !important;
     border-color: var(--red) !important;
     box-shadow: 0 12px 34px rgba(237,28,36,.28);
 }
 
 .speaker-slider .speaker-slider-buttons button:active {
-    transform: scale(.96);
+    transform: translate(var(--arrow-x), -50%) scale(.96);
 }
 
 .speaker-slider .speaker-slider-buttons button:focus-visible {
@@ -1439,6 +1416,8 @@
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 1rem;
+    /* The arrows used to supply this gap before they became an overlay. */
+    margin-top: 1.35rem;
 }
 
 .speaker-slider .slider-progress {
@@ -1450,29 +1429,7 @@
     user-drag: none;
 }
 
-@keyframes speakerHintNudge {
-    0%, 100% { transform: translateX(0); opacity: .75; }
-    50% { transform: translateX(6px); opacity: 1; }
-}
-
 @media (max-width: 650px) {
-    .speaker-slider-instruction {
-        flex-wrap: wrap;
-        gap: .45rem .65rem;
-        margin-bottom: .9rem;
-        padding: .75rem .65rem;
-    }
-
-    .speaker-slider-instruction strong {
-        font-size: .62rem;
-        letter-spacing: .1em;
-    }
-
-    .speaker-slider-instruction small {
-        flex-basis: 100%;
-        font-size: .52rem;
-    }
-
     .speaker-slider .speaker-slider-buttons button {
         width: 62px !important;
         height: 62px !important;
@@ -1481,20 +1438,24 @@
         font-size: 1.85rem !important;
     }
 
-    .speaker-slider .slider-buttons.speaker-slider-buttons {
-        gap: .8rem;
-        margin-top: 1rem;
+    .speaker-slider .speaker-slider-buttons [data-prev] {
+        left: .25rem;
+        --arrow-x: 0%;
+    }
+
+    .speaker-slider .speaker-slider-buttons [data-next] {
+        right: .25rem;
+        --arrow-x: 0%;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .speaker-swipe-icon {
-        animation: none !important;
+    .speaker-slider .slider-track {
+        transition: none !important;
     }
 
-    .speaker-slider .slider-track,
     .speaker-slider .speaker-slider-buttons button {
-        transition: none !important;
+        transition: background .22s ease, border-color .22s ease !important;
     }
 }
 </style>
@@ -1987,11 +1948,6 @@
                     <p>
                         Our speaker experience is built like a magazine cover: one mind, one point of view, one idea worth carrying home.
                     </p>
-                </div>
-                <div class="speaker-slider-instruction" aria-label="Speaker slider instruction">
-                    <span class="speaker-swipe-icon" aria-hidden="true">↔</span>
-                    <strong>SLIDE TO SEE THE SPEAKERS</strong>
-                    <small>Swipe left or right, or use the arrows</small>
                 </div>
                 <div class="speaker-slider slider" data-slider>
                     <div class="speaker-stage">
@@ -4713,233 +4669,7 @@
 </script>
 
 
-<script id="tedxkprit-speaker-slider-fix-js">
-(function () {
-    "use strict";
-
-    function initSpeakerSlider() {
-        var root = document.querySelector(".speaker-slider[data-slider]");
-        if (!root || root.dataset.speakerFixReady === "true") return;
-
-        var viewport = root.querySelector("[data-viewport]");
-        var track = root.querySelector("[data-track]");
-        var slides = Array.prototype.slice.call(root.querySelectorAll(".speaker-slide"));
-        var prev = root.querySelector("[data-prev]");
-        var next = root.querySelector("[data-next]");
-        var currentEl = root.querySelector("[data-current]");
-        var totalEl = root.querySelector("[data-total]");
-        var progress = root.querySelector("[data-progress]");
-
-        if (!viewport || !track || !slides.length || !prev || !next) return;
-
-        root.dataset.speakerFixReady = "true";
-
-        var index = 0;
-        var startX = 0;
-        var startY = 0;
-        var dragging = false;
-        var moved = false;
-        var pointerId = null;
-        var suppressClickUntil = 0;
-
-        if (totalEl) totalEl.textContent = String(slides.length).padStart(2, "0");
-
-        function clamp(value) {
-            return Math.max(0, Math.min(value, slides.length - 1));
-        }
-
-        function update(animate) {
-            index = clamp(index);
-
-            track.style.transition = animate === false
-                ? "none"
-                : "transform .55s cubic-bezier(.2,.8,.2,1)";
-
-            track.style.transform = "translate3d(" + (-index * 100) + "%, 0, 0)";
-
-            if (currentEl) {
-                currentEl.textContent = String(index + 1).padStart(2, "0");
-            }
-
-            if (progress) {
-                progress.style.width = ((index + 1) / slides.length * 100) + "%";
-            }
-
-            slides.forEach(function (slide, i) {
-                slide.setAttribute("aria-hidden", i === index ? "false" : "true");
-            });
-
-            prev.disabled = index === 0;
-            next.disabled = index === slides.length - 1;
-
-            prev.setAttribute("aria-disabled", String(index === 0));
-            next.setAttribute("aria-disabled", String(index === slides.length - 1));
-        }
-
-        function goTo(newIndex) {
-            index = clamp(newIndex);
-            update(true);
-        }
-
-        function goNext() {
-            if (index < slides.length - 1) {
-                goTo(index + 1);
-            }
-        }
-
-        function goPrev() {
-            if (index > 0) {
-                goTo(index - 1);
-            }
-        }
-
-        prev.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            goPrev();
-        });
-
-        next.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            goNext();
-        });
-
-        viewport.addEventListener("keydown", function (event) {
-            if (event.key === "ArrowLeft") {
-                event.preventDefault();
-                goPrev();
-            } else if (event.key === "ArrowRight") {
-                event.preventDefault();
-                goNext();
-            }
-        });
-
-        function pointerDown(event) {
-            if (event.pointerType === "mouse" && event.button !== 0) return;
-
-            pointerId = event.pointerId;
-            startX = event.clientX;
-            startY = event.clientY;
-            dragging = true;
-            moved = false;
-            viewport.classList.add("is-dragging");
-
-            try {
-                viewport.setPointerCapture(pointerId);
-            } catch (_) {}
-
-        }
-
-        function pointerMove(event) {
-            if (!dragging || event.pointerId !== pointerId) return;
-
-            var dx = event.clientX - startX;
-            var dy = event.clientY - startY;
-
-            if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
-                moved = true;
-            }
-
-            // Once horizontal intent is clear, slightly follow the finger.
-            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
-                var width = viewport.getBoundingClientRect().width || 1;
-                var base = -index * 100;
-                var dragPercent = (dx / width) * 100;
-
-                track.style.transition = "none";
-                track.style.transform =
-                    "translate3d(" + (base + dragPercent) + "%, 0, 0)";
-            }
-        }
-
-        function pointerUp(event) {
-            if (!dragging || event.pointerId !== pointerId) return;
-
-            var dx = event.clientX - startX;
-            var dy = event.clientY - startY;
-            var width = viewport.getBoundingClientRect().width || 1;
-
-            dragging = false;
-            viewport.classList.remove("is-dragging");
-
-            try {
-                viewport.releasePointerCapture(pointerId);
-            } catch (_) {}
-
-            pointerId = null;
-
-            var horizontalSwipe =
-                Math.abs(dx) > Math.abs(dy) &&
-                (Math.abs(dx) > 45 || Math.abs(dx) > width * 0.12);
-
-            if (horizontalSwipe) {
-                if (dx < 0) {
-                    goNext();
-                } else {
-                    goPrev();
-                }
-                suppressClickUntil = Date.now() + 350;
-            } else {
-                update(true);
-            }
-        }
-
-        viewport.addEventListener("pointerdown", pointerDown, { passive: true });
-        viewport.addEventListener("pointermove", pointerMove, { passive: true });
-        viewport.addEventListener("pointerup", pointerUp, { passive: true });
-        viewport.addEventListener("pointercancel", pointerUp, { passive: true });
-
-        viewport.addEventListener("click", function (event) {
-            if (Date.now() < suppressClickUntil) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-        }, true);
-
-        // Fallback for older mobile browsers without Pointer Events.
-        var touchStartX = 0;
-        var touchStartY = 0;
-
-        viewport.addEventListener("touchstart", function (event) {
-            if (!event.touches.length) return;
-            touchStartX = event.touches[0].clientX;
-            touchStartY = event.touches[0].clientY;
-        }, { passive: true });
-
-        viewport.addEventListener("touchend", function (event) {
-            if (!event.changedTouches.length) return;
-
-            var touch = event.changedTouches[0];
-            var dx = touch.clientX - touchStartX;
-            var dy = touch.clientY - touchStartY;
-
-            if (
-                Math.abs(dx) > Math.abs(dy) &&
-                Math.abs(dx) > 45
-            ) {
-                if (dx < 0) {
-                    goNext();
-                } else {
-                    goPrev();
-                }
-            }
-        }, { passive: true });
-
-        window.addEventListener("resize", function () {
-            update(false);
-        }, { passive: true });
-
-        update(false);
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initSpeakerSlider, { once: true });
-    } else {
-        initSpeakerSlider();
-    }
-})();
-</script>
+<script src="js/speaker-slider.js" defer></script>
 
 
 <script id="tedxkprit-section-flow-fix-js">
