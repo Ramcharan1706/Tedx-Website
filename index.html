@@ -1499,6 +1499,40 @@
 }
 </style>
 
+
+<style id="tedxkprit-section-flow-fix">
+/* Keep every major section in the normal document flow. */
+#main > section.section,
+#main > section.team,
+#main > section.journey,
+#main > section.partners,
+#main > section.schedule,
+#main > section.contact {
+    position: relative;
+    clear: both;
+}
+
+/* The talks block is a standalone content block, not a wrapper around
+   the Team/Journey/Partners/Schedule/Contact sections. */
+#main > .talks.reveal {
+    position: relative;
+    clear: both;
+}
+
+/* Prevent reveal/animation state from collapsing a whole section if the
+   optional animation script is unavailable. */
+#main > section.section,
+#main > .talks.reveal {
+    min-height: 1px;
+}
+
+@media (max-width: 650px) {
+    #main > section.section {
+        overflow: visible;
+    }
+}
+</style>
+
 </head>
     <body>
         <a class="skip" href="#main">
@@ -2619,6 +2653,8 @@
                             </div>
                         </article>
                     </div>
+                    </div>
+            </div>
             <!-- TEAM -->
 <section class="section team" id="team">
                 <div class="section-label">
@@ -3596,7 +3632,7 @@
                                     /
                                 </span>
                                 <i data-total>
-                                    05
+                                    06
                                 </i>
                             </div>
                             <div class="slider-progress">
@@ -4890,6 +4926,54 @@
     } else {
         initSpeakerSlider();
     }
+})();
+</script>
+
+
+<script id="tedxkprit-section-flow-fix-js">
+(function () {
+    "use strict";
+
+    function restoreSectionFlow() {
+        var main = document.getElementById("main");
+        if (!main) return;
+
+        [
+            "#team",
+            "#journey",
+            "#partners",
+            "#schedule",
+            "#contact"
+        ].forEach(function (selector) {
+            var section = document.querySelector(selector);
+            if (!section) return;
+
+            /* The section itself must never be trapped inside another section. */
+            if (section.parentElement !== main) {
+                main.appendChild(section);
+            }
+
+            section.style.position = "relative";
+            section.style.clear = "both";
+            section.style.visibility = "visible";
+        });
+
+        /* The team section's content should remain visible even if a reveal
+           observer was interrupted by another script. */
+        document.querySelectorAll(
+            "#team .reveal, #journey .reveal, #partners .reveal, #schedule .reveal, #contact .reveal"
+        ).forEach(function (element) {
+            element.style.visibility = "visible";
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", restoreSectionFlow, { once: true });
+    } else {
+        restoreSectionFlow();
+    }
+
+    window.addEventListener("load", restoreSectionFlow, { once: true });
 })();
 </script>
 
