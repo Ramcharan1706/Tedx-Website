@@ -1294,268 +1294,31 @@
 }
 </style>
 
-
-<style id="tedxkprit-speaker-slider-fix">
-/* =========================================================
-   TEDxKPRIT — SPEAKER SLIDER POLISH
-   - One speaker at a time
-   - Big, obvious navigation arrows
-   - Smooth mouse/touch swipe
-   - Clear slide instruction
-   - Stable responsive behaviour
-   ========================================================= */
-
-.speaker-slider-instruction {
+<style id="tedxkprit-speaker-swipe-label">
+.speaker-swipe-label {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .9rem;
-    margin: 0 0 1.35rem;
-    padding: .9rem 1.15rem;
-    border: 1px solid #292929;
-    background: linear-gradient(90deg, rgba(237,28,36,.10), rgba(255,255,255,.025), rgba(237,28,36,.10));
-    color: #fff;
+    width: 100%;
+    margin: 0 0 1.25rem;
+    padding: .7rem 1rem;
+    border-top: 1px solid #292929;
+    border-bottom: 1px solid #292929;
+    color: #aaa;
+    font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .16em;
+    text-transform: uppercase;
     text-align: center;
     user-select: none;
 }
-
-.speaker-slider-instruction strong {
-    font: 800 .78rem 'DM Mono', ui-monospace, monospace;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-}
-
-.speaker-slider-instruction small {
-    color: #999;
-    font: 500 .60rem 'DM Mono', ui-monospace, monospace;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.speaker-swipe-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.6rem;
-    height: 2.6rem;
-    flex: 0 0 2.6rem;
-    border: 1px solid rgba(237,28,36,.8);
-    color: var(--red);
-    font-size: 1.45rem;
-    line-height: 1;
-    animation: speakerHintNudge 1.8s ease-in-out infinite;
-}
-
-.speaker-slider .speaker-stage {
-    position: relative;
-    width: 100%;
-    overflow: visible;
-}
-
-.speaker-slider .slider-viewport {
-    width: 100%;
-    overflow: hidden !important;
-    cursor: grab;
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-overflow-scrolling: touch;
-    outline: none;
-}
-
-.speaker-slider .slider-viewport.is-dragging {
-    cursor: grabbing;
-}
-
-.speaker-slider .slider-track {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    transform: translate3d(0, 0, 0);
-    transition: transform .48s cubic-bezier(.22,.75,.2,1);
-    will-change: transform;
-}
-
-.speaker-slider .speaker-slide {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
-    margin: 0 !important;
-}
-
-.speaker-slider .speaker-slide img {
-    -webkit-user-drag: none;
-    user-drag: none;
-    pointer-events: none;
-}
-
-.speaker-slider .slider-buttons.speaker-slider-buttons {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 1.35rem;
-    margin: 1.5rem 0 .9rem;
-    min-height: 92px;
-}
-
-/* BIG SPEAKER ARROWS */
-.speaker-slider .speaker-slider-buttons button {
-    position: relative;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 92px !important;
-    height: 92px !important;
-    min-width: 92px !important;
-    min-height: 92px !important;
-    padding: 0 !important;
-    border: 2px solid rgba(255,255,255,.42) !important;
-    border-radius: 50% !important;
-    background: #0d0d0d !important;
-    color: #fff !important;
-    font: 800 2.9rem/1 'Inter', Arial, sans-serif !important;
-    cursor: pointer;
-    z-index: 20;
-    box-shadow: 0 12px 35px rgba(0,0,0,.45);
-    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, opacity .2s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.speaker-slider .speaker-slider-buttons button span {
-    display: block;
-    pointer-events: none;
-    line-height: 1;
-    transform: translateY(-2px);
-}
-
-.speaker-slider .speaker-slider-buttons button:hover:not(:disabled) {
-    transform: scale(1.10);
-    background: var(--red) !important;
-    border-color: var(--red) !important;
-    box-shadow: 0 14px 38px rgba(237,28,36,.32);
-}
-
-.speaker-slider .speaker-slider-buttons button:active:not(:disabled) {
-    transform: scale(.95);
-}
-
-.speaker-slider .speaker-slider-buttons button:disabled {
-    opacity: .28 !important;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.speaker-slider .speaker-slider-buttons button:focus-visible {
-    outline: 3px solid #fff;
-    outline-offset: 5px;
-}
-
-.speaker-slider .slider-foot {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 1rem;
-}
-
-.speaker-slider .slider-progress {
-    min-width: 0;
-}
-
-@keyframes speakerHintNudge {
-    0%, 100% { transform: translateX(0); opacity: .75; }
-    50% { transform: translateX(7px); opacity: 1; }
-}
-
 @media (max-width: 650px) {
-    .speaker-slider-instruction {
-        flex-wrap: wrap;
-        gap: .45rem .7rem;
-        margin-bottom: .95rem;
-        padding: .75rem .65rem;
-    }
-
-    .speaker-slider-instruction strong {
-        font-size: .62rem;
-        letter-spacing: .10em;
-    }
-
-    .speaker-slider-instruction small {
-        flex-basis: 100%;
-        font-size: .52rem;
-    }
-
-    .speaker-swipe-icon {
-        width: 2.2rem;
-        height: 2.2rem;
-        flex-basis: 2.2rem;
-        font-size: 1.2rem;
-    }
-
-    .speaker-slider .speaker-slider-buttons button {
-        width: 72px !important;
-        height: 72px !important;
-        min-width: 72px !important;
-        min-height: 72px !important;
-        font-size: 2.25rem !important;
-    }
-
-    .speaker-slider .slider-buttons.speaker-slider-buttons {
-        gap: 1rem;
-        margin-top: 1rem;
-        min-height: 72px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .speaker-swipe-icon {
-        animation: none !important;
-    }
-
-    .speaker-slider .slider-track,
-    .speaker-slider .speaker-slider-buttons button {
-        transition: none !important;
+    .speaker-swipe-label {
+        margin-bottom: 1rem;
+        padding: .6rem .75rem;
+        font-size: .56rem;
     }
 }
 </style>
-
-
-<style id="tedxkprit-section-flow-fix">
-/* Keep every major section in the normal document flow. */
-#main > section.section,
-#main > section.team,
-#main > section.journey,
-#main > section.partners,
-#main > section.schedule,
-#main > section.contact {
-    position: relative;
-    clear: both;
-}
-
-/* The talks block is a standalone content block, not a wrapper around
-   the Team/Journey/Partners/Schedule/Contact sections. */
-#main > .talks.reveal {
-    position: relative;
-    clear: both;
-}
-
-/* Prevent reveal/animation state from collapsing a whole section if the
-   optional animation script is unavailable. */
-#main > section.section,
-#main > .talks.reveal {
-    min-height: 1px;
-}
-
-@media (max-width: 650px) {
-    #main > section.section {
-        overflow: visible;
-    }
-}
-</style>
-
 </head>
     <body>
         <a class="skip" href="#main">
@@ -2011,12 +1774,10 @@
                         Our speaker experience is built like a magazine cover: one mind, one point of view, one idea worth carrying home.
                     </p>
                 </div>
-                <div class="speaker-slider-instruction" aria-label="Speaker slider instruction">
-                    <span class="speaker-swipe-icon" aria-hidden="true">↔</span>
-                    <strong>SLIDE TO SEE THE SPEAKERS</strong>
-                    <small>Swipe left or right, or use the arrows</small>
-                </div>
-                <div class="speaker-slider slider" data-slider>
+                <div class="speaker-swipe-label" aria-hidden="true">
+    SWIPE TO SEE THE SPEAKERS
+</div>
+<div class="speaker-slider slider" data-slider>
                     <div class="speaker-stage">
                         <div class="slider-viewport" data-viewport tabindex="0">
                             <div class="slider-track" data-track>
@@ -2418,12 +2179,12 @@
                                 </article>
                             </div>
                         </div>
-                        <div class="slider-buttons speaker-slider-buttons" aria-label="Speaker navigation">
-                            <button type="button" data-prev aria-label="Previous speaker" title="Previous speaker">
-                                <span aria-hidden="true">←</span>
+                        <div class="slider-buttons">
+                            <button data-prev aria-label="Previous speaker">
+                                ←
                             </button>
-                            <button type="button" data-next aria-label="Next speaker" title="Next speaker">
-                                <span aria-hidden="true">→</span>
+                            <button data-next aria-label="Next speaker">
+                                →
                             </button>
                         </div>
                     </div>
@@ -2676,8 +2437,6 @@
                             </div>
                         </article>
                     </div>
-                    </div>
-            </div>
             <!-- TEAM -->
 <section class="section team" id="team">
                 <div class="section-label">
@@ -3655,7 +3414,7 @@
                                     /
                                 </span>
                                 <i data-total>
-                                    06
+                                    05
                                 </i>
                             </div>
                             <div class="slider-progress">
@@ -4720,291 +4479,6 @@
     } else {
         initArchiveLinks();
     }
-})();
-</script>
-
-
-<script id="tedxkprit-speaker-slider-fix-js">
-(function () {
-    "use strict";
-
-    function initSpeakerSlider() {
-        var root = document.querySelector(".speaker-slider[data-slider]");
-        if (!root || root.dataset.speakerFixReady === "true") return;
-
-        var viewport = root.querySelector("[data-viewport]");
-        var track = root.querySelector("[data-track]");
-        var slides = Array.prototype.slice.call(root.querySelectorAll(".speaker-slide"));
-        var prev = root.querySelector("[data-prev]");
-        var next = root.querySelector("[data-next]");
-        var currentEl = root.querySelector("[data-current]");
-        var totalEl = root.querySelector("[data-total]");
-        var progress = root.querySelector("[data-progress]");
-
-        if (!viewport || !track || !slides.length || !prev || !next) return;
-
-        root.dataset.speakerFixReady = "true";
-
-        var index = 0;
-        var startX = 0;
-        var startY = 0;
-        var dragging = false;
-        var pointerId = null;
-        var suppressClickUntil = 0;
-
-        if (totalEl) totalEl.textContent = String(slides.length).padStart(2, "0");
-
-        function clamp(value) {
-            return Math.max(0, Math.min(value, slides.length - 1));
-        }
-
-        function update(animate) {
-            index = clamp(index);
-
-            track.style.transition = animate === false
-                ? "none"
-                : "transform .48s cubic-bezier(.22,.75,.2,1)";
-
-            track.style.transform =
-                "translate3d(" + (-index * 100) + "%, 0, 0)";
-
-            if (currentEl) {
-                currentEl.textContent = String(index + 1).padStart(2, "0");
-            }
-
-            if (progress) {
-                progress.style.width =
-                    (((index + 1) / slides.length) * 100) + "%";
-            }
-
-            slides.forEach(function (slide, i) {
-                slide.setAttribute("aria-hidden", i === index ? "false" : "true");
-            });
-
-            prev.disabled = index === 0;
-            next.disabled = index === slides.length - 1;
-
-            prev.setAttribute("aria-disabled", String(index === 0));
-            next.setAttribute("aria-disabled", String(index === slides.length - 1));
-        }
-
-        function goTo(newIndex) {
-            var target = clamp(newIndex);
-            if (target === index) {
-                update(true);
-                return;
-            }
-            index = target;
-            update(true);
-        }
-
-        function goNext() {
-            goTo(index + 1);
-        }
-
-        function goPrev() {
-            goTo(index - 1);
-        }
-
-        prev.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            goPrev();
-        });
-
-        next.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            goNext();
-        });
-
-        viewport.addEventListener("keydown", function (event) {
-            if (event.key === "ArrowLeft") {
-                event.preventDefault();
-                goPrev();
-            } else if (event.key === "ArrowRight") {
-                event.preventDefault();
-                goNext();
-            } else if (event.key === "Home") {
-                event.preventDefault();
-                goTo(0);
-            } else if (event.key === "End") {
-                event.preventDefault();
-                goTo(slides.length - 1);
-            }
-        });
-
-        function pointerDown(event) {
-            if (event.pointerType === "mouse" && event.button !== 0) return;
-
-            pointerId = event.pointerId;
-            startX = event.clientX;
-            startY = event.clientY;
-            dragging = true;
-            viewport.classList.add("is-dragging");
-
-            try {
-                viewport.setPointerCapture(pointerId);
-            } catch (_) {}
-        }
-
-        function pointerMove(event) {
-            if (!dragging || event.pointerId !== pointerId) return;
-
-            var dx = event.clientX - startX;
-            var dy = event.clientY - startY;
-
-            if (Math.abs(dx) <= Math.abs(dy) || Math.abs(dx) < 8) return;
-
-            var width = viewport.getBoundingClientRect().width || 1;
-            var base = -index * 100;
-            var dragPercent = (dx / width) * 100;
-
-            track.style.transition = "none";
-            track.style.transform =
-                "translate3d(" + (base + dragPercent) + "%, 0, 0)";
-        }
-
-        function pointerUp(event) {
-            if (!dragging || event.pointerId !== pointerId) return;
-
-            var dx = event.clientX - startX;
-            var dy = event.clientY - startY;
-            var width = viewport.getBoundingClientRect().width || 1;
-
-            dragging = false;
-            viewport.classList.remove("is-dragging");
-
-            try {
-                viewport.releasePointerCapture(pointerId);
-            } catch (_) {}
-
-            pointerId = null;
-
-            var horizontalSwipe =
-                Math.abs(dx) > Math.abs(dy) &&
-                Math.abs(dx) >= Math.max(45, width * 0.12);
-
-            if (horizontalSwipe) {
-                if (dx < 0) {
-                    goNext();
-                } else {
-                    goPrev();
-                }
-                suppressClickUntil = Date.now() + 400;
-            } else {
-                update(true);
-            }
-        }
-
-        viewport.addEventListener("pointerdown", pointerDown, { passive: true });
-        viewport.addEventListener("pointermove", pointerMove, { passive: true });
-        viewport.addEventListener("pointerup", pointerUp, { passive: true });
-        viewport.addEventListener("pointercancel", pointerUp, { passive: true });
-
-        viewport.addEventListener("click", function (event) {
-            if (Date.now() < suppressClickUntil) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-        }, true);
-
-        /* Touch fallback */
-        var touchStartX = 0;
-        var touchStartY = 0;
-
-        viewport.addEventListener("touchstart", function (event) {
-            if (!event.touches.length) return;
-            touchStartX = event.touches[0].clientX;
-            touchStartY = event.touches[0].clientY;
-        }, { passive: true });
-
-        viewport.addEventListener("touchend", function (event) {
-            if (!event.changedTouches.length) return;
-
-            var dx = event.changedTouches[0].clientX - touchStartX;
-            var dy = event.changedTouches[0].clientY - touchStartY;
-            var width = viewport.getBoundingClientRect().width || 1;
-
-            if (
-                Math.abs(dx) > Math.abs(dy) &&
-                Math.abs(dx) >= Math.max(45, width * 0.12)
-            ) {
-                if (dx < 0) {
-                    goNext();
-                } else {
-                    goPrev();
-                }
-            }
-        }, { passive: true });
-
-        /* Keep the transform correct after resizing/orientation changes. */
-        window.addEventListener("resize", function () {
-            update(false);
-        }, { passive: true });
-
-        update(false);
-    }
-
-    function boot() {
-        initSpeakerSlider();
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", boot);
-    } else {
-        boot();
-    }
-
-    window.addEventListener("load", boot);
-})();
-</script>
-
-
-<script id="tedxkprit-section-flow-fix-js">
-(function () {
-    "use strict";
-
-    function restoreSectionFlow() {
-        var main = document.getElementById("main");
-        if (!main) return;
-
-        [
-            "#team",
-            "#journey",
-            "#partners",
-            "#schedule",
-            "#contact"
-        ].forEach(function (selector) {
-            var section = document.querySelector(selector);
-            if (!section) return;
-
-            /* The section itself must never be trapped inside another section. */
-            if (section.parentElement !== main) {
-                main.appendChild(section);
-            }
-
-            section.style.position = "relative";
-            section.style.clear = "both";
-            section.style.visibility = "visible";
-        });
-
-        /* The team section's content should remain visible even if a reveal
-           observer was interrupted by another script. */
-        document.querySelectorAll(
-            "#team .reveal, #journey .reveal, #partners .reveal, #schedule .reveal, #contact .reveal"
-        ).forEach(function (element) {
-            element.style.visibility = "visible";
-        });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", restoreSectionFlow, { once: true });
-    } else {
-        restoreSectionFlow();
-    }
-
-    window.addEventListener("load", restoreSectionFlow, { once: true });
 })();
 </script>
 
