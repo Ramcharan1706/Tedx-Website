@@ -755,6 +755,30 @@
     color: #f2f2f2;
 }
 
+.talk-body h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.talk-body h3 a:hover {
+    color: var(--red);
+}
+
+.talks-head a {
+    color: var(--red);
+    text-decoration: none;
+    font: 500 .62rem 'DM Mono', ui-monospace, monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: opacity .2s ease;
+}
+
+.talks-head a:hover {
+    opacity: .8;
+    text-decoration: underline;
+}
+
 .talk-body small {
     font: 500 .55rem 'DM Mono', ui-monospace, monospace;
     letter-spacing: .1em;
@@ -1329,8 +1353,9 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     width: 100%;
+    gap: 0 !important;
     transform: translate3d(0, 0, 0);
-    transition: transform .55s cubic-bezier(.2,.8,.2,1);
+    transition: transform .45s cubic-bezier(.2,.8,.2,1);
     will-change: transform;
 }
 
@@ -1345,7 +1370,7 @@
 .speaker-slider .slider-buttons.speaker-slider-buttons {
     position: absolute;
     inset: 0;
-    z-index: 12;
+    z-index: 20;
     display: block !important;
     margin: 0;
     padding: 0;
@@ -1362,19 +1387,19 @@
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    width: 68px !important;
-    height: 68px !important;
-    min-width: 68px;
-    min-height: 68px;
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px;
+    min-height: 64px;
     padding: 0 !important;
     border: 1px solid rgba(255,255,255,.32) !important;
     border-radius: 50%;
     background: #111 !important;
     color: #fff !important;
-    font: 500 2rem/1 'Inter', sans-serif !important;
+    font: 500 1.85rem/1 'Inter', sans-serif !important;
     cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    z-index: 25;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
     transition: transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease;
     -webkit-tap-highlight-color: transparent;
 }
@@ -1386,20 +1411,32 @@
 }
 
 .speaker-slider .speaker-slider-buttons [data-prev] {
-    left: 0;
-    --arrow-x: -50%;
+    left: 1.25rem;
+    --arrow-x: 0%;
 }
 
 .speaker-slider .speaker-slider-buttons [data-next] {
-    right: 0;
-    --arrow-x: 50%;
+    right: 1.25rem;
+    --arrow-x: 0%;
+}
+
+@media (min-width: 1480px) {
+    .speaker-slider .speaker-slider-buttons [data-prev] {
+        left: 0;
+        --arrow-x: -50%;
+    }
+
+    .speaker-slider .speaker-slider-buttons [data-next] {
+        right: 0;
+        --arrow-x: 50%;
+    }
 }
 
 .speaker-slider .speaker-slider-buttons button:hover {
     transform: translate(var(--arrow-x), -50%) scale(1.09);
     background: var(--red) !important;
     border-color: var(--red) !important;
-    box-shadow: 0 12px 34px rgba(237,28,36,.28);
+    box-shadow: 0 12px 34px rgba(237,28,36,.35);
 }
 
 .speaker-slider .speaker-slider-buttons button:active {
@@ -1416,7 +1453,6 @@
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 1rem;
-    /* The arrows used to supply this gap before they became an overlay. */
     margin-top: 1.35rem;
 }
 
@@ -1431,27 +1467,27 @@
 
 @media (max-width: 650px) {
     .speaker-slider .speaker-slider-buttons button {
-        width: 62px !important;
-        height: 62px !important;
-        min-width: 62px;
-        min-height: 62px;
-        font-size: 1.85rem !important;
+        width: 52px !important;
+        height: 52px !important;
+        min-width: 52px;
+        min-height: 52px;
+        font-size: 1.5rem !important;
     }
 
     .speaker-slider .speaker-slider-buttons [data-prev] {
-        left: .25rem;
+        left: .5rem;
         --arrow-x: 0%;
     }
 
     .speaker-slider .speaker-slider-buttons [data-next] {
-        right: .25rem;
+        right: .5rem;
         --arrow-x: 0%;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .speaker-slider .slider-track {
-        transition: none !important;
+        transition: transform .25s ease !important;
     }
 
     .speaker-slider .speaker-slider-buttons button {
@@ -2555,9 +2591,9 @@
                         </b>
                         <i>
                         </i>
-                        <span>
-                            WATCH ↗
-                        </span>
+                        <a href="https://www.youtube.com/results?search_query=TEDxKPRIT" target="_blank" rel="noopener noreferrer">
+                            WATCH ON YOUTUBE ↗
+                        </a>
                     </div>
                     <div class="talks-grid">
                         <article class="talk-card">
@@ -2569,7 +2605,9 @@
                                     01
                                 </span>
                                 <h3>
-                                    From The TedxKprit 2025 talks (Break-The-Loop)
+                                    <a href="https://www.youtube.com/watch?v=BjHerukvTKA" target="_blank" rel="noopener noreferrer" title="Watch on YouTube">
+                                        From The TedxKprit 2025 talks (Break-The-Loop) ↗
+                                    </a>
                                 </h3>
                                 <small>
                                     Dr. Divya Raj
@@ -2585,7 +2623,9 @@
                                     02
                                 </span>
                                 <h3>
-                                    Pilgrimage of Purpose
+                                    <a href="https://www.youtube.com/watch?v=QipqnBhFuQ8" target="_blank" rel="noopener noreferrer" title="Watch on YouTube">
+                                        Pilgrimage of Purpose ↗
+                                    </a>
                                 </h3>
                                 <small>
                                     Sreekanth Erepalli
@@ -2601,7 +2641,9 @@
                                     03
                                 </span>
                                 <h3>
-                                    Loops to Leaps: Transforming Mindsets
+                                    <a href="https://www.youtube.com/watch?v=tlDwflF8Itk" target="_blank" rel="noopener noreferrer" title="Watch on YouTube">
+                                        Loops to Leaps: Transforming Mindsets ↗
+                                    </a>
                                 </h3>
                                 <small>
                                     Dr. Ravi Dasari
@@ -4331,6 +4373,9 @@
                     </a>
                     <a href="https://www.linkedin.com/company/tedxkprit/posts/?feedView=all" target="_blank" rel="noreferrer">
                         LinkedIn ↗
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=TEDxKPRIT" target="_blank" rel="noreferrer">
+                        YouTube ↗
                     </a>
                     <a href="#home">
                         Back to top ↑
